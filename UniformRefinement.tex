@@ -1,0 +1,136 @@
+[Al of uniform refinement in 2-d, show it's stable and consistent]
+    \subsection{2D -[UPDATED]}
+    One popular refinement strategy is $red/green$ refinement proposed by R. E. Bank. The red refinement here is regular refinement which divides a triangle into four congruent smaller triangles by connecting midpoints of its three edges. The green refinement is irregular refinement which connects the refined edge midpoint to its opposite corner.[PIC-NEED TO BE UPDATE]\\
+
+    \begin{tikzpicture}
+    \tkzDefPoint(0,0){A}
+    \tkzDefPoint(1.5,2){B}
+    \tkzDefPoint(2.5,0){C}
+    \tkzDrawSegments(A,B B,C A,C)
+
+    %\tkzLabelPoints[above,yshift=0pt](2)
+    %\tkzLabelPoints[left,yshift=4pt](0)
+    %\tkzLabelPoints[right,yshift=4pt](1)
+    \tkzDefMidPoint(A,B) \tkzGetPoint{ab}
+    \tkzDefLine[orthogonal=through ab](A,B)
+    \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
+    \tkzDefLine[orthogonal=through ac](A,C)
+    \tkzDefMidPoint(B,C) \tkzGetPoint{bc}
+    \tkzDefLine[orthogonal=through bc](B,C)
+    \tkzDrawSegment(ab,ac)
+    \tkzDrawSegment(ab,bc)
+    \tkzDrawSegment(ac,bc)
+
+    \tkzDefPoint(3.5,0){A'}
+    \tkzDefPoint(5,2){B'}
+    \tkzDefPoint(6,0){C'}
+    \tkzDrawSegments(A',B' B',C' A',C')
+    \tkzDefMidPoint(A',B') \tkzGetPoint{ab'}
+    \tkzDefLine[orthogonal=through ab'](A',B')
+    \tkzDefMidPoint(A',C') \tkzGetPoint{ac'}
+    \tkzDefLine[orthogonal=through ac'](A',C')
+    \tkzDefMidPoint(B',C') \tkzGetPoint{bc'}
+    \tkzDefLine[orthogonal=through bc'](B',C')
+    \tkzDrawSegment(ab',ac')
+    \tkzDrawSegment(ab',bc')
+    \tkzDrawSegment(ac',bc')
+
+    \tkzDefMidPoint(A',ab') \tkzGetPoint{aab}
+    \tkzDefLine[orthogonal=through aab](A',ab')
+    \tkzDefMidPoint(A',ac') \tkzGetPoint{aac}
+    \tkzDefLine[orthogonal=through aac](A',ac')
+    \tkzDefMidPoint(ac',ab') \tkzGetPoint{x}
+    \tkzDefLine[orthogonal=through x](ac',ab')
+    \tkzDrawSegment(aab,aac)
+    \tkzDrawSegment(aab,x)
+    \tkzDrawSegment(aac,x)
+
+    \tkzDefMidPoint(B',ab') \tkzGetPoint{abb}
+    \tkzDefLine[orthogonal=through abb](B',ab')
+    \tkzDefMidPoint(B',bc') \tkzGetPoint{bbc}
+    \tkzDefLine[orthogonal=through bbc](B',bc')
+    \tkzDefMidPoint(bc',ab') \tkzGetPoint{y}
+    \tkzDefLine[orthogonal=through y](bc',ab')
+    \tkzDrawSegment(abb,bbc)
+    \tkzDrawSegment(abb,y)
+    \tkzDrawSegment(bbc,y)
+
+    \tkzDefMidPoint(C',ac') \tkzGetPoint{acc}
+    \tkzDefLine[orthogonal=through acc](C',ac')
+    \tkzDefMidPoint(C',bc') \tkzGetPoint{bcc}
+    \tkzDefLine[orthogonal=through bcc](C',bc')
+    \tkzDefMidPoint(bc',ac') \tkzGetPoint{z}
+    \tkzDefLine[orthogonal=through z](bc',ac')
+    \tkzDrawSegment(acc,bcc)
+    \tkzDrawSegment(acc,z)
+    \tkzDrawSegment(bcc,z)
+
+    \tkzDefMidPoint(ab',ac') \tkzGetPoint{l}
+    \tkzDefLine[orthogonal=through l](ab',ac')
+    \tkzDefMidPoint(ab',bc') \tkzGetPoint{m}
+    \tkzDefLine[orthogonal=through m](ab',bc')
+    \tkzDefMidPoint(ac',bc') \tkzGetPoint{r}
+    \tkzDefLine[orthogonal=through r](ac',bc')
+    \tkzDrawSegment(l,m)
+    \tkzDrawSegment(l,r)
+    \tkzDrawSegment(m,r)
+
+    \end{tikzpicture}
+
+    Let $T = [x^0, x^1, x^2]$ be the triangle to be refined, and denote $x^{ij}$ as the midpoint of the edge between $x^i$ and $x^j$.\\
+    \textbf{Algorithm} Red refinement in 2D \{\\
+    $T_1 := [x^0, x^{01}, x^{02}]; \qquad T_2 := [x^{01}, x^{1}, x^{12}];$\\
+    $T_3 := [x^{02}, x^{12}, x^2]; \qquad T_4 := [x^{01}, x^{12}, x^{02}];$\\
+    \}
+
+    \begin{lemma*}
+    Red refinement gives same congruence class in 2-dimension case.
+    \end{lemma*}
+    \begin{proof}\mbox{}\\
+
+    \begin{tikzpicture}[scale=0.75]
+    \tkzDefPoint(0,0){A}
+    \tkzDefPoint(1.5,2){B}
+    \tkzDefPoint(2.5,0){C}
+    \tkzDrawSegments(A,B B,C A,C)
+
+    \tkzLabelPoints[above,yshift=0pt](B)
+    \tkzLabelPoints[left,yshift=4pt](A)
+    \tkzLabelPoints[right,yshift=4pt](C)
+    \tkzDefMidPoint(A,B) \tkzGetPoint{X}
+    \tkzDefLine[orthogonal=through ab](A,B)
+    \tkzDefMidPoint(A,C) \tkzGetPoint{Z}
+    \tkzDefLine[orthogonal=through ac](A,C)
+    \tkzDefMidPoint(B,C) \tkzGetPoint{Y}
+    \tkzDefLine[orthogonal=through bc](B,C)
+    \tkzDrawSegment(X,Z)
+    \tkzDrawSegment(X,Y)
+    \tkzDrawSegment(Z,Y)
+    \tkzLabelPoints[above,xshift=-2mm](X)
+    \tkzLabelPoints[above,xshift=2mm](Y)
+    \tkzLabelPoints[below](Z)
+    \end{tikzpicture}
+
+    By red refinement, we have X, Y and Z as midpoints of edges AB, BC and AC. Thus, line XY parallel to line AC, i.e., $XY \parallel AC$, so $\angle{BXY} = \angle{XAZ}$. Similarily, since $XZ\parallel BC$, $\angle{XBY} = \angle{AXZ}$. Since X is the midpoint of line AB, then AX = BX. In short, we have 
+    \begin{align*}
+    \angle{BXY} &= \angle{XAZ}\\
+    BX &= AX\\
+    \angle{XBY} &= \angle{AXZ}
+    \end{align*}
+    Therefore, $\triangle{BXY} \cong \triangle{XAZ}$. Similarily, we can prove the four triangles are congruent to each other, i.e., $\triangle{BXY}\cong\triangle{XAZ}\cong\triangle{YZC} \cong\triangle{ZYX}$, so they are in a same congruent class, which is similar to the original triangle $\triangle{BAC}$.
+    \end{proof}
+    By lemma, we know that red refinement applied on a non degenerate simplex in 2 dimension gives one congruent class. Moreover, by Theorem in 3.1, we see that red refinement strategy is stable.
+    [This lemma leads to stability]
+
+    \begin{lemma*}
+    Red refinement preserves consistency in 2-dimension case.
+    \end{lemma*}
+    \begin{proof}\mbox{}\\
+    Question1: show they are all simplicial complex by definition?
+    \end{proof}
+    Subdividing a triangle by connecting its midpoint, we obtain four congruent simplices $T_1, T_2, T_3$ and $T_4$. The green refinement is applied on one refined edge on which we may confront with degenerate simplices. We will never touch and refine such simplices to avoid them from degenerating.
+
+    
+    Clearly, the red refinement strategy is stable since it produces a finite number of triangles congruenct to the original simplex. Meanwhile, we preserve consistency by bisecting triangles with one refined edge and never refine them any further. Therefore, we obtain stability and consistency through red and green refinement.
+
+    \subsection{3D}

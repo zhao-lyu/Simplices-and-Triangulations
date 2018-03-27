@@ -1,0 +1,51 @@
+Refinement is a procedure of mesh modification in which we can divide a regular domain into smaller pieces under boundary constrains. This process can be applied recursively to simplify some differential equations by generating smaller pieces of the domain. Let us first introduce triangulation to help undertsand refinement on a simplex. Generally speaking, we can think triangulation as a subdivision of a plane into triangles. Definition below is a more formal way to take when extending to higher dimension.
+    \begin{definition*}
+    A triangulation of $\mathbb R^n$ is subdivision into n-dimensional simplices such that intersection of any two simplices is either empty or sharing a common face, and any face of a simplex is in the triangulation.
+    \end{definition*}
+    Indeed, we say that this triangulation is consistent as it is not simply subdividing of a space. Moreover, the triangulation defined here can be treated equavalently as simplicial complex as it is a finite set of simplices satisfying\\
+    1. Any face of a simplex from a triangulation is also in the triangulation,\\
+    2. The intersection of any two simplices ${T}_1, {T}_2 $ in a triangulation is a face of both ${T}_1$ and  ${T}_2$ or empty.
+    (Denote triangulation same as simplical complex $\mathcal{T}$)\\
+    
+
+    We can think a refinement of a simplex $T$ as a triangulation $\mathcal{T}$ which consists of smaller pieces of simplices of same type of the simplex $T$. Now consider a refinement of a simplicial complex. Let $\mathcal{T}$ and $\mathcal{T'}$ be two different simplicial complex covering a same domain $\Omega$. This means that the domain \(\Omega = \displaystyle \bigcup({T \vert T\in \mathcal{T}}) = \bigcup({T' \vert T\in \mathcal{T'}})\). We say that $\mathcal{T'}$ is a refinement of $\mathcal{T}$ if each simplex $T\in\mathcal{T}$ is in $\mathcal{T'}$ or the triangulation of $T$ is in $\mathcal{T'}$.
+
+    As mentioned before, we may recursively apply a refinement strategy to help simplify some problems. By recursively taking refinment process from $\mathcal{T}_0$, we have a hierarchy triangulation $\mathcal{T}_k, k\in\mathbb{N}$, where $\mathcal{T}_k$ is a refinement of $\mathcal{T}_{k-1}$. 
+    \begin{definition*}
+    Let $\mathcal{T}_0$ be the initial simplicial complex in $\mathbb{R}^n$ where it starts from, then we define the hierarchy triangulation $\mathcal{T}_k$ as follows
+    \begin{equation*}
+    \mathcal{T}_k := \bigcup\{refinement~of~simplex~T ~\vert ~T\in\mathcal{T}_{k-1}\}, \quad k\in\mathbb{N}
+    \end{equation*}
+    \end{definition*}
+
+    \subsection{Stability of Refinement}
+    \begin{definition*}
+    We say a refinement strategy is $\textbf{stable}$ if there exists a constant C $>$ 0 such that $\mu(T)<$ C for all simplices $T$.
+    \end{definition*}
+    
+    \begin{theorem*}
+    If the number of congruence classes, obtained by applying the refinement of a non degenerate simplex $T$ initially, is finite, then the refinement strategy is stable.[UPDATED]
+    \end{theorem*}
+    \begin{proof}
+    Idea:\\
+    1. $T_0$ is non-degenrate, then $\mathcal{T_0}$ is non-degenerate.\\
+    \begin{claim*}
+    Refinement strategy over initial simplicial complex $\mathcal{T_0}$ produces only non-degenerate simplicies $T$.
+    \begin{proof}
+    We prove this claim by induction.
+    Clearly, the base case is true since it is given that all simplices $T$ in $\mathcal{T}$ are non-degenerate. For induction, suppose simplices in simplicial complex $\mathcal{T}_k$ is non-degenerate, i.e. given C $> 0, \mu(T) < C, ~\forall T \in\mathcal{T}_k$. Apply te refinement strategy on $\mathcal{T}_k$, and then we obtain $\mathcal{T}_{k+1} = \bigcup\{refinement~of~simplex~T ~\vert ~T\in\mathcal{T}_{k}\}, \quad k\in\mathbb{N}$. [connection???: f simplex $T_0 \in\mathcal{T}$ is non-degenrate, then simplicial complex $\mathcal{T}$ non-degenerate.]
+    \end{proof}
+    \end{claim*}
+
+    \begin{claim*}
+    If the number of congruence classes is finite, then the number of shape measure is finite, and there exist a common bound C $> 0$ such that C $\geq \mu(\mathcal{T})$.
+    \begin{proof}
+    We proved that simplices in same congruence classes share the same shape measure. If we have finite number of congruence classes, clearly we have finite number of shape measure. When all simplices are non degenerate, we always have an upper bound for their shape measure $\mu(T)$. With the finite number of shape measure, we may set C as the maximum of all upper bounds of shape measures. And therefore C $\geq \mu(\mathcal{T})$
+    \end{proof}
+    \end{claim*}
+
+    Since $T_0$ is non-degenrate, then $\mathcal{T_0}$ is non-degenerate. Moreover, we know there exists a common bound C for all shape measures since the number of congruence classes is finite. Therefore, we proved the stability.[UPDATED]
+    \end{proof}
+    
+    
+    \subsection{Consistency of Refinement}
