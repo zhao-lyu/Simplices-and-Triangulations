@@ -1,18 +1,20 @@
 [Al of uniform refinement in 2-d, show it's stable and consistent]
     \subsection{2D -[UPDATED]}
-    One popular refinement strategy is $red/green$ refinement proposed by R. E. Bank. The red refinement here is regular refinement which divides a triangle into four congruent smaller triangles by connecting midpoints of its three edges. The green refinement is irregular refinement which connects the refined edge midpoint to its opposite corner.[PIC-NEED TO BE UPDATE]\\
+    One popular refinement strategy is $red/green$ refinement proposed by R. E. Bank. The red refinement here is regular refinement which divides a triangle into four congruent smaller triangles by connecting midpoints of its three edges.\\
 
-    \begin{figure}
+    \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
+    \tkzDefPoint(-3.5,0){A''}
+    \tkzDefPoint(-2,2){B''}
+    \tkzDefPoint(-1,0){C''}
+    \tkzDrawSegments(A'',B'' B'',C'' A'',C'')
+
     \tkzDefPoint(0,0){A}
     \tkzDefPoint(1.5,2){B}
     \tkzDefPoint(2.5,0){C}
     \tkzDrawSegments(A,B B,C A,C)
 
-    %\tkzLabelPoints[above,yshift=0pt](2)
-    %\tkzLabelPoints[left,yshift=4pt](0)
-    %\tkzLabelPoints[right,yshift=4pt](1)
     \tkzDefMidPoint(A,B) \tkzGetPoint{ab}
     \tkzDefLine[orthogonal=through ab](A,B)
     \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
@@ -78,21 +80,23 @@
     \tkzDrawSegment(m,r)
 
     \end{tikzpicture}
-    \caption{Red Refinement}
-    \label{Fig2}
+    \caption{Illustration of red refinement, starting with a single triangle and two successive refinement steps}
+    \label{Fig3}%change all after!!!
     \end{figure}
 
-    Let $T = [x^0, x^1, x^2]$ be the triangle to be refined, and denote $x^{ij}$ as the midpoint of the edge between $x^i$ and $x^j$.\\
+    Let $T = [x^0, x^1, x^2]$ be the triangle to be refined, and denote $x^{ij}$ by the midpoint of the edge between $x^i$ and $x^j$.\\
     \textbf{Algorithm} Red refinement in 2D \{\\
     $T_1 := [x^0, x^{01}, x^{02}]; \qquad T_2 := [x^{01}, x^{1}, x^{12}];$\\
     $T_3 := [x^{02}, x^{12}, x^2]; \qquad T_4 := [x^{01}, x^{12}, x^{02}];$\\
     \}
 
+
+
     \begin{lemma*}
     Red refinement gives same congruence class in 2-dimension case.
     \end{lemma*}
     \begin{proof}\mbox{}\\
-
+    Let X, Y, Z be the vertices of the triangle $T$ and let A, B, C be the midpoints of the edge AB, BC and AC. An application of red refinement produces the triangle $T_1 = [A, X, Z]$, $T_2 = [X, B, Y]$, $T_3 = [Z, Y, C]$ and $T_4 = [Y, Z, X]$. Consider the following picture: \\
     \begin{tikzpicture}[scale=0.75]
     \tkzDefPoint(0,0){A}
     \tkzDefPoint(1.5,2){B}
@@ -116,52 +120,66 @@
     \tkzLabelPoints[below](Z)
     \end{tikzpicture}
 
-    By red refinement, we have X, Y and Z as midpoints of edges AB, BC and AC. Thus, line XY parallel to line AC, i.e., $XY \parallel AC$, so $\angle{BXY} = \angle{XAZ}$. Similarily, since $XZ\parallel BC$, $\angle{XBY} = \angle{AXZ}$. Since X is the midpoint of line AB, then AX = BX. In short, we have 
+    We have line XY parallel to line AC, i.e., $XY \parallel AC$, so $\angle{BXY} = \angle{XAZ}$. Similarily, since $XZ\parallel BC$, we have $\angle{XBY} = \angle{AXZ}$. Since X is the midpoint of line AB, then $|AX| = |BX|$. In short, we have 
     \begin{align*}
     \angle{BXY} &= \angle{XAZ}\\
-    BX &= AX\\
+    |BX| &= |AX|\\
     \angle{XBY} &= \angle{AXZ}
     \end{align*}
-    Therefore, $\triangle{BXY} \cong \triangle{XAZ}$. Similarily, we can prove the four triangles are congruent to each other, i.e., $\triangle{BXY}\cong\triangle{XAZ}\cong\triangle{YZC} \cong\triangle{ZYX}$, so they are in a same congruent class, which is similar to the original triangle $\triangle{BAC}$.
+    Therefore, $\triangle{BXY} \cong \triangle{XAZ}$. Similarily, we can prove the four triangles are congruent to each other, i.e., $\triangle{BXY}\cong\triangle{XAZ}\cong\triangle{YZC} \cong\triangle{ZYX}$, so they are in a same congruent class, which is same as the one of the original triangle $\triangle{BAC}$.
     \end{proof}
-    By lemma, we know that red refinement applied on a non degenerate simplex in 2 dimension gives one congruent class. Moreover, by Theorem in 3.1, we see that red refinement strategy is stable.
+    By the lemma above, we know that red refinement applied on a non degenerate simplex in 2 dimension gives one congruent class. Moreover, by Theorem in 3.1, we see that red refinement strategy is stable.
     [This lemma leads to stability]
 
     \begin{lemma*}
     Red refinement preserves consistency in 2-dimension case.
     \end{lemma*}
     \begin{proof}\mbox{}\\
-    Question1: show they are all simplicial complex by definition?
+    This is obvious as how simplicial complex is defined.
     \end{proof}
-    Subdividing a triangle by connecting its midpoint, we obtain four congruent simplices $T_1, T_2, T_3$ and $T_4$. The green refinement is applied on one refined edge on which we may confront with degenerate simplices. We will never touch and refine such simplices to avoid them from degenerating.
 
-    
+    Subdividing a triangle by connecting its midpoint, we obtain four congruent simplices $T_1, T_2, T_3$ and $T_4$. The green refinement, an irregular refinement which connects the refined edge midpoint to its opposite corner, is applied on one refined edge on which we may confront with degenerate simplices. We will never touch and refine such simplices to avoid them from degenerating.
+
     Clearly, the red refinement strategy is stable since it produces a finite number of triangles congruenct to the original simplex. Meanwhile, we preserve consistency by bisecting triangles with one refined edge and never refine them any further. Therefore, we obtain stability and consistency through red and green refinement.
 
     \subsection{Vertices and Edges by Uniform Refinement in 2D}
     In Figure 2 above, we see that we obtain four congruent triangles similiar to the original large triangle. Lemma 1 below presents relationship between number of triangles and number of times that red refinement is applied.
 
     \begin{lemma}
-    Denote $T_{m}$ as the number of triangles after applying red refinement m times, and $T_{m+1}$ as the number of triangles after applying red refinement m+1 times. Then,
+    Denote $T_{m}$ as the number of triangles after applying red refinement m times, then,
     \begin{align*}
-    T_{m+1} = 4 \cdot T_{m}
+    T_{m+1} = 4 \cdot T_{m}, \quad T_{m} = 4^m \cdot T_0
     \end{align*}
     \end{lemma}
     \begin{proof}
-    By induction, the base case is that $T_1 = 4 \cdot T_0$ by Figure 2 above. Suppose this holds when $T_{m+1} = 4\cdot T_{m}$, and we want to show that $T_{m+2} = T_{m+1}$.\\
-    Take a look in each triangle, and we can regard it as $T_0$, then we obtain 4 congruent triangles $T_1$ similar to $T_0$. Since we have $T_{m+1}$ triangles in $T_{m+2}$, then we have $T_{m+2} = 4\cdot T_{m+1}$.\\
+    Based on Figure 3, we see that we always obtain 4 similar triangles that is same as the original one. In other words, we have $T_{m+1} = 4 \cdot T_{m}$.\\
+    To prove $T_{m} = 4^m \cdot T_0$ by induction, we have the base case that $T_1 = 4^1 \cdot T_0$ in Figure 3. Suppose that this is true for $T_{m} = 4^m \cdot T_0$, we need to prove this holds true for $T_{m+1}$.\\
+    Since we have $T_{m+1} = 4 \cdot T_{m}$, and by inductive hypothesis, we have
+    \begin{align*}
+    T_{m+1} = 4 \cdot T_{m} = 4 \cdot (4^m\cdot T_0) = 4^{m+1}\cdot T_0
+    \end{align*}
     Therefore, by induction, we proved that $T_{m+1} = 4 \cdot T_{m}$.
     \end{proof}
-    This is equavalent to say that $T_{m} = 4^{m} \cdot T_{0}$ by recusively applying red refinement on T_{0} m times.
 
     \begin{lemma}
-    Denote $E_{m}$ as the number of edges of simplicial complex $T_m$ [Or simplex???] obtained by applying red refinement m times, and $E_{m+1}$ as the number of edges of simplicial complex $T_{m+1}$ obtained by applying red refinement m+1 times. Then,
+    Denote $E_{m}$ as the number of edges of a simplicial complex $\mathcal{T}$ [Or simplex???] obtained by applying red refinement m times, then,
     \begin{align*}
-    E_{m+1} = 2 \cdot E_m + 3 \cdot T_m
+    E_{m+1} = 2 \cdot E_m + 3 \cdot T_m, \quad E_{m} = 2^{m}\cdot E_0 + 3 \cdot2^{m-1}\cdot(2^{m} -1)\cdot T_0
     \end{align*}
     \end{lemma}
     \begin{proof}
-    This proof can also be done by induction. In the base case, $T_0 = 1$ and $E_0 = 3$ as three edges of a triangle. Based on Figure 2 where the red refinement is applied on a triangle once, we cut each edge into two by setting midpoint and have triple times of $T_0$ edges from the original triangle by connecting all midpoints(3 choose 2). That is, we have $E_1 = 9 = 2 \cdot 3 + 3 = 2 \cdot E_0 + 2\cdot T_0$.\\
+    After applying the red refinemnt one more time, that is m+1 times in total, then we can think like in each smaller triangle in $T_m$, we again have double number of edges by bisecting edges, and obtain number of $T_m$ edges from connecting each midpoints. Therefore, we have $E_{m+1} = 2\cdot E_m + 3\cdot T_m$.\\
+    The proof of the latter part can also be done by induction. The base case is obvious by Figure 3, that is $E_1 = 9 = 2^1\cdot 3 + 3\cdot 2^0 \cdot (2^1 - 1)\cdot1 = 2^1\cdot E_0 + 3\cdot2^{1-1}\cdot(2^1 - 1)\cdot T_0$. Suppose that this holds after applying red refinement m times, i.e., $E_{m} = 2^{m} E_0 + 3 \cdot2^{m-1}\cdot(2^{m} -1)\cdot T_0$. Since $E_{m+1} = 2 \cdot E_m + 3 \cdot T_m$, and by the inductive hypothesis and Lemma 1, we have
+    \begin{align*}
+    E_{m+1} &= 2 \cdot E_m + 3 \cdot T_m \\
+    &= 2(2^{m}\cdot E_0 + 3 \cdot2^{m-1}\cdot(2^{m} -1)\cdot T_0) + 3\cdot 4^m\cdot T_0\\
+    &= 2^{m+1}\cdot E_0 + 3\cdot2^m\cdot(2^m - 1)\cdot T_0 + 3\cdot4^m\cdot T_0\\
+    &= 2^{m+1}\cdot E_0 + 3\cdot(2^m\cdot(2^m))...???????????????????????????
+    \end{align*}
+
+
+
+    [DELETE]In the base case, $T_0 = 1$ and $E_0 = 3$ as three edges of a triangle. Based on Figure 2 where the red refinement is applied on a triangle once, we cut each edge into two by setting midpoint and have triple times of $T_0$ edges from the original triangle by connecting all midpoints(3 choose 2). That is, we have $E_1 = 9 = 2 \cdot 3 + 3 = 2 \cdot E_0 + 2\cdot T_0$.\\
     Suppose that this applies after red refinement m times. That is $E_{m} = 2 \cdot E_{m-1} + 3 \cdot T_{m-1}$. After applying the red refinemnt one more time, that is m+1 times in total, then we can think like in each smaller triangle in $T_m$, we again have double number of edges by bisecting edges, and obtain number of $T_m$ edges from connecting each midpoints. Therefore, we have $E_{m+1} = 2\cdot E_m + 3\cdot T_m$.\\
     This can be further simplified based on Lemma 1 as follows:
     \begin{align*}
@@ -176,13 +194,18 @@
     \end{proof}
 
     \begin{lemma}
-    Denote $V_{m}$ as the number of vertices of simplicial complex $T_m$ [Or simplex???] obtained by applying red refinement m times, and $V_{m+1}$ as the number of vertices of simplicial complex $T_{m+1}$ obtained by applying red refinement m+1 times. Then,
+    Denote $V_{m}$ as the number of vertices of a simplicial complex $\mathcal{T}$ [Or simplex???] obtained by applying red refinement m times, then,
     \begin{align*}
-    V_{m+1} = V_{m} + E_{m}
+    V_{m+1} = V_{m} + E_{m}, \quad V_m = V_0 + (2^m -1)\cdot E_0 + (2^{m-1} -1)(2^m -1)\cdot T_0
     \end{align*}
     \end{lemma}
     \begin{proof}
-    Whenever red refinement is applied, we set a midpoint on each edge as a new vertex. That is, we obtain a same number of new vertices as the number of edges of the simplicial complex before applying the red refinement. To prove this by induction more formally, the base case is clear by Figure 2: $V_1 = 6 = 3 + 3 = V_0 + E_0$.\\
+    Whenever red refinement is applied, we set a midpoint on each edge as a new vertex. That is, we obtain a same number of new vertices as the number of edges of the simplicial complex before applying the red refinement. After applying the red refinement one more time, the number of new vertices is same as the number of edges of $T_m$, i.e., $E_m$. Then adding together, we have $V_{m+1} = V_m + E_m$.\\
+    Suppose that $V_m = V_0 + (2^m -1)\cdot E_0 + (2^{m-1} -1)(2^m -1)\cdot T_0$.
+
+
+
+    [DELETE]To prove this by induction more formally, the base case is clear by Figure 2: $V_1 = 6 = 3 + 3 = V_0 + E_0$.\\
     Suppose this holds true for $V_{m} = V_{m-1} + E_{m-1}$. After applying the red refinement one more time, the number of new vertices is same as the number of edges of $T_m$, i.e., $E_m$. Then adding together, we have $V_{m+1} = V_m + E_m$. To simiplify this,
     \begin{align*}
     V_{m+1} &= V_m + E_m\\
