@@ -5,7 +5,7 @@
     Let ${T} \in\mathbb{R}^n$ be a k-simplex where $k \leqslant n$, with vertices ${x}_0, \cdots, {x}_k \in\mathbb{R}^n$. We let diam$({T})^k$ denote the diameter of ${T}$, and we define
     \begin{equation*}
     %\operator???
-    \operatorname{diam}({T})^k = \max \| x_i - x_j \|, \qquad 0\leqslant i\leqslant j\leqslant k.
+    \operatorname{diam}({T})^k = \max_{0\leqslant i\leqslant j\leqslant k} \| x_i - x_j \|
     \end{equation*}
     In other words, diam$({T})^k$ is the longest distance between two vertices of ${T}$, which is equivalent to the length of the longest edge of ${T}$. If ${T}$ is a single vertex, then diam$({T}) = 0$.\\
 
@@ -15,7 +15,7 @@
     \operatorname{vol^k} ({T}) = \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)|
     \end{equation*}
     \noindent
-    If k = 0, then ${T}$ is a 0-dimensional simplex, i.e., a vertex. Then clearly, diam(${T}$) = 0, and vol$^0 ({T})$ = 1, the vol$^0$ of a single vertex is one.
+    If k = 0, then ${T}$ is a 0-dimensional simplex, i.e., a vertex. By convention we have vol$^0 ({T})$ = 1, the vol$^0$ of a single vertex is one.
 
     
     \paragraph{Shape Measure}\mbox{}\\
@@ -25,31 +25,35 @@
     \end{equation*}
     If vol$^k(T)$ = 0, then we define $\mu({{T}}) = \infty$.\\
     
-    To understand this definition, we can translate $\mu({{T}})$ as a measurement of how different the two variables, i.e. diam$({T})^k$ and vol$^k({T})$, are. For example, for a 3-dimensional simplex, i.e. a triangle, shape measure helps measure how narrow the triangle is. In other words, it measures how small the smallest angle of the triangle is. 
+    To understand this definition, we can translate $\mu({{T}})$ as a measurement of how different the two variables, i.e. diam$({T})^k$ and vol$^k({T})$, are. For example, for a 3-dimensional simplex, i.e. a triangle, shape measure helps measure how narrow the triangle is. In other words, it measures how small the smallest angle of the triangle is. [Is this $\vol~\diam$ ???]
 
     \paragraph{Stability of a Simplex}\mbox{}\\
-    The reason why we need shape measure is to help understanding whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if and only if $\mu({T}) = \infty$, i.e. vol$_k(T) = 0$ approximating to 0.
+    The reason why we need shape measure is to help understanding whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if and only if $\mu({T}) = \infty$, i.e. $\vol_k(T) = 0$. 
 
     
     %???
+    \begin{figure}
+    \centering
     \begin{tikzpicture}
     \draw (0,0) -- (3,2) -- (5,0)-- (0,0);
     \draw (7,0) -- (10,1) -- (12,0)-- (7,0);
     %\path (1,1) coordinate (A) (2.5, 2.5) coordinate (B) (3, 1) coordinate (C)
     %\draw (A) -- (B) -- (C) -- cycle
     \end{tikzpicture}
+    \caption{Good triangle(left) with smaller shape measure vs. Bad triangle(right) with larger shape measure}
+    \label{Fig1}
+    \end{figure}
 
-    Observing two pictures above, we actually want the interior angles of the simple $T$, i.e. traingles in this example, to be uniformly bounded from zero. Thus vol$_2(T)$ will never go to 0.
-    While cutting a simplex into smaller pieces, we want to keep those pieces uniformly bounded and avoid degenrate simplices. \\
+    Observing two triangles in Figure 1, we actually want the interior angles of the simple $T$, i.e. triangles in this example, to be uniformly bounded from zero. Thus vol$_2(T)$ will never go to 0.
+    While cutting a simplex into smaller pieces, we want to keep those pieces uniformly bounded and avoid degenerate simplices. \\
 
     \begin{lemma*}
-    If $T, T'$ are simplices that are congruent to each other, then $\mu(T) = \mu(T')$.
+    If $T, T'$ are congruent simplices, then $\mu(T) = \mu(T')$.
     \end{lemma*}
     \begin{proof}\mbox{}\\
-    Since $T$ is congruent to $T'$, by definition, we have $T' = v + cQT$, where $c$ is scaling factor, $v$ is a translation vector and $Q$ is an orthogonal matrix. In fact, we will show that scaling, translation, roation or mirroring does not influence the shape measure of a simplex. 
-    Suppose $diam(T)^k = ||x_i - x_j ||$, and $vol^k(T) = \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)|$.
+    Since $T$ is congruent to $T'$, by definition, we have $T' = v + cQT$, where $c\in\mathbb{R}^{+}$ is scaling factor, $v\in\mathbb{R}^n$ is a translation vector and $Q\in O(n)$ is an orthogonal matrix. In fact, we will show that scalings, translations, orthogonal transformation do not influence the shape measure of a simplex. 
     
-    To be specific, when scaling a simplex $T$ by a non zero factor $c$ to obtain $T'$, we have 
+    To be specific, when scaling a simplex $T$ by a non zero factor $c\in\mathbb{R}^{+}$ to obtain $T'$, we have 
     \begin{align*}
      vol^k(T') &= \frac{1}{k!}\cdot|\det(cx_1-cx_0, cx_2-cx_0,\cdots, cx_k-cx_0)| \\
                &= \frac{c^k}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)| = c\cdot vol^k(T).
@@ -59,10 +63,10 @@
     \mu(T') = \frac{diam(T')^k}{vol^k(T')} = \frac{c^k\cdot diam(T)^k}{c^k\cdot vol^k(T)} = \frac{diam(T)^k}{vol^k(T)} = \mu(T)
     \end{align*}
 
-    Moreover, translation over simplex $T$ by a nonsingular vector $v$ to obatin $T'$ will not influence the shape measure as well. In detail, we have
+    Moreover, translation over simplex $T$ by a nonsingular vector $v$ to obtain $T'$ will not influence the shape measure as well. In detail, we have
     \begin{align*}
-    diam(T')^k &= ||(x_i + v) - (x_j + v)|| \\ 
-               &= ||x_i - x_j|| = diam(T)^k \\
+    diam(T')^k &= \max_{0\leqslant i\leqslant j\leqslant k} \|(x_i + v) - (x_j + v)\|\\ 
+               &= \max_{0\leqslant i\leqslant j\leqslant k}\|x_i - x_j\| = diam(T)^k \\
     vol^k(T') &= \frac{1}{k!}\cdot|\det((x_1+v) - (x_0+v), (x_2+v)-(x_0+v),\cdots,(x_k+v)-(x_0+v))|\\
               &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)| = vol^k(T)\\
     \mu(T') &= \frac{diam(T')^k}{vol^k(T')} = \frac{diam(T)^k}{vol^k(T)} = \mu(T)
@@ -70,18 +74,13 @@
 
     Consider rotating and mirroring $T$ by an orthogonal matrix $Q$ to obtain $T'$. Since $Q$ is an orthogonal matrix, $Q^T = Q^{-1}$. Therefore, we have
     \begin{align*}
-    diam(T')^k &= ||Qx_i - Qx_j||\\
-               &= ||x_i - x_j|| = diam(T)^k&&\\
+    diam(T')^k &= \max_{0\leqslant i\leqslant j\leqslant k} \|Qx_i - Qx_j\|\\
+               &= \max_{0\leqslant i\leqslant j\leqslant k} \|x_i - x_j\| = diam(T)^k&&\\
     vol^k(T') = vol^k(Q\cdot T) &= \frac{1}{k!}\cdot |\det(Q(x_1-x_0), Q(x_2-x_0),\cdots, Q(x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|det(Q)|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|-1|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)| = vol^k(T)\\
-    \text{Therefore, we have } \mu(T') &= \frac{diam(T')^k}{vol^k(T')}\\
-    &= \frac{diam(T)^k}{vol^k(T)} = \mu(T)
+    \text{Therefore, we have } \mu(T') &= \frac{diam(T')^k}{vol^k(T')} = \frac{diam(T)^k}{vol^k(T)} = \mu(T)
     \end{align*}
     Now we see that the shape measure is independent of scaling, translation, rotation or mirroring. Thus a simplex $T'$ which is obtained by these motions shares a same shape measure with $T$.
-    
-    [ORIGINAL: ]
-    First, we show that volumes of k-simplices $T$ and $T'$ are the same, i.e. vol$^k (T)$ = vol$^k (T')$. By definition of congruence, we can see one difference between equality and congruence of two simplices is that congruence is independent of vertex ordering. Recall the definition of simplex volume. \(vol^k(T) = \displaystyle \frac{1}{k!}\cdot|det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)|\). Clearly, permutation of vertex $x_i$, where $0 \leq i \leq k$, will not influence the absolute value of the determinant. Both dividing by k!, we have vol$^k (T)$ = vol$^k (T')$.\\
-    Moreover, by definition of congruence above, we can obatin $T'$ by applying rotation, mirroring, scaling, and translation over $T$. Thus, diam$(T')^k$, the longest distance between two vertices of $T'$, is equal to the longest distance between two vertices of $T$, diam$(T)^k$. Therefore, we have $\mu(T) = \frac{diam(T)^k}{vol^k(T)} = \frac{diam(T')^k}{vol^k(T')} = \mu(T')$.
     \end{proof}

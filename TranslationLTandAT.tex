@@ -1,25 +1,25 @@
    \subsection{Translation, Linear Transformation and Affine Transformation(pf for stability)}
       
-      We define several classes of transformations that we use frequently.
+      We define several classes of transformations that we frequently use.
       %sets\\
       linear, translation, affine transformation\\
       
       \begin{definition*}
         %$\textbf{Translation}$\\
-         Let $\textbf{v}$ be a fixed vector, a $\textbf{Translation}$ ${T}_v$ on a figure applies as ${T}_v (\textbf{p}) = \textbf{p} + \textbf{v}$, for a vector $\textbf{p}$ in the figure which we translate.
+         Let $\textbf{v}$ be a fixed vector, a $\textbf{translation}$ ${T}_v$ on a figure applies as ${T}_v (\textbf{p}) = \textbf{p} + \textbf{v}$, for a vector $\textbf{p}$ in the figure which we translate.
       \end{definition*}
       A $\textit{translation}$ moves every point of a figure or space by the same distance in the same direction. A translation ${T}$ can be represented by an addition of a constant vector to every point.\\
 
 
       \begin{definition*}
       %\paragraph{Linear transformation}
-      Let ${V}$ and ${W}$ be vector spaces over the same field $\textbf{K}$. We say a function $\mathit{f}: {V} \rightarrow {W}$ is $\textbf{linear transformation}$ if the following satisfied:\\
+      Let ${V}$ and ${W}$ be vector spaces over the same field $\textbf{K}$. We say a function $\mathit{f}: {V} \rightarrow {W}$ is $\textbf{linear transformation}$ if the following is satisfied:\\
       \begin{align*}
       \mathit{f}(\textbf{u} + \textbf{v}) &= \mathit{f}(\textbf{u}) + \mathit{f}(\textbf{v}) \qquad \forall \textbf{u}, \textbf{v} \in{V},\\
       \mathit{f}(c\textbf{u}) &= c\mathit{f}(\textbf{u}), \qquad \forall \textbf{u} \in{V}, ~c\in\textbf{K}.
       \end{align*}
       \end{definition*}
-      In other words, a linear transformation is a mapping between two vector spaces which preserves the operations of addition and scalar multiplication. Moreover, if ${V}$ and ${W}$ are finite dimentional, we can represent the linear transformation ${f}$ by a matrix ${M}$. For example, if ${M}$ is an ${m} \times {n}$ matrix, then ${f}$ is a linear transformation from $\mathbf{R}^n$ to $\mathbf{R}^m$. \\
+      In other words, a linear transformation is a mapping between two vector spaces which preserves the operations of addition and scalar multiplication. Moreover, if ${V}$ and ${W}$ are finite dimensional, we can represent the linear transformation ${f}$ by a matrix ${M}$. For example, if ${M}$ is an ${m} \times {n}$ matrix, then ${f}$ is a linear transformation from $\mathbf{R}^n$ to $\mathbf{R}^m$. \\
 
 
       \begin{definition*}
@@ -28,8 +28,10 @@
       \begin{equation*}
       {F}(x) = {Ax} + {v}, \qquad {x}\in\mathbb{R}^n,
       \end{equation*}
-      where ${A}$ is a linear transformation $\in\mathbb{R}^{n\times n}$, and  ${v}$ is a translation vector in $\mathbb{R}^n$\\
+      where ${A}\in\mathbb{R}^{n\times n}$ is a linear transformation, and  ${v}\in\mathbb{R}^n$ is a translation vector.\\
       \end{definition*}
-      Affine transformation preserves points, lines and planes, but need not preserve point zero in a linear space in contrast to linear transformtion. So we see that translation and linear transformation is affine, but the opposite is not true.\\
-      \indent
-      The inverse mapping $F^{-1} = {x} \mapsto {A}^{-1}({x} - {v})$ is also an affine transformation. Clearly, we see that an affine transformation ${F}$ is invertible if and only if ${A}$ is invertible by the way we defined ${F}^{-1}$. Affine transformation helps carry results from one simplex to another simplex in our discussion, and more details are covered after introducing ${Simplices}$ and ${Triangulations}$ in the next section.
+      Affine transformation preserves points, lines and planes, but need not preserve point zero in a linear space in contrast to linear transformation. So we see that translation and linear transformation is affine, but the opposite is not true.\\
+      %\indent
+      The inverse mapping is only defined if $A^{-1}$ exists, and we define the inverse mapping $F^{-1} = {x} \mapsto {A}^{-1}({x} - {v})$ is also an affine transformation. Affine transformation helps carry results from one simplex to another simplex in our discussion, and more details are covered after introducing ${Simplices}$ and ${Triangulations}$ in the next section.
+
+

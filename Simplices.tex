@@ -14,31 +14,29 @@
 
     \begin{definition*}
     %\paragraph{Subsimplices}
-    An ${l-}$simplex ${S} = [{y}_0, \cdots, {y}_l]$ is called an $\textbf{l-subsimplex}$ of ${k-}$simplex ${T} = [{x}_0, \cdots, {x}_k]$, if indices $0 \leqslant {i}_0 \leqslant \cdots {i}_l \leqslant k$ with ${y}_i = {x}_i$, for $0 \leqslant l \leqslant k \leqslant n$.
+    An ${l-}$simplex ${S} = [{y}_0, \cdots, {y}_l]$ is called an $\textbf{l-subsimplex}$ of ${k-}$simplex ${T} = [{x}_0, \cdots, {x}_k]$, if indices $0 \leqslant {i}_0 \leqslant \cdots\leqslant{i}_l \leqslant k$ with ${y}_i = {x}_i$, for $0 \leqslant l \leqslant k \leqslant n$.
     \end{definition*}
     Since there are $k+1$ vertices in ${k-}$simplex ${T}$, and $l+1$ vertices in ${l-}$subsimplex ${S}$, the number of ${l-}$subsimplex of ${k-}$simplex is $\binom{k+1}{l+1}$.
 
 
     %\paragraph{Simplices Equality}
-    Consider simplices ${T} = [{x}_0, \cdots, {x}_k]$ and $\text{T\textprime} = [{y}_0, \cdots, {y}_k]$. We say these two simplices ${T}$ and ${T\textprime}$ are equal, i.e. ${T} = {T\textprime}$, if ${x}_i = {y}_i$ for $0 \leqslant i \leqslant k$. \\
-    Note that the vertex ordering of simplex is fixed, so if two simplices ${T}$ and ${T\textprime}$ denote the same set but with different vertex ordering, they are not equal; instead, we say that ${T}$ coincides with ${T\textprime}$, i.e. ${T} \cong {T\textprime}$.
+    Consider simplices ${T} = [{x}_0, \cdots, {x}_k]$ and $\text{T\textprime} = [{y}_0, \cdots, {y}_k]$. We say these two simplices ${T}$ and ${T\textprime}$ are equal, i.e. ${T} = {T\textprime}$, if ${x}_i = {y}_i$ for $0 \leqslant i \leqslant k$. Note that the vertex ordering of simplex is fixed, so if two simplices ${T}$ and ${T\textprime}$ denote the same set but with different vertex ordering, they are not equal; instead, we say that ${T}$ coincides with ${T\textprime}$, i.e. ${T} \cong {T\textprime}$.
 
     \paragraph{Simplex under Affine Transformation}\mbox{}\\
-    Instead of taking a sgingle variable $x\in\mathbb{R}^n$ for affine transformation, we can take a subset S $\subset \mathbb{R}^n$, which contains $x\in\mathbb{R}^n$. Then the transformed set $S\textprime$,
+    Instead of taking a single variable $x\in\mathbb{R}^n$ for affine transformation, we can take a subset S $\subset \mathbb{R}^n$, which contains $x\in\mathbb{R}^n$. Then the transformed set $S\textprime$ is
     \begin{equation*}
     S\textprime= {F}(x) = \left\{{F}(x) ~|~ x\in S \right\}.
     \end{equation*}
-    Similarily, if we regard a k-dimensioanl simplex ${T} = {x_0, \cdots, x_k}$ as a subset $\in\mathbb{R}$, then the image of ${T}$ under affine transformation, denoted by $T\textprime$, is defined as below
+    Similarly, if we regard a k-dimensional simplex ${T} = [{x_0, \cdots, x_k}]$ as a subset $\in\mathbb{R}^n$, then the image of ${T}$ under affine transformation, denoted by $T\textprime$, is defined as
     \begin{equation*}
     \begin{split}
-    {T}\textprime & = {F}({T})\\
-    & = \left\{{F}(x_0), \cdots , {F}(x_k)\right\}.
+    {T}\textprime & = {F}({T}) = \left\{{F}(x_0), \cdots , {F}(x_k)\right\}.
     \end{split}
     \end{equation*}
     We can see that ${T}\textprime$ is still a k-dimensional simplex. Furthermore, we can define ${F}({T}) = {AT} + {v}$, where $T$ is k-dimensional simplex $\in\mathbb{R}^n$. We might be curious about the relationship between simplices ${T}$ and ${T}\textprime$. Since vertices of a simplex are in a specific given order, so different vertex ordering leads to different simplices. Therefore, there exists an unique affine transformation such that ${T} = {T}\textprime$. Another important property of simplices is congruence.
 
     \begin{definition*}
-    Two simplices T, T' are defined to be congruent if they can be obtained from each other by rotation, mirroring, scaling, and translation, i.e. if there exists a scaling factor c $\neq 0$, a translation vector $v\in\mathbb{R}^n$, and an orthogonal matrix $Q\in\mathbb{R}^{n\times n}$ such that
+    Two simplices T, T' are defined to be congruent if they can be obtained from each other by rotation, mirroring, scaling, and translation, i.e. if there exists a scaling factor c $\in\mathbb{R}^{+}$, a translation vector $v\in\mathbb{R}^n$, and an orthogonal matrix $Q\in\mathbb{R}^{n\times n}$ such that
     \begin{equation*}
     T' = v + cQT
     \end{equation*}
