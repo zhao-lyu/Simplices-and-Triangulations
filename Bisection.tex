@@ -1,0 +1,87 @@
+    \subsection{Bisection Refinement in 2-dimension}
+    Another popular refinement strategy is bisection. Basically, we cut a triangle by connecting one vertex we choose as the peak, with its opposite edge called refinement edge. One important part we need to consider is how to choose the peak for a triangle, and one famous method was introduced as the $newest vertex$ bisection. In newest vertex bisection, we create the newest vertex at the middle of the refinement edge after applying the bisection refinement once, and then we regard the newest vertex as the peak for bisection over the resulting two smaller triangles.
+
+    \begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+    \tkzDefPoint(-6.5,0){A''}
+    \tkzDefPoint(-5,2){peak}
+    \tkzDefPoint(-3,0){C''}
+    \tkzDrawSegments(A'',peak peak,C'' A'',C'')
+    %\tkzDrawSegments(A'',B'' B'',C'' A'',C'')
+    \tkzLabelPoints[above,yshift=0pt](peak)
+    %\tkzDefMidPoint(A'',C'') \tkzGetPoint{new vertex}
+    %\tkzLabelPoints[below,yshift=0pt](new vertex)
+    %\tkzDefLine[orthogonal=through ac](A,C)
+
+    \tkzDefPoint(-2,0){A}
+    \tkzDefPoint(-0.5,2){B}
+    \tkzDefPoint(1.5,0){C}
+    \tkzDrawSegments(A,B B,C A,C)
+    \tkzDefMidPoint(A,B) \tkzGetPoint{peak}
+    \tkzLabelPoints[left](peak)
+    \tkzDefMidPoint(B,C) \tkzGetPoint{peak}
+    \tkzLabelPoints[right](peak)
+    \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
+    \tkzDefLine[orthogonal=through ac](A,C)
+    \tkzDrawSegment(B,ac)
+
+    \tkzDefPoint(2.5,0){A'}
+    \tkzDefPoint(4,2){B'}
+    \tkzDefPoint(6,0){C'}
+    \tkzDrawSegments(A',B' B',C' A',C')
+    \tkzDefMidPoint(A',B') \tkzGetPoint{ab'}
+    \tkzDefLine[orthogonal=through ab'](A',B')
+    \tkzDefMidPoint(A',C') \tkzGetPoint{ac'}
+    \tkzDefLine[orthogonal=through ac'](A',C')
+    \tkzDefMidPoint(B',C') \tkzGetPoint{bc'}
+    \tkzDefLine[orthogonal=through bc'](B',C')
+    \tkzDrawSegment(B',ac')
+    \tkzDrawSegment(ac',ab')
+    \tkzDrawSegment(ac',bc')
+    \tkzDefMidPoint(B',ac') \tkzGetPoint{peak}
+    \tkzLabelPoints[above,yshift=0pt](peak)
+    \tkzDefMidPoint(A',ac') \tkzGetPoint{peak}
+    \tkzLabelPoints[below](peak)
+    \tkzDefMidPoint(C',ac') \tkzGetPoint{peak}    
+    \tkzLabelPoints[below](peak)
+
+    \tkzDefPoint(7,0){A'''}
+    \tkzDefPoint(8.5,2){B'''}
+    \tkzDefPoint(10.5,0){C'''}
+    \tkzDrawSegments(A''',B''' B''',C''' A''',C''')
+    \tkzDefMidPoint(A''',B''') \tkzGetPoint{ab''}
+    \tkzDefLine[orthogonal=through ab''](A''',B''')
+    \tkzDefMidPoint(A''',C''') \tkzGetPoint{ac''}
+    \tkzDefLine[orthogonal=through ac''](A''',C''')
+    \tkzDefMidPoint(B''',C''') \tkzGetPoint{bc''}
+    \tkzDefLine[orthogonal=through bc''](B''',C''')
+    \tkzDrawSegment(B''',ac'')
+    \tkzDrawSegment(ac'',ab'')
+    \tkzDrawSegment(ac'',bc'')
+    \tkzDefMidPoint(B''',ac'') \tkzGetPoint{x}
+    \tkzDefLine[orthogonal=through x](B''',ac'')
+    \tkzDefMidPoint(A''',ac'') \tkzGetPoint{y}
+    \tkzDefLine[orthogonal=through y](A''',ac'')
+    \tkzDefMidPoint(C''',ac'') \tkzGetPoint{z}
+    \tkzDefLine[orthogonal=through z](C''',ac'')
+    \tkzDrawSegment(ab'',x)
+    \tkzDrawSegment(bc'',x)
+    \tkzDrawSegment(ab'',y)
+    \tkzDrawSegment(bc'',z)
+    \end{tikzpicture}
+    \caption{Illustration of bisection refinement, starting with a single triangle}
+    \label{Fig4}
+    \end{figure}
+
+    \begin{lemma*}
+    Bisection refinement gives four congruence classes given one triangle.
+    \end{lemma*}
+    \begin{proof}
+    Can we prove directly by figures? How do we know four pics cover all situation?
+    \end{proof}
+    This means that we never have triangles degenerating when applying bisection refinement, because the number of congruence classes is four, which is finite, and by theorem proved in 3.1, we see that the bisection refinement is stable.
+
+    \begin{lemma*}
+    Question: consistency? Compatibility chain???
+    \end{lemma*}
