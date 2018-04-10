@@ -1,19 +1,21 @@
     \subsection{Bisection Refinement in 2-dimension}
-    Another popular refinement strategy is bisection. Basically, we cut a triangle by connecting one vertex we choose as the peak, with its opposite edge called refinement edge. One important part we need to consider is how to choose the peak for a triangle, and one famous method was introduced as the $newest vertex$ bisection. In newest vertex bisection, we create the newest vertex at the middle of the refinement edge after applying the bisection refinement once, and then we regard the newest vertex as the peak for bisection over the resulting two smaller triangles.
+    Another popular refinement strategy is bisection. Basically, we cut a triangle by connecting one vertex, which we choose as the peak, with its opposite edge, which we call refinement edge. Generally, if we apply random bisection with no plan on a triangle, it is likely that we fail to preserve stability and consistency.
+
+    Hence, one important part we need to consider is how to choose the peak for a triangle to preserve the stability and consistency, and one famous method was introduced as the $newest vertex$ bisection. In newest vertex bisection, we create the newest vertex at the middle of the refinement edge after applying the bisection refinement once, and then we regard the newest vertex as the peak for bisection over the resulting two smaller triangles.
 
     \begin{figure}[h!]
     \centering
-    \begin{tikzpicture}[scale=0.8]
-    \tkzDefPoint(-6.5,0){A''}
-    \tkzDefPoint(-5,2){peak}
-    \tkzDefPoint(-3,0){C''}
-    \tkzDrawSegments(A'',peak peak,C'' A'',C'')
+      \begin{tikzpicture}[scale=0.8]
+      \tkzDefPoint(-6.5,0){A''}
+      \tkzDefPoint(-5,2){peak}
+      \tkzDefPoint(-3,0){C''}
+      \tkzDrawSegments(A'',peak peak,C'' A'',C'')
     %\tkzDrawSegments(A'',B'' B'',C'' A'',C'')
-    \tkzLabelPoints[above,yshift=0pt](peak)
+      \tkzLabelPoints[above,yshift=0pt](peak)
     %\tkzDefMidPoint(A'',C'') \tkzGetPoint{new vertex}
     %\tkzLabelPoints[below,yshift=0pt](new vertex)
     %\tkzDefLine[orthogonal=through ac](A,C)
-
+    
     \tkzDefPoint(-2,0){A}
     \tkzDefPoint(-0.5,2){B}
     \tkzDefPoint(1.5,0){C}
@@ -25,6 +27,7 @@
     \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
     \tkzDefLine[orthogonal=through ac](A,C)
     \tkzDrawSegment(B,ac)
+
 
     \tkzDefPoint(2.5,0){A'}
     \tkzDefPoint(4,2){B'}
@@ -45,6 +48,7 @@
     \tkzLabelPoints[below](peak)
     \tkzDefMidPoint(C',ac') \tkzGetPoint{peak}    
     \tkzLabelPoints[below](peak)
+
 
     \tkzDefPoint(7,0){A'''}
     \tkzDefPoint(8.5,2){B'''}
@@ -74,14 +78,156 @@
     \label{Fig4}
     \end{figure}
 
+
+
+
+
+
+
+%----------------------------------------------------------------------------------
     \begin{lemma*}
     Bisection refinement gives four congruence classes given one triangle.
     \end{lemma*}
     \begin{proof}
-    Can we prove directly by figures? How do we know four pics cover all situation?
-    \end{proof}
-    This means that we never have triangles degenerating when applying bisection refinement, because the number of congruence classes is four, which is finite, and by theorem proved in 3.1, we see that the bisection refinement is stable.
+    \begin{figure}[h!]
+    \centering
+      \begin{tikzpicture}[scale=0.8]
+      \tkzDefPoint(-6.5,0){A''}
+      \tkzDefPoint(-5,2){B''}
+      \tkzDefPoint(-3,0){C''}
+      \tkzDrawSegments(A'',B'' B'',C'' A'',C'')
+      \node (t) at (-5, 1) {{1}};
 
+      \tkzDefPoint(-2,0){A}
+      \tkzDefPoint(-0.5,2){B}
+      \tkzDefPoint(1.5,0){C}
+      \tkzDrawSegments(A,B B,C A,C)
+      \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
+      \tkzDefLine[orthogonal=through ac](A,C)
+      \tkzDrawSegment(B,ac)
+      \node (t') at (-1, 0.5) {{2}};
+      \node (t'') at (0.5, 0.5) {{3}};
+      \end{tikzpicture}
+    \caption{Stage 1: Original triangle(left); Stage 2: Applied the newest vertex bisection once(right)}
+    \label{fig5: sub1}
+    \end{figure}
+
+    Observing Figure 5, we have a triangle at the beginning, say it's in congruency class 1. After applying the newest vertex bisection refinement once, we obtain two smaller pieces of triangles as in the second picture in Figure 5. Say one of them is in congruency class 2, and another one is in congruency class 3. Further applying the newest vertex bisection refinement, we have the figures below.
+
+    \begin{figure}[h!]
+    \centering
+      \begin{tikzpicture}[scale=0.8]
+      \tkzDefPoint(2.5,0){A'}
+      \tkzDefPoint(4,2){B'}
+      \tkzDefPoint(6,0){C'}
+      \tkzDrawSegments(A',B' B',C' A',C')
+      \tkzDefMidPoint(A',B') \tkzGetPoint{ab'}
+      \tkzDefLine[orthogonal=through ab'](A',B')
+      \tkzDefMidPoint(A',C') \tkzGetPoint{ac'}
+      \tkzDefLine[orthogonal=through ac'](A',C')
+      \tkzDefMidPoint(B',C') \tkzGetPoint{bc'}
+      \tkzDefLine[orthogonal=through bc'](B',C')
+      \tkzDrawSegment(B',ac')
+      \tkzDrawSegment(ac',ab')
+      \tkzDrawSegment(ac',bc')
+      \node (t''') at (3.7, 1) {{4}};
+      \node (t''') at (4.5, 1) {{4}};
+      \node (t) at (3.3, 0.5) {{1}};
+      \node (t) at (5, 0.5) {{1}};
+
+      \tkzDefPoint(7,0){A'''}
+      \tkzDefPoint(8.5,2){B'''}
+      \tkzDefPoint(10.5,0){C'''}
+      \tkzDrawSegments(A''',B''' B''',C''' A''',C''')
+      \tkzDefMidPoint(A''',B''') \tkzGetPoint{ab''}
+      \tkzDefLine[orthogonal=through ab''](A''',B''')
+      \tkzDefMidPoint(A''',C''') \tkzGetPoint{ac''}
+      \tkzDefLine[orthogonal=through ac''](A''',C''')
+      \tkzDefMidPoint(B''',C''') \tkzGetPoint{bc''}
+      \tkzDefLine[orthogonal=through bc''](B''',C''')
+      \tkzDrawSegment(B''',ac'')
+      \tkzDrawSegment(ac'',ab'')
+      \tkzDrawSegment(ac'',bc'')
+      \tkzDefMidPoint(B''',ac'') \tkzGetPoint{x}
+      \tkzDefLine[orthogonal=through x](B''',ac'')
+      \tkzDefMidPoint(A''',ac'') \tkzGetPoint{y}
+      \tkzDefLine[orthogonal=through y](A''',ac'')
+      \tkzDefMidPoint(C''',ac'') \tkzGetPoint{z}
+      \tkzDefLine[orthogonal=through z](C''',ac'')
+      \tkzDrawSegment(ab'',x)
+      \tkzDrawSegment(bc'',x)
+      \tkzDrawSegment(ab'',y)
+      \tkzDrawSegment(bc'',z)
+      \node (t') at (7.5, 0.3) {{2}};
+      \node (t'') at (8.2, 0.3) {{3}};
+      \node (t'') at (8.4, 0.7) {{3}};
+      \node (t') at (8.3, 1.4) {{2}};
+      \node (t'') at (8.9, 1.4) {{3}};
+      \node (t') at (8.9, 0.7) {{2}};
+      \node (t') at (9.3, 0.3) {{2}};
+      \node (t'') at (9.8, 0.3) {{3}};
+      \end{tikzpicture}
+    \caption{Stage 3: Applied the newest vertex bisection twice(left); Stage 4: Applied the newest vertex bisection three times(right)}
+    \label{fig5: sub2}
+    \end{figure}
+
+    \begin{claim}
+    The left and right bottom triangles in Stage 3 are congruent to the original triangle in Stage 1, and they are in the congruency class 1. Moreover, the other two triangles left are congruent and in congruency class 4.
+    \end{claim}
+    \begin{proof}\mbox{}\\
+    \begin{minipage}[c]{5cm}
+    \begin{tikzpicture}[scale=0.8]
+    \tkzDefPoint(2.5,0){A}
+    \tkzDefPoint(4,2){B}
+    \tkzDefPoint(6,0){C}
+    \tkzDrawSegments(A,B B,C A,C)
+    \tkzLabelPoints[left](A)
+    \tkzLabelPoints[above](B)
+    \tkzLabelPoints[right](C)
+    \tkzDefMidPoint(A,B) \tkzGetPoint{X}
+    \tkzDefLine[orthogonal=through X](A,B)
+    \tkzDefMidPoint(A,C) \tkzGetPoint{Y}
+    \tkzDefLine[orthogonal=through Y](A,C)
+    \tkzDefMidPoint(B,C) \tkzGetPoint{Z}
+    \tkzDefLine[orthogonal=through Z](B,C)
+    \tkzDrawSegment(B,Y)
+    \tkzDrawSegment(Y,X)
+    \tkzDrawSegment(Y,Z)
+    \tkzLabelPoints[above, xshift=-2mm](X)
+    \tkzLabelPoints[above, xshift=2mm](Z)
+    \tkzLabelPoints[below,yshift=0pt](Y)
+    \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}[c]{\textwidth-6cm}
+    Let A, B, C be the vertices of the triangle $T$ and let X, Y, Z be the midpoints of the edge AB, AC and BC. An application of the newest vertex bisection refinement produces the triangle $\triangle{AXY}, \triangle{XBY}, \triangle{ZBY}$ and $\triangle{YZC}$. Consider the picture on the left.
+    \end{minipage}
+    Since X, Y, Z be the midpoints of the edge AB, AC and BC, we have $XY\parallel BC, ZY\parallel AB$, and AX = BX, BZ = CZ, and AY = CY. Since $XY\parallel BC$, $\angle{AXY} = \angle{ABC}, \angle{XYB} = \angle{ZBY}$. Similarly, since $ZY\parallel AB$, $\angle{YZC} = \angle{ABC}, \angle{XBY} = \angle{ZYB}$
+    \begin{align*}
+    \angle{XYB} &= \angle{ZBY}\\
+    |BY| &= |BY|\\
+    \angle{XBY} &= \angle{ZYB}
+    \end{align*}
+    Therefore, we have $\triangle{XBY} \cong \triangle{ZYB}$, and we mark them in the congruency class 4. This further gives us $|AX| = |BX| = |YZ|$, and $|ZC| = |BZ| = |XY|$.
+    \begin{align*}
+    |AX| &= |YZ|\\
+    \angle{AXY} &= \angle{ABC} = {YZC}\\
+    |XY| &= |ZC|
+    \end{align*}
+    Therefore, we have $\triangle{AXY} \cong \triangle{YZC}$. It's clear that $\triangle{AXY}$ and $\triangle{YZC}$ are similar to $\triangle{ABC}$ as all their angles are the same. Thus, we finished the proof of claim 1.
+
+    \end{proof}%end proof of claim 1
+
+    \begin{claim}
+    Triangles with same number in Stage 4 in a same congruency class marked by the number.
+    \end{claim}
+    \begin{proof}
+    Note [NEED TO BE UPDATED]
+    \end{proof}
+    Notice that in Stage 3, we see triangles in congruency class 1 again, so we can tell further applying the newest vertex bisection refinement will lead to the same process as what we have for Stage 1. Similarly, further applying the newest vertex bisection refinement over triangles in congruency class 4, 2 and 3 are already explored in Stage 3 and 4. Therefore, we actually obtain 4 congruency classes only.
+    \end{proof}
+    This means that we never have triangles degenerating when applying the newest vertex bisection refinement, because the number of congruence classes is four, which is finite, and by theorem proved in 3.1, we see that the newest vertex bisection refinement strategy is stable.
+
+    As we explain in section 3, a good refinement strategy should preserve both stability and consistency. To further explore consistency...[NEED TO BE UPDATED]
     \begin{lemma*}
-    Question: consistency? Compatibility chain???
+    Question: consistency? Compatibility chain[YES]
     \end{lemma*}
