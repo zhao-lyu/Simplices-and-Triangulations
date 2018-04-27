@@ -24,16 +24,17 @@ Refinement is a procedure of mesh modification in which we can divide a regular 
     \end{definition*}
     
     \begin{theorem*}
-    If the number of congruence classes, obtained by applying the refinement of a non degenerate simplex $T$ initially, is finite, then the refinement strategy is stable.[UPDATED]
+    If the number of congruence classes, obtained by applying the refinement of a non degenerate simplex $T$ initially, is finite, then the refinement strategy is stable.
     \end{theorem*}
     \begin{proof}
-    Idea:\\
-    1. $T_0$ is non-degenerate, then $\mathcal{T_0}$ is non-degenerate.\\
+    %Idea:\\
+    %1. $T_0$ is non-degenerate, then $\mathcal{T_0}$ is non-degenerate.\\
     \begin{claim*}
     Refinement strategy over initial simplicial complex $\mathcal{T_0}$ produces only non-degenerate simplicies $T$.
     \begin{proof}
     We prove this claim by induction.
-    Clearly, the base case is true since it is given that all simplices $T$ in $\mathcal{T}$ are non-degenerate. For induction, suppose simplices in simplicial complex $\mathcal{T}_k$ is non-degenerate, i.e. given C $> 0, \mu(T) < C, ~\forall T \in\mathcal{T}_k$. Apply te refinement strategy on $\mathcal{T}_k$, and then we obtain $\mathcal{T}_{k+1} = \bigcup\{refinement~of~simplex~T ~\vert ~T\in\mathcal{T}_{k}\}, \quad k\in\mathbb{N}$. [connection???: f simplex $T_0 \in\mathcal{T}$ is non-degenerate, then simplicial complex $\mathcal{T}$ non-degenerate.]
+    Clearly, the base case is true since it is given that all simplices $T$ in $\mathcal{T}$ are non-degenerate. For induction, suppose simplices in simplicial complex $\mathcal{T}_k$ is non-degenerate, i.e. given C $> 0, \mu(T) < C, ~\forall T \in\mathcal{T}_k$. Apply te refinement strategy on $\mathcal{T}_k$, and then we obtain $\mathcal{T}_{k+1} = \bigcup\{refinement~of~simplex~T ~\vert ~T\in\mathcal{T}_{k}\}, \quad k\in\mathbb{N}$. 
+    %[connection???: f simplex $T_0 \in\mathcal{T}$ is non-degenerate, then simplicial complex $\mathcal{T}$ non-degenerate.]
     \end{proof}
     \end{claim*}
 
@@ -44,8 +45,9 @@ Refinement is a procedure of mesh modification in which we can divide a regular 
     \end{proof}
     \end{claim*}
 
-    Since $T_0$ is non-degenerate, then $\mathcal{T_0}$ is non-degenerate. Moreover, we know there exists a common bound C for all shape measures since the number of congruence classes is finite. Therefore, we proved the stability.[UPDATED]
+    Since $T_0$ is non-degenerate, then $\mathcal{T_0}$ is non-degenerate. Moreover, we know there exists a common bound C for all shape measures since the number of congruence classes is finite. Therefore, we proved the stability.
     \end{proof}
     
     
     \subsection{Consistency of Refinement}
+    We also want the triangulation after applying with a refinement to be consistent. This feature is proved in section 1.4 that if either 1) any face of a simplex from this triangulation $\mathcal{T}$ is also in $\mathcal{T}$, or the intersection of any two simplices in a face of both simplices.

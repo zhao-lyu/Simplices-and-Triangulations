@@ -7,7 +7,7 @@
 %\date{2018-01-15}%change \today
 
 
-\usepackage{amsmath, mathtools, amsfonts,amssymb,flexisym,enumitem,grffile,graphicx,tikz,subcaption}
+\usepackage{amsmath, mathtools, amsfonts,amssymb,flexisym,enumitem,grffile,graphicx,tikz,subcaption,titling}
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 \usetkzobj{all}
@@ -30,9 +30,12 @@
 \newcommand{\vol}{\operatorname{vol}}
 \newcommand{\diam}{\operatorname{diam}}
 
+
 \begin{document}
 
   \doublespacing %use setspace package
+  %\maketitle{Refinement Strategy in 2 Dimension}
+  \title{Refinement Strategy in 2 Dimension}
   \maketitle
   \singlespacing
 
@@ -42,9 +45,9 @@
   \newpage
   \pagenumbering{arabic}
 
-  \section{Introduction}
-  \input{introduction}
-  \newpage
+  %\section{Introduction}
+  %\input{introduction}
+  %\newpage
 
   \section{Basic Definition}
     We first recall definitions of linear transformation and translation, and further introduce affine transformations, which we will use to prove stability of uniform mesh refinement and bisection in sections later. Then we introduce basic notions which we will use to present mesh refinement and show how they would work out.
@@ -67,12 +70,6 @@
   \newpage
   \bibliographystyle{abbrvnat}
   \bibliography{Bib}
-
-
     
-
-
-
-
   %\subsection{}
 \end{document}

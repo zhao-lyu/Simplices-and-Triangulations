@@ -1,4 +1,4 @@
-    \subsection{Bisection Refinement in 2-dimension}
+    \subsection{Bisection Refinement in 2-dimension and its stability}
     Another popular refinement strategy is bisection. Basically, we cut a triangle by connecting one vertex, which we choose as the peak, with its opposite edge, which we call refinement edge. Generally, if we apply random bisection with no plan on a triangle, it is likely that we fail to preserve stability and consistency.
 
     Hence, one important part we need to consider is how to choose the peak for a triangle to preserve the stability and consistency, and one famous method was introduced as the $newest vertex$ bisection. In newest vertex bisection, we create the newest vertex at the middle of the refinement edge after applying the bisection refinement once, and then we regard the newest vertex as the peak for bisection over the resulting two smaller triangles.
@@ -85,6 +85,7 @@
 
 
 %----------------------------------------------------------------------------------
+    %\subsection{Stability of Newest Vertex Bisection}
     \begin{lemma*}
     Bisection refinement gives four congruence classes given one triangle.
     \end{lemma*}
@@ -369,6 +370,7 @@
 
     As we explain in section 3, a good refinement strategy should preserve both stability and consistency. Before we take a look at consistency, let's first introduce dependency graph.
 
+    \subsection{Compatible Divisibility and Consistency}
     \begin{definition*}
       Let G = (V, E) be a directed graph, where V represents triangles, and $(V_1, V_2)\in E$ if the refinement edge of $v_1$ neighbors at $v_2$, and then we call G a dependency graph.
       \begin{align*}
