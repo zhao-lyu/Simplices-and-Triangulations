@@ -522,7 +522,7 @@
     \end{tikzpicture}
     \caption{Compatible divisibility in Dependency Graph}
     \end{figure}
-    In Figure 11, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the right most triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on boundary or a cycle of size 2, we can then bisect back in an order like stack. In the example displayed in Figure 11, a base case is reached by bisecting the left most two triangles. However, a base case is not always promised. In other word, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in Figure 12[NEED FIG 12].
+    In Figure 11, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the right most triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on boundary or a cycle of size 2, we can then bisect back in an order like stack. In the example displayed in Figure 11, a base case is reached by bisecting the left most two triangles. However, a base case is not always promised. In other word, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in Figure 12, and this failed in applying the newest vertex bisection, because smaller triangles are dependent on each other. That is, its dependency graph is a cycle instead of a forest, i.e. collection of trees.
 
     \begin{figure}[h!]
     \centering
@@ -571,6 +571,7 @@ parallel segment/.style={
     \draw[red] (G) to[parallel segment] (C);
     \draw[red] (B) to[parallel segment] (C);
     \end{tikzpicture}
+    \caption{Failure of applying newest vertex bisection}
     \end{figure}
 
 
