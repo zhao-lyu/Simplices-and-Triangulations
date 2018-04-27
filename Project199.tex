@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[english]{article}
 
 \usepackage[nodayofweek]{datetime}
 
@@ -7,9 +7,11 @@
 %\date{2018-01-15}%change \today
 
 
-\usepackage{amsmath, mathtools, amsfonts,amssymb,flexisym,enumitem,grffile,graphicx,tikz}
+\usepackage{amsmath, mathtools, amsfonts,amssymb,flexisym,enumitem,grffile,graphicx,tikz,subcaption}
 \usepackage{tikz}
 \usepackage{tkz-euclide}
+\usetkzobj{all}
+\usepackage{wrapfig,blindtext,babel,calc}
 %\usetikzlibrary{intersections,calc}
 \usepackage{setspace}
 \setlist[enumerate]{itemsep=0mm}
@@ -25,8 +27,8 @@
 \newtheorem*{claim*}{Claim}
 \newtheorem{claim}{Claim}
 
-\newcommand{\vol}{vol}
-\newcommand{\diam}{diam}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\diam}{\operatorname{diam}}
 
 \begin{document}
 
@@ -90,6 +92,20 @@
     [Al of uniform refinement in 2-d, show it's stable and consistent]
 
     note: distinguish refinement and uniform refinement? regular, global = uniform, local = bisection?
+
+    Def needed: 
+    LL1: If all triangles in the initial mesh are compatibily divisible, then the recursion of bisection is finite.
+
+    Order:
+    1. Def: dependency graph: 
+    G  = (V, E) be a directed graph, where V represents triangles, and (V1, V2)$\in$ E if the refinement edge of V1 neighbors at V2, and then we call G dependency graph.
+    2. Failure of applying bisection because smaller triangels dependent on each other and forming a cycle.(Dependency graphs mush be collection of trees, i.e. directed graph without circles)
+    3. To solve/avoid this, we introduce compability chain. 
+    -Compability divisble
+    -show LL1
+    4. Show consistency preserved under compability chain.
+    
+
 
 
 

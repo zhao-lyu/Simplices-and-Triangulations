@@ -174,7 +174,9 @@
     \begin{claim}
     The left and right bottom triangles in Stage 3 are congruent to the original triangle in Stage 1, and they are in the congruency class 1. Moreover, the other two triangles left are congruent and in congruency class 4.
     \end{claim}
-    \begin{proof}\mbox{}\\
+    %\begin{proof}\mbox{}\\
+    \noindent
+    Proof of Claim 1: \\
     Let A, B, C be the vertices of the triangle $T$ and let X, Y, Z be the midpoints of the edge AB, AC and BC. An application of the newest vertex bisection refinement produces the triangle $\triangle{AXY}, \triangle{XBY}, \triangle{ZBY}$ and $\triangle{YZC}$. Consider the Fig 8 (left).
     Since X, Y, Z be the midpoints of the edge AB, AC and BC, we have 
     \begin{align*}
@@ -206,13 +208,14 @@
     \end{align*}
     Therefore, we have $\triangle{AXY} \cong \triangle{YZC}$. It's clear that $\triangle{AXY}$ and $\triangle{YZC}$ are similar to $\triangle{ABC}$ as all their angles are the same. Thus, we finished the proof of claim 1.
 
-    \end{proof}%end proof of claim 1
+    %\end{proof}%end proof of claim 1
 
     \begin{claim}
     Triangles with same number in Stage 4 in a same congruency class marked by the number.
     \end{claim}
-    \begin{proof}
-    
+    %\begin{proof}
+    \noindent
+    Proof of Claim 2: \\
     Let A, B, C be the vertices of the triangle $T$ and let X, Y, Z be the midpoints of the edge AB, AC and BC, and M, N, P be the midpoints of the edge AY, CY and BY. Consider the Fig 8 (right).
  
     An application of the newest vertex bisection refinement produces the following triangles
@@ -293,7 +296,8 @@
     \triangle{AXM}\cong\triangle{XBP}\cong\triangle{ZYP}\cong\triangle{YZN}\sim\triangle{ABY},\\
     \triangle{MXY}\cong\triangle{PBZ}\cong\triangle{PYX}\cong\triangle{NZC}\sim\triangle{YBC}.
     \end{align*}
-    \end{proof}
+    %\end{proof}
+    Thus, we finished proof of Claim 2.
     
     %------------------------------------------------------------------------
     %figure for claims proof
@@ -372,7 +376,28 @@
       E &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}
       \end{align*}
     \end{definition*}
-    Note that $V$ and $E$ in this definition are quite different from general geometry, and all nodes of one dependency graph have at most one outgoing edge.[Multiple V's, graph? need proof???]
+    Note that $V$ and $E$ in this definition are quite different from general geometry, and all nodes of one dependency graph have at most one outgoing edge (See Figure 9).[Multiple V's, graph? need proof???]
+    \begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+    \tkzDefPoint(0.5,0.1){A}
+    \tkzDefPoint(3,0.5){B}
+    \tkzDefPoint(1.7,2.7){C}
+    \tkzDrawSegments(A,B B,C A,C)
+
+    \tkzDefPoint(2,2.8){A'}
+    \tkzDefPoint(3.3,0.6){B'}
+    \tkzDefPoint(4.8,3){C'}
+    \tkzDrawSegments(A',B' B',C' A',C')
+
+    \tkzDefPoint(2.22,2.75){X}
+    \tkzDefPoint(3.4,0.72){Y}
+    \tkzDrawSegment[thick, color=red](X, Y)
+    \draw [blue,  ->   ] (3.35,2.2) -- (1.2,0.7);
+    \end{tikzpicture}
+    \caption{Illustration of outgoing arrow in dependency graph}
+    \label{Figure 9}
+    \end{figure}
 
 
     \begin{definition*}
@@ -413,12 +438,150 @@
     \tkzDefPoint(5.1,2.9){N'}
     \tkzDrawSegment[thick, color=red](X', Y')
     \tkzDrawSegment[thick, color=red](M', N')
+
+    \draw [->, blue] (4, 1.6) to [out=50,in=2] (6, 1.6);
+    \draw [->, blue] (6, 1.4) to [out=-20,in=-2] (4, 1.4);
     \end{tikzpicture}
     \caption{Compatibly divisible triangles: case a(left); case b(right)}
+    \label{Figure 10}
     \end{figure}
-    Triangles of case b in Figure above are called mates as they share same refinement edge in 2-cycle. 
+    Triangles of case b in Figure above are called mates as they share same refinement edge in 2-cycle.
+
+    \noindent
+    {Compatible divisibility in Dependency Graph}
+    \begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}[scale=0.5]
+    \tkzDefPoint(2,2.5){A}
+    \tkzDefPoint(5,0){B}
+    \tkzDefPoint(5,3){C}
+    \tkzDrawSegments(A,B B,C A,C)
+    \tkzDefPoint(8,2){D}
+    \tkzDrawSegments(B,D C,D)
+    \tkzDefPoint(1,-1){E}
+    \tkzDrawSegments(A,E B,E)
+    \tkzDefPoint(3,-3){F}
+    \tkzDrawSegments(E,F B,F)
+
+    \tkzDefPoint(5.1,2.9){X}
+    \tkzDefPoint(5.1,0.1){Y}
+    \tkzDrawSegment[thick, color=red](X, Y)
+    \tkzDefPoint(2.2, 2.5){X'}
+    \tkzDefPoint(4.9, 0.3){Y'}
+    \tkzDrawSegment[thick, color=red](X', Y')
+    \tkzDefPoint(1.1,-0.8){M}
+    \tkzDefPoint(4.8,0.1){N}
+    \tkzDrawSegment[thick, color=red](M, N)
+    \tkzDefPoint(1.15,-1.1){M'}
+    \tkzDefPoint(4.8,-0.2){N'}
+    \tkzDrawSegment[thick, color=red](M', N')
+
+    \draw [blue,  ->   ] (6,1.5) -- (4.5,1.7);
+    \draw [blue,  ->   ] (4,1.7) -- (3,1);
+    \draw [->, blue] (2.6, 0.5) to [out=50,in=2] (2.9, -1.5);
+    \draw [->, blue] (2.8, -1.5) to [in=2,out=20] (2.5, 0.5);
+
+
+    \tkzDefPoint(10,2.5){A}
+    \tkzDefPoint(13,0){B}
+    \tkzDefPoint(13,3){C}
+    \tkzDrawSegments(A,B B,C A,C)
+    \tkzDefPoint(16,2){D}
+    \tkzDrawSegments(B,D C,D)
+    \tkzDefPoint(9,-1){E}
+    \tkzDrawSegments(A,E B,E)
+    \tkzDefPoint(11,-3){F}
+    \tkzDrawSegments(E,F B,F)
+
+    \tkzDefPoint(13.1,2.9){X}
+    \tkzDefPoint(13.1,0.1){Y}
+    \tkzDrawSegment[thick, color=red](X, Y)
+    \tkzDefPoint(10.2, 2.5){X'}
+    \tkzDefPoint(12.9, 0.3){Y'}
+    \tkzDrawSegment[thick, color=red](X', Y')
+
+    \tkzDefPoint(10.1,2.2){M}
+    \tkzDefPoint(12.6,0.1){N}
+    \tkzDrawSegment[thick, color=red](M, N)
+    \tkzDefPoint(9.2,-0.9){M'}
+    \tkzDefPoint(10.1,2.2){N'}
+    \tkzDrawSegment[thick, color=red](M', N')
+
+    \tkzDefPoint(9.3,-1.1){K}
+    \tkzDefPoint(11,-2.8){L}
+    \tkzDrawSegment[thick, color=red](K, L)
+    \tkzDefPoint(12.75,-0.1){K'}
+    \tkzDefPoint(11,-2.8){L'}
+    \tkzDrawSegment[thick, color=red](K', L')
+
+    \draw [blue,  ->   ] (14,1.5) -- (12.5,1.7);
+    \draw [blue,  ->   ] (12.2,1.4) to [out=50,in=2] (11,0.7);
+    \draw [blue,  ->   ] (10.9,0.9) to [out=50,in=2] (12,1.7);
+    %\draw [->, blue] (10.6, 0.5) to [out=50,in=2] (10.9, -1.5);
+    %\draw [->, blue] (10.8, -1.5) to [in=2,out=20] (10.5, 0.5);
+    \end{tikzpicture}
+    \caption{Compatible divisibility in Dependency Graph}
+    \end{figure}
+    In Figure 11, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the right most triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on boundary or a cycle of size 2, we can then bisect back in an order like stack. In the example displayed in Figure 11, a base case is reached by bisecting the left most two triangles. However, a base case is not always promised. In other word, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in Figure 12[NEED FIG 12].
+
+    \begin{figure}[h!]
+    \centering
+    %\newdimen\R
+    %\R=0.8cm
+    \usetikzlibrary{calc}
+\tikzset{
+parallel segment/.style={
+   segment distance/.store in=\segDistance,
+   segment pos/.store in=\segPos,
+   segment length/.store in=\segLength,
+   to path={
+   ($(\tikztostart)!\segPos!(\tikztotarget)!\segLength/2!(\tikztostart)!\segDistance!90:(\tikztotarget)$) -- 
+   ($(\tikztostart)!\segPos!(\tikztotarget)!\segLength/2!(\tikztotarget)!\segDistance!-90:(\tikztostart)$)  \tikztonodes
+   }, 
+   % Default values
+   segment pos=.5,
+   segment length=18ex,
+   segment distance=1mm,
+},
+}
+    \begin{tikzpicture}[scale=0.8]
+    %\draw (0:\R) \foreach \x in {60,120,...,359} {
+    %            -- (\x:\R)
+     %}-- cycle (90:\R) node[above] {$n=6$} ;
+
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,0);
+    \tkzDefEquilateral(B,A)\tkzGetPoint{C};
+    \tkzDrawPolygon(A,B,C);
+    \tkzDefEquilateral(C,A)\tkzGetPoint{D};
+    \tkzDrawPolygon(A,C,D);
+    \tkzDefEquilateral(C,D)\tkzGetPoint{E};
+    \tkzDrawPolygon(E,C,D);
+    \tkzDefEquilateral(C,E)\tkzGetPoint{F};
+    \tkzDrawPolygon(C,E,F);
+    \tkzDefEquilateral(C,F)\tkzGetPoint{G};
+    \tkzDrawPolygon(C,F,G);
+    \tkzDefEquilateral(C,G)\tkzGetPoint{H};
+    \tkzDrawPolygon(C,G,H);
+
+    \draw[red] (A) to[parallel segment] (C);
+    \draw[red] (D) to[parallel segment] (C);
+    \draw[red] (E) to[parallel segment] (C);
+    \draw[red] (F) to[parallel segment] (C);
+    \draw[red] (G) to[parallel segment] (C);
+    \draw[red] (B) to[parallel segment] (C);
+    \end{tikzpicture}
+    \end{figure}
 
 
     \begin{lemma*}
-    Question: consistency? Compatibility chain[YES]
+    If the newest vertex bisection is only performed on 
+    \begin{itemize}
+        \item[a. ] triangles isolated in the dependency graph
+        \item[b. ] pairs of mates
+      \end{itemize}
+    then the refinement is stable and the triangulations will be consistent.
     \end{lemma*}
+    \begin{proof}
+    We already proved stability in general in 2 dimension, and this applies here as well under a more strict condition. The consistency is obvious in compatibility divisible triangles.
+    \end{proof}

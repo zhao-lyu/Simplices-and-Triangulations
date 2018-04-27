@@ -95,9 +95,8 @@
     Red refinement gives same congruence class in 2-dimension case.
     \end{lemma*}
     \begin{proof}\mbox{}\\
-    \begin{minipage}[c]{4cm}
-    
-    
+    \begin{figure}
+    \centering
     \begin{tikzpicture}[scale=0.8]
     \tkzDefPoint(0,0){A}
     \tkzDefPoint(1.5,2){B}
@@ -120,17 +119,18 @@
     \tkzLabelPoints[above,xshift=2mm](Y)
     \tkzLabelPoints[below](Z)
     \end{tikzpicture}
-    \end{minipage}
-    \begin{minipage}[c]{\textwidth-4cm}
+    \caption{Illustration of Uniform Refinement for the Lemma}
+    \end{figure}
 
-    Let A, B, C be the vertices of the triangle $T$ and let X, Y, Z be the midpoints of the edge AB, BC and AC. An application of red refinement produces the triangle $T_1 = [A, X, Z]$, $T_2 = [X, B, Y]$, $T_3 = [Z, Y, C]$ and $T_4 = [Y, Z, X]$. Consider the picture on the left.
-    \end{minipage}
+    Let A, B, C be the vertices of the triangle $T$ and let X, Y, Z be the midpoints of the edge AB, BC and AC. An application of red refinement produces the triangle $T_1 = [A, X, Z]$, $T_2 = [X, B, Y]$, $T_3 = [Z, Y, C]$ and $T_4 = [Y, Z, X]$. Consider the picture above.
 
     We have line XY parallel to line AC, i.e., $XY \parallel AC$, so $\angle{BXY} = \angle{XAZ}$. Similarily, since $XZ\parallel BC$, we have $\angle{XBY} = \angle{AXZ}$. Since X is the midpoint of line AB, then $|AX| = |BX|$. In short, we have 
     \begin{align*}
-    \angle{BXY} &= \angle{XAZ}\\
-    |BX| &= |AX|\\
-    \angle{XBY} &= \angle{AXZ}
+    \angle{BXY} = \angle{XAZ},
+    \quad
+    |BX| = |AX|,
+    \quad
+    \angle{XBY} = \angle{AXZ}.
     \end{align*}
     Therefore, $\triangle{BXY} \cong \triangle{XAZ}$. Similarily, we can prove the four triangles are congruent to each other, i.e., $\triangle{BXY}\cong\triangle{XAZ}\cong\triangle{YZC} \cong\triangle{ZYX}$, so they are in a same congruent class, which is same as the one of the original triangle $\triangle{BAC}$.
     \end{proof}
