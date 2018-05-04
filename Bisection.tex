@@ -378,7 +378,7 @@
       E &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}
       \end{align*}
     \end{definition*}
-    Note that $V$ and $E$ in this definition are quite different from general geometry, and all nodes of one dependency graph have at most one outgoing edge (See Figure 9).[Multiple V's, graph? need proof???]
+    Note that $V$ and $E$ in this definition are quite different from general geometry, and all nodes of one dependency graph have at most one outgoing edge (See Figure 9).%[Multiple V's, graph? need proof???]
     \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.8]
@@ -572,6 +572,13 @@ parallel segment/.style={
     \draw[red] (F) to[parallel segment] (C);
     \draw[red] (G) to[parallel segment] (C);
     \draw[red] (B) to[parallel segment] (C);
+
+    \tkzDefLine[orthogonal=through L](B,C) \tkzGetPoint{bc}
+    \tkzDefLine[orthogonal=through L](A,C) \tkzGetPoint{ac}
+    \tkzDefLine[orthogonal=through L](D,C) \tkzGetPoint{dc}
+    \tkzDefLine[orthogonal=through L](E,C) \tkzGetPoint{ec}
+    \tkzDefLine[orthogonal=through L](F,C) \tkzGetPoint{fc}
+    \tkzDefLine[orthogonal=through L](G,C) \tkzGetPoint{gc}
     \end{tikzpicture}
     \caption{Failure of applying newest vertex bisection}
     \end{figure}
