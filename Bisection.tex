@@ -372,13 +372,13 @@
 
     \subsection{Compatible Divisibility and Consistency}
     \begin{definition*}
-      Let G = (V, E) be a directed graph, where V represents triangles, and $(V_1, V_2)\in E$ if the refinement edge of $v_1$ neighbors at $v_2$, and then we call G a dependency graph.
+      Let G = (N, A) be a simple directed graph, where N(nodes) represents triangles, and $(n_1, n_2)\in A (arrows)$ if the refinement edge of $n_1$ neighbors at $n_2$, and then we call G a dependency graph.
       \begin{align*}
-      V &= \{Triangles\}\\
-      E &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}
+      N &= \{T\in\mathcal{T}~\mid~\diam{T} = 2\}\\
+      A &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}
       \end{align*}
     \end{definition*}
-    Note that $V$ and $E$ in this definition are quite different from general geometry, and all nodes of one dependency graph have at most one outgoing edge (See Figure 9).%[Multiple V's, graph? need proof???]
+    Note that $G$ is a simple directed graph, so it does not contain any loops. That is, for all $(v_1, v_2)\in A$, we have $v_1\neq v_2$. Moreover, all nodes of one dependency graph have at most one outgoing arrow, because every triangle $T$ has at most exactly one refinement edge(See Figure 9). If the refinement edge of $T$ borders no other triangles, then there is no arrow going from $T$ to any other triangles in the dependency graph. If oppositely, it borders another triangle $T'$ along its refinement edge, then there is an arrow in G going from $T$ to $T'$.  %[Multiple V's, graph? need proof???]
     \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.8]
@@ -401,6 +401,10 @@
     \label{Figure 9}
     \end{figure}
 
+    \begin{lemma*}
+    A node n in the dependency graph has no outgoing arrow if and only if the corresponding triangle of n has a refinement edge at the boundary.
+    \end{lemma*}
+    The proof for this is trivial based on the explanation for G as simple graph.
 
     \begin{definition*}
       A triangle is called compatibly divisible if either
@@ -447,10 +451,9 @@
     \caption{Compatibly divisible triangles: case a(left); case b(right)}
     \label{Figure 10}
     \end{figure}
-    Triangles of case b in Figure above are called mates as they share same refinement edge in 2-cycle.
+    Triangles of case b in Figure 9 are called mates as they share same refinement edge in 2-cycle.
 
-    \noindent
-    {Compatible divisibility in Dependency Graph}
+    \paragraph{Compatible divisibility in Dependency Graph}\mbox{}\\
     \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.5]
@@ -595,3 +598,8 @@ parallel segment/.style={
     \begin{proof}
     We already proved stability in general in 2 dimension, and this applies here as well under a more strict condition. The consistency is obvious in compatibility divisible triangles.
     \end{proof}
+
+    \paragraph{Finding the Initial Refinement Edge}\mbox{}\\
+    As described in Newest Vertex bisection algorithm, the start point is to pick the first peak which decides the first refinement edge. However, a determining question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. ...
+
+

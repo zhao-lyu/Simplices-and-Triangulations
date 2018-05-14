@@ -2,18 +2,21 @@
 
 \usepackage[nodayofweek]{datetime}
 
+
+
 %\title{\textbf{Title} \\subtitle}
 %\author{Zhao Lyu}
 %\date{2018-01-15}%change \today
 
-
+%\bibliographystyle{apa}
 \usepackage{amsmath, mathtools, amsfonts,amssymb,flexisym,enumitem,grffile,graphicx,tikz,subcaption,titling}
 \usepackage{tikz}
 \usepackage{tkz-euclide}
 \usetkzobj{all}
-\usepackage{wrapfig,blindtext,babel,calc}
+%\usepackage{wrapfig,blindtext,babel,calc}
 %\usetikzlibrary{intersections,calc}
 \usepackage{setspace}
+\usepackage{url}
 \setlist[enumerate]{itemsep=0mm}
 \graphicspath{{/home/user/Project199/Figures}}
 
@@ -34,6 +37,7 @@
 \begin{document}
 
   \doublespacing %use setspace package
+  \pagenumbering{gobble}
   %\maketitle{Refinement Strategy in 2 Dimension}
   \title{\textbf{Simplicial Mesh Refinement in Computational Geometry}}
   \author{Zhao Lyu}
@@ -41,7 +45,7 @@
   \singlespacing
 
   \newpage %separate title and contents
-  \pagenumbering{gobble}
+  %\pagenumbering{gobble}
   \tableofcontents
   \newpage
   \pagenumbering{arabic}
@@ -68,8 +72,13 @@
   \section{Bisection}
     \input{Bisection}
 
+  \section{Discussion and Outlook}
+    \input{Discussion}
+
   \newpage
-  \bibliographystyle{abbrvnat}
+  %\bibliographystyle{abbrvnat}
+  \bibliographystyle{plain}
+  %\bibliographystyle{apa}
   \bibliography{Bib}
     
   %\subsection{}
