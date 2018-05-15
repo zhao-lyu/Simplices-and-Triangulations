@@ -1,8 +1,11 @@
 \documentclass[english]{article}
+%\documentclass[12pt,chapterheads]{ucsd}
 
 \usepackage[nodayofweek]{datetime}
 
-
+%\usepackage[left=1.5in,right=1.5in,top=1.5in,bottom=1.5in]{geometry}
+\usepackage[paper=letterpaper]{geometry}
+\usepackage[affil-it]{authblk}
 
 %\title{\textbf{Title} \\subtitle}
 %\author{Zhao Lyu}
@@ -35,27 +38,15 @@
 
 
 \begin{document}
-
-  \doublespacing %use setspace package
-  \pagenumbering{gobble}
-  %\maketitle{Refinement Strategy in 2 Dimension}
-  \title{\textbf{Simplicial Mesh Refinement in Computational Geometry}}
-  \author{Zhao Lyu}
-  \maketitle
-  \singlespacing
-
-  \newpage %separate title and contents
-  %\pagenumbering{gobble}
-  \tableofcontents
-  \newpage
-  \pagenumbering{arabic}
+  \input{Format}
+  %\input{template}
 
   \section{Introduction}
   \input{introduction}
   %\newpage
 
   \section{Basic Definition}
-    We first recall definitions of linear transformation and translation, and further introduce affine transformations, which we will use to prove stability of uniform mesh refinement and bisection in sections later. Then we introduce basic notions which we will use to present mesh refinement and show how they would work out.
+    We first recall definitions of linear transformation and translation, and further introduce affine transformations, which we will use to prove stability of uniform mesh refinement and bisection in later sections. Then we introduce basic notions which we will use to present mesh refinement.
 
     \input{TranslationLTandAT}
     \input{Simplices}

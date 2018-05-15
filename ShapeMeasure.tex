@@ -1,34 +1,34 @@
-\subsection{Shape Regularity Measure}\mbox{}\\
-    $\textit{Shape measure}$ offers an objective mathematical measure on the overall quality of an Finite Element mesh, and this is helpful to explore the simplex regularity and to improve the quality of shapes of the elements. Different definitions are used for shape measure to present the quality of simplex, and we simply introduce the $\textit{geometric shape measure} ~\mu({T})$ of simplex ${T}$,  the one we use in this paper.
+\subsection{Shape Regularity Measure}%\mbox{}\\
+    $\textit{Shape measure}$ offers an objective mathematical measure on the overall quality of a simplex, and this is helpful to explore the simplex regularity and to improve the quality of shapes of the elements. Different definitions are used for shape measure to present the quality of simplex, and we simply introduce the $\textit{geometric shape measure} ~\mu({T})$ of simplex ${T}$,  the one we use in this paper.
 
     \paragraph{Simplex Diameter and Volume}\mbox{}\\
-    Let ${T} \in\mathbb{R}^n$ be a k-simplex where $k \leqslant n$, with vertices ${x}_0, \cdots, {x}_k \in\mathbb{R}^n$. We let $\diam({T})^k$ denote the diameter of ${T}$, and we define
+    Let $T \in\mathbb{R}^n$ be a $k$-simplex where $k \leqslant n$, with vertices ${x}_0, \cdots, {x}_k \in\mathbb{R}^n$. We let $\diam(T)$ denote the diameter of $T$, and we see
     \begin{equation*}
     %\operator???
-    \operatorname{diam}({T})^k = \max_{0\leqslant i\leqslant j\leqslant k} \| x_i - x_j \|
+    \operatorname{diam}(T) = \max_{0\leqslant i\leqslant j\leqslant k} \| x_i - x_j \|
     \end{equation*}
-    In other words, $\diam({T})^k$ is the longest distance between two vertices of ${T}$, which is equivalent to the length of the longest edge of ${T}$. If ${T}$ is a single vertex, then $\diam({T}) = 0$.\\
+    In other words, $\diam(T)$ is the longest distance between two vertices of $T$, which is equivalent to the length of the longest edge of $T$. If $T$ is a single vertex, then $\diam(T) = 0$.\\
 
     \noindent
     Let $\vol^k$(${T}$) denote k-dimensional volume of ${T}$. We have
     \begin{equation*}
-    \operatorname{vol^k} ({T}) = \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)|
+    \operatorname{vol^k} (T) = \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)|
     \end{equation*}
     \noindent
-    If k = 0, then ${T}$ is a 0-dimensional simplex, i.e., a vertex. By convention we have $\vol^0 ({T})$ = 1, the $\vol^0$ of a single vertex is one.
+    If k = 0, then $T$ is a 0-dimensional simplex, i.e., a vertex. By convention we have $\vol^0 ({T})$ = 1, which means that the volume of a single vertex is one.
 
     
     \paragraph{Shape Measure}\mbox{}\\
-    Simplex diameter and volume are important to introduce shape measures. Here we define the {geometric shape measure} $\mu({{T}})$ of a simplex ${T}$ by
+    Simplex diameter and volume are important to introduce shape measures. Here we define the {geometric shape measure} $\mu(T)$ of a simplex $T$ by
     \begin{equation*}
-    \mu({{T}}) = \frac{\operatorname{diam}({T})^k}{\operatorname{vol^k}({T})}, \quad\operatorname{vol^k(T) \neq 0}
+    \mu(T) = \frac{\operatorname{diam}(T)^k}{\operatorname{vol^k}(T)}, \quad\operatorname{vol^k(T) \neq 0}
     \end{equation*}
-    If $\vol^k(T)$ = 0, then we define $\mu({{T}}) = \infty$.\\
+    If $\vol^k(T)$ = 0, then we define $\mu(T) = \infty$.\\
     
-    To understand this definition, we can translate $\mu({{T}})$ as a measurement of how different the two variables, i.e. $\diam({T})^k$ and $\vol^k({T})$, are. For example, for a 3-dimensional simplex, i.e. a triangle, shape measure helps measure how narrow the triangle is. In other words, it measures how small the smallest angle of the triangle is.
+    To understand this definition, we can translate $\mu(T)$ as a measurement of how different the two variables, $\diam(T)^k$ and $\vol^k(T)$, are. For example, for a 2-dimensional simplex, i.e. a triangle, shape measure helps measure how narrow the triangle is. In other words, it measures how small the smallest angle of the triangle is.
 
     \paragraph{Stability of a Simplex}\mbox{}\\
-    The reason why we need shape measure is to help understanding whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if and only if $\mu({T}) = \infty$, i.e. $\vol_k(T) = 0$. 
+    The reason why we need shape measure is to help understanding whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if and only if $\mu(T) = \infty$, i.e. $\vol^k(T) = 0$. 
 
     
     %???
@@ -44,7 +44,7 @@
     \label{Fig1}
     \end{figure}
 
-    Observing two triangles in Figure 1, we actually want the interior angles of the simple $T$, i.e. triangles in this example, to be uniformly bounded from zero. Thus vol$_2(T)$ will never go to 0.
+    Observing two triangles in Figure 1, we actually want the interior angles of the simple $T$, i.e. triangles in this example, to be uniformly bounded from zero. Thus $\vol^2(T)$ will remain bounded away from zero.
     While cutting a simplex into smaller pieces, we want to keep those pieces uniformly bounded and avoid degenerate simplices. \\
 
     \begin{lemma*}
@@ -79,8 +79,11 @@
     \vol^k(T') = \vol^k(Q\cdot T) &= \frac{1}{k!}\cdot |\det(Q(x_1-x_0), Q(x_2-x_0),\cdots, Q(x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|det(Q)|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|-1|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
-                                &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)| = \vol^k(T)\\
-    \text{Therefore, we have } \mu(T') &= \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
+                                &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)| = \vol^k(T)
     \end{align*}
+    Therefore, we obtain the following.
+    \begin{gather*}
+    \mu(T') = \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
+    \end{gather*}
     Now we see that the shape measure is independent of scaling, translation, rotation or mirroring. Thus a simplex $T'$ which is obtained by these motions shares a same shape measure with $T$.
     \end{proof}
