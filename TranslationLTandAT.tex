@@ -4,7 +4,7 @@
       
       \begin{definition*}
         %$\textbf{Translation}$\\
-         Let $\textbf{v}$ be a fixed vector. A $\textbf{translation}$ ${T}_v$ on a figure applies as ${T}_v (\textbf{p}) = \textbf{p} + \textbf{v}$, for any vector $\textbf{p}$ in the figure which we translate.
+         Let $\textbf{v}\in\mathbb{R}^n$. A $\textbf{translation}$ ${T}_v$ is a mapping of the form ${T}_v (\textbf{x}) = \textbf{x} + \textbf{v}$, for any vector $\textbf{x}$ in the figure which we translate.
       \end{definition*}
       A $\textit{translation}$ moves every point of a figure or space by the same distance in the same direction. A translation ${T}$ can be represented by an addition of a constant vector to every point.
 
@@ -22,13 +22,13 @@
 
       \begin{definition*}
       %\paragraph{Affine Transformation}
-      An $\textbf{affine transformation}$ from $\mathbb{R}^n$ to $\mathbb{R}^n$ is of the form\\
+      An $\textbf{affine transformation}$ from $\mathbb{R}^n$ to $\mathbb{R}^n$ is of the form
       \begin{equation*}
       {F}(x) = {Ax} + {v}, \qquad {x}\in\mathbb{R}^n,
       \end{equation*}
-      where ${A}\in\mathbb{R}^{n\times n}$ is a matrix, and  ${v}\in\mathbb{R}^n$ is a vector.\\
+      where ${A}\in\mathbb{R}^{n\times n}$ is a matrix, and  ${v}\in\mathbb{R}^n$ is a vector.
       \end{definition*}
-      The inverse mapping of an affine transformation $F(x) = Ax + v$, is only defined if $A^{-1}$ exists, and we define the inverse mapping $F^{-1} = {x} \mapsto {A}^{-1}({x} - {v})$ is also an affine transformation.\\
+      The inverse mapping of an affine transformation $F(x) = Ax + v$, is only defined if $A^{-1}$ exists, and we define the inverse mapping $F^{-1} = {x} \mapsto {A}^{-1}({x} - {v})$ is also an affine transformation.
       Affine transformation preserves points, lines and planes, but need not preserve point zero in a linear space in contrast to linear transformation. So we see that translations and linear transformations are affine, but the opposite is not true. Affine transformation helps carry results from one simplex to another simplex in our discussion, and more details are covered after introducing ${Simplices}$ and ${Triangulations}$ in the next section.
 
 

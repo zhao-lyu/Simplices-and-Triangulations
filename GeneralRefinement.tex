@@ -1,4 +1,4 @@
-Suppose that a domain is divided into simplices. Mesh Refinement us a procedure of mesh modification in which we divide these simplices into smaller simplices. This process can be applied recursively to simplify some differential equations by generating smaller pieces of the domain. Let us first introduce triangulation to help understand refinement on a simplex. Generally speaking, we can think triangulation as a subdivision of a plane into triangles. Definition below is a more formal way to take when extending to higher dimension.
+Suppose that a domain is divided into simplices. Mesh Refinement is a procedure of mesh modification in which we divide these simplices into smaller simplices. This process can be applied recursively. Let us first introduce triangulation to help understand refinement on a simplex. Generally speaking, we can think triangulation as a subdivision of a plane into triangles. Definition below is a more formal way to take when extending to higher dimension.
     \begin{definition*}
     A triangulation of $\mathbb R^n$ is subdivision into n-dimensional simplices such that intersection of any two simplices is either empty or sharing a common face, and any face of a simplex is in the triangulation.
     \end{definition*}
@@ -21,6 +21,7 @@ Suppose that a domain is divided into simplices. Mesh Refinement us a procedure 
     \end{definition*}
 
     \subsection{Stability of Refinement}
+    Introductory sentence...
     \begin{definition*}
     We say a refinement strategy is $\textbf{stable}$ if there exists a constant $C >$ 0 such that $\mu(T)< C$ for all simplices $T$.
     \end{definition*}
@@ -36,16 +37,16 @@ Suppose that a domain is divided into simplices. Mesh Refinement us a procedure 
     a refinement strategy over initial simplicial complex $T_0$ produces only non-degenerate simplicies $T$.
     
     We prove this claim by induction.
-    Clearly, the base case is true since it is given that all simplices $T$ in $\mathcal{T}$ are non-degenerate. For induction, suppose simplices in simplicial complex $\mathcal{T}_k$ is non-degenerate, i.e. given $C > 0, \mu(T) < C, ~\forall T \in\mathcal{T}_k$. Apply the refinement strategy on $\mathcal{T}_k$, and then we obtain $\mathcal{T}_{k+1} = \bigcup\{refinement~of~simplex~T ~\vert ~T\in\mathcal{T}_{k}\}, \quad k\in\mathbb{N}$. 
+    Clearly, the base case is true since it is given that all simplices $T$ in $\mathcal{T}$ are non-degenerate. For induction, suppose simplices in simplicial complex $\mathcal{T}_k$ is non-degenerate. That is, there exists $C > 0$ such that $\mu(T) < C, ~\forall T \in\mathcal{T}_k$. Apply the refinement strategy on $\mathcal{T}_k$, and then we obtain $\mathcal{T}_{k+1} = \bigcup\{refinement~of~simplex~T ~\vert ~T\in\mathcal{T}_{k}\}, \quad k\in\mathbb{N}$. 
     %[connection???: f simplex $T_0 \in\mathcal{T}$ is non-degenerate, then simplicial complex $\mathcal{T}$ non-degenerate.]
     
     Next, we show the following fact.
-    If the number of congruence classes is finite, then the number of shape measure is finite, and there exists a common bound $C > 0$ such that C $\geq \mu(\mathcal{T})$.
+    If the number of congruence classes is finite, then the number of shape measure is finite, and there exists a common bound $C > 0$ such that $C \geq \mu(\mathcal{T})$.
     
     This can be seen as follows.
-    We proved that simplices in same congruence classes share the same shape measure. If we have finite number of congruence classes, clearly we have finite number of shape measure. When all simplices are non degenerate, we always have an upper bound for their shape measure $\mu(T)$. With the finite number of shape measure, we may set $C$ as the maximum of all upper bounds of shape measures. And therefore $C \geq \mu(\mathcal{T})$
+    We proved that simplices in same congruence classes share the same shape measure. If we have a finite number of congruence classes, clearly we have a finite number of shape measures. When all simplices are non degenerate, we always have an upper bound for their shape measure $\mu(T)$. With the finite number of shape measures, we may set $C$ as the maximum of all upper bounds of shape measures. And therefore $C \geq \mu(\mathcal{T})$
     
-    Since $T_0$ is non-degenerate, then $T_0$ is non-degenerate. Moreover, we know there exists a common bound $C$ for all shape measures since the number of congruence classes is finite. Therefore, we proved the stability.
+    Since $T_0$ is non-degenerate, $T_0$ is non-degenerate. Moreover, we know there exists a common bound $C$ for all shape measures since the number of congruence classes is finite. Therefore, we proved the stability.
     \end{proof}
     
     

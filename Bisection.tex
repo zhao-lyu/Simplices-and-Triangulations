@@ -1,4 +1,4 @@
-    \subsection{Bisection Refinement in 2-dimension and its stability}
+    \subsection{Newest Vertex Bisection Refinement in 2-dimension and its stability}
     Another popular refinement strategy is bisection. Basically, we cut a triangle by connecting one vertex, which we choose as the peak, with its opposite edge, which we call refinement edge. Generally, if we apply random bisection with no plan on a triangle, it is likely that we fail to preserve stability and consistency.
 
     Hence, one important part we need to consider is how to choose the peak for a triangle to preserve the stability and consistency, and one famous method was introduced as the $newest vertex$ bisection. In newest vertex bisection, we create the newest vertex at the middle of the refinement edge after applying the bisection refinement once, and then we regard the newest vertex as the peak for bisection over the resulting two smaller triangles.
@@ -521,7 +521,8 @@
 
     \draw [blue,  ->   ] (14,1.5) -- (12.5,1.7);
     \draw [blue,  ->   ] (12.2,1.4) to [out=50,in=2] (11,0.7);
-    \draw [blue,  ->   ] (10.9,0.9) to [out=50,in=2] (12,1.7);
+    \draw [blue,  ->   ] (10.9,0.9) to [out=-2,in=-50] (12,1.7);
+    %\draw [blue,  ->   ] (10.9,0.9) to [out=50,in=2] (12,1.7);
     %\draw [->, blue] (10.6, 0.5) to [out=50,in=2] (10.9, -1.5);
     %\draw [->, blue] (10.8, -1.5) to [in=2,out=20] (10.5, 0.5);
     \end{tikzpicture}

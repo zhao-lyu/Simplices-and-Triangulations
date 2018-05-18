@@ -11,13 +11,13 @@
     \end{split}
     \end{equation*}
     \end{definition*}
-    If $k = n$, we can call $k$-simplex without addressing the dimension. 2-simplices are also called \emph{triangle}, and 3-simplices are called \emph{tetrahedra}.
+    If $k = n$, we do not address the dimension of a $k$-simplex. 2-simplices are also called \emph{triangles}, and 3-simplices are called \emph{tetrahedra}.
 
     \begin{definition*}
     %\paragraph{Subsimplices}
-    An  $l$-simplex ${S} = [{y}_0, \cdots, {y}_l]$ is called an \textbf{$l$-subsimplex} of $k$-simplex ${T} = [{x}_0, \cdots, {x}_k]$, if indices $0 \leqslant {i}_0 \leqslant \cdots\leqslant{i}_l \leqslant k$ with ${y}_i = {x}_i$, for $0 \leqslant l \leqslant k \leqslant n$.
+    An  $l$-simplex ${S} = [{y}_0, \cdots, {y}_l]$ is called an \emph{$l$-subsimplices} of $k$-simplex ${T} = [{x}_0, \cdots, {x}_k]$, if indices $0 \leqslant {i}_0 \leqslant \cdots\leqslant{i}_l \leqslant k$ with ${y}_i = {x}_i$, for $0 \leqslant l \leqslant k \leqslant n$.
     \end{definition*}
-    Since there are $k+1$ vertices in $k$-simplex $T$, and $l+1$ vertices in $l$-subsimplex $S$, the number of $l$-subsimplex of $k$-simplex is $\binom{k+1}{l+1}$.
+    Since there are $k+1$ vertices in $k$-simplex $T$, and $l+1$ vertices in $l$-subsimplices $S$, the number of $l$-subsimplex of $k$-simplex is $\binom{k+1}{l+1}$.
 
 
     %\paragraph{Simplices Equality}
@@ -27,7 +27,7 @@
     Let $F$ be an affine transformation. 
     Instead of taking a single variable $x\in\mathbb{R}^n$ for affine transformation, we can take a subset S $\subset\mathbb{R}^n$, which contains $x\in\mathbb{R}^n$. Then the transformed set $S'$ is
     \begin{equation*}
-    S\textprime= {F}(x) = \left\{{F}(x) ~|~ x\in S \right\}.
+    S\textprime= \left\{{F}(x) ~|~ x\in S \right\}.
     \end{equation*}
     Similarly, if we regard a k-dimensional simplex ${T} = [{x_0, \cdots, x_k}]$ as a subset $\in\mathbb{R}^n$, then the image of ${T}$ under affine transformation is defined as
     \begin{equation*}
@@ -35,7 +35,7 @@
     {F}({T}) = \big[{F}(x_0), \cdots , {F}(x_k)\big]
     \end{split}
     \end{equation*}
-    We can see that $F(T)$ is still a k-dimensional simplex. Let us write $T' = F(T)$. We might be curious about the relationship between simplices $T$ and $T'$. Since vertices of a simplex are in a specific given order, so different vertex ordering leads to different simplices. Therefore, there exists an unique affine transformation such that $T = T'$. Another important property of simplices is congruence.
+    We can see that $F(T)$ is still a k-dimensional simplex. Let us write $T' = F(T)$. We might be curious about the relationship between simplices $T$ and $T'$. Since vertices of a simplex are in a specific given order, so different vertex ordering leads to different simplices. Therefore, there exists a unique affine transformation such that $T = T'$. Another important property of simplices is congruence.
 
     \begin{definition*}
     Two simplices $T$, $T'$ are defined to be congruent if they can be obtained from each other by rotation, mirroring, scaling, and translation, i.e. if there exists a scaling factor c $\in\mathbb{R}^{+}$, a translation vector $v\in\mathbb{R}^n$, and an orthogonal matrix $Q\in\mathbb{R}^{n\times n}$ such that
