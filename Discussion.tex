@@ -1,10 +1,111 @@
 %\subsection{Discussion}
-Changing focus from 2 dimension to 3 dimension for mesh refinement, we confront with more challenges to preserve stability and consistency. In this section, we take a brief look at difficulties in applications of uniform refinement strategy and newest vertex bisection in 3 dimension.
+Changing focus from two dimension to three or arbitrary higher dimension for mesh refinement, we confront with more challenges to preserve stability and consistency. In this section, we take a brief look at difficulties in applications of uniform refinement strategy and newest vertex bisection in three dimension.
 
 \subsection{Uniform Refinement in 3D}
+While an application of uniform refinement on simplicial complex in two dimensions is obviously stable and consistent, its application in three dimensions becomes more complicated. One observation is that the number of consistency classes in simplicial complex, resulted from the application, is greater than one.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[scale=0.6]
+\coordinate (a) at (0,2);
+\coordinate (b) at (4,0);
+\coordinate (c) at (10,2);
+\coordinate (d) at (5,8);
+
+\draw[thick] (a) -- (b) -- (d) -- cycle;
+\draw[thick] (b) -- (c) -- (d) -- cycle;
+\draw[thick, dash dot dot] (a) -- (c);
+
+\tkzDefMidPoint(a,d) \tkzGetPoint{ad}
+%\tkzDefLine[orthogonal=through ad](a,d)
+\tkzDefMidPoint(b,d) \tkzGetPoint{bd}
+%\tkzDefLine[orthogonal=through bd](b,d)
+\tkzDefMidPoint(a,b) \tkzGetPoint{ab}
+\draw[thick] (ad) -- (bd);
+\draw[thick] (ad) -- (ab);
+\draw[thick] (ab) -- (bd);
+
+\tkzDefMidPoint(c,d) \tkzGetPoint{cd}
+\tkzDefMidPoint(c,b) \tkzGetPoint{cb}
+\draw[thick] (cd) -- (bd);
+\draw[thick] (cd) -- (cb);
+\draw[thick] (cb) -- (bd);
+
+\tkzDefMidPoint(c,a) \tkzGetPoint{ac}
+\draw[thick, dash dot dot] (ad) -- (cd);
+\draw[thick, dash dot dot] (ad) -- (ac);
+\draw[thick, dash dot dot] (cd) -- (ac);
+\draw[thick, dash dot dot] (ab) -- (ac);
+\draw[thick, dash dot dot] (cb) -- (ac);
+\draw[thick, dash dot dot] (ab) -- (cb);
+\draw[thick, dash dot dot] (bd) -- (ac);
+
+\fill[black!20, draw=black, thick] (a) circle (0pt) node[black, below left] {$x^0$};
+\fill[black!20, draw=black, thick] (b) circle (0pt) node[black, below] {$x^1$};
+\fill[black!20, draw=black, thick] (c) circle (0pt) node[black, below right] {$x^2$};
+\fill[black!20, draw=black, thick] (d) circle (0pt) node[black, above] {$x^3$};
+\fill[black!20, draw=black, thick] (ab) circle (0pt) node[black, below] {$x^{01}$};
+\fill[black!20, draw=black, thick] (cb) circle (0pt) node[black, below] {$x^{12}$};
+\fill[black!20, draw=black, thick] (ac) circle (0pt) node[black, below] {$x^{02}$};
+\fill[black!20, draw=black, thick] (ad) circle (0pt) node[black, above left] {$x^{03}$};
+\fill[black!20, draw=black, thick] (cd) circle (0pt) node[black, above right] {$x^{23}$};
+\fill[black!20, draw=black, thick] (bd) circle (0pt) node[black, above] {$x^{13}$};
+\end{tikzpicture}
+\caption{Uniform refinement in 3D}
+\label{Fig13}
+\end{figure}
+
+Let $T = [x^0, x^1, x^2, x^3]$ be the tetrahedron to be refined, and denote $x^{ij}$ by the midpoint of the edge between $x^i$ and $x^j$.\\
+\textbf{Algorithm} Red refinement in 3D \{
+\begin{align*}
+T_1 &:= [x^0, x^{01}, x^{02}, x^{03}]; & T_2 &:= [x^{01}, x^{1}, x^{12}, x^{13}];\\
+T_3 &:= [x^{01}, x^{02}, x^{03}, x^{13}]; & T_4 &:= [x^{01}, x^{02}, x^{12}, x^{13}];\\
+T_5 &:= [x^{02}, x^{12}, x^2, x^{23}]; & T_6 &:= [x^{02}, x^{12}, x^{13}, x^{23}];\\
+T_7 &:= [x^{02}, x^{03}, x^{13}, x^{23}]; & T_8 &:= [x^{03}, x^{13}, x^{23}, x^3];
+\end{align*}
+\}
+
+With similar proofs, we can see that there exist two congruency classes for this simplicial complex $T = [x^0, x^1, x^2, x^3]$. That is,
+\begin{align*}
+T_1 \cong T_2 \cong T_5 \cong T_8 \\
+T_3 \cong T_4 \cong T_6 \cong T_7
+\end{align*}
+
+In summary, we can still easily to obtain consistency in this global refinement, but checking stability becomes more complex. By theorem, we know that if the number of congruence classes is finite, then the refinement strategy is stable. This implies that one difficulty of applications of uniform refinement in arbitrary higher dimension is counting and checking congruency classes.
 graphs :-)\\
-coordinate proof for two consistency class
+
 \subsection{Newest Vertex Bisection in 3D}
-initial refinement edge (Douglas)\\
-Possible other bisection algorithm and comparison:
+How to choose the first peak and initial refinement edge for newest vertex bisection becomes more complicated in its application in three dimension. One method is discussed in Douglas' article \cite{arnold2000locally}. 
+Basically, a tetrahedron $\mathcal T$ is classified into four types: planar, adjacent, opposite and mixed, based on their refined edges and faces. There are two steps in his algorithm. The first step is to bisect every tetrahedron with a refinement edge depend on their classification; and second is to preserve consistency to ensure all tetrahedra are consistent without hanging nodes.
+
+Besides newest vertex bisection strategy, there exist other bisection methods for mesh refinement. One method is the longest edge bisection proposed by Rivara \cite{rivara1984mesh}. While the refinement edge in the newest vertex bisection is chosen by the location of a peak, it is now determined by the length of each edges in longest edge bisection: always bisecting the longest edge in each triangle. See Figure\ref{Fig14}.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[scale=0.8]
+\coordinate (a) at (0,0);
+\coordinate (b) at (6,0);
+\coordinate (c) at (1,3);
+\draw[thick] (a) -- (b) -- (c) -- cycle;
+\tkzDefMidPoint(a,b) \tkzGetPoint{ab}
+\draw[thick, dash dot dot, color=blue] (c) -- (ab);
+
+\coordinate (a) at (10,0);
+\coordinate (b) at (16,0);
+\coordinate (c) at (11,3);
+\draw[thick] (a) -- (b) -- (c) -- cycle;
+\tkzDefMidPoint(a,b) \tkzGetPoint{ab}
+\tkzDefMidPoint(b,c) \tkzGetPoint{bc}
+\tkzDefMidPoint(ab,c) \tkzGetPoint{abc}
+\draw[thick, dash dot dot] (c) -- (ab);
+\draw[thick, dash dot dot, color=blue] (a) -- (abc);
+\draw[thick, dash dot dot, color=blue] (ab) -- (bc);
+\fill[black!20, draw=black, thick] (abc) circle (1pt) node[black, above right] {$x$};
+\end{tikzpicture}
+\caption{Longest edge bisection in 2D}
+\label{Fig14}
+\end{figure}
+
+In Martin Stynes' papers, he proved that the longest edge bisection is stable \cite{stynes1979faster,stynes1980faster,stynes1979n}. Basically, he showed that a finite number of congruency classes is generated in infinite application of longest edge bisection on a simplex. Notice that, consistency is questionable in this method. Specifically, $x$ in Fig14 \ref{Fig14} is a hanging node, because this node $x$ is not shared. Thus it is not consistent. This consistency, however, can be achieved by a modified version of longest edge bisection \cite{kˇriˇzek1997generate}.
+
 

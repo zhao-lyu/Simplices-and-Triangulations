@@ -75,7 +75,7 @@
     \tkzDrawSegment(bc'',z)
     \end{tikzpicture}
     \caption{Illustration of bisection refinement, starting with a single triangle}
-    \label{Fig4}
+    \label{Fig5}
     \end{figure}
 
 
@@ -110,7 +110,7 @@
       \node (t'') at (0.5, 0.5) {{3}};
       \end{tikzpicture}
     \caption{Stage 1: Original triangle(left); Stage 2: Applied the newest vertex bisection once(right)}
-    \label{fig5: sub1}
+    \label{fig6: sub1}
     \end{figure}
 
     Observing Figure 5, we have a triangle at the beginning, say it's in congruency class 1. After applying the newest vertex bisection refinement once, we obtain two smaller pieces of triangles as in the second picture in Figure 5. Say one of them is in congruency class 2, and another one is in congruency class 3. Further applying the newest vertex bisection refinement, we have the figures below.
@@ -169,7 +169,7 @@
       \node (t'') at (9.8, 0.3) {{3}};
       \end{tikzpicture}
     \caption{Stage 3: Applied the newest vertex bisection twice(left); Stage 4: Applied the newest vertex bisection three times(right)}
-    \label{fig5: sub2}
+    \label{fig6: sub2}
     \end{figure}
 
     \begin{claim}
@@ -360,6 +360,7 @@
     \tkzLabelPoints[above,yshift=0pt](P)
     \end{tikzpicture}
     \caption{Illustration of newest vertex bisection for Claim 1(left); Claim 2(right)}
+    \label{Fig8}
     \end{figure}
 
 
@@ -395,10 +396,12 @@
     \tkzDefPoint(2.22,2.75){X}
     \tkzDefPoint(3.4,0.72){Y}
     \tkzDrawSegment[thick, color=red](X, Y)
-    \draw [blue,  ->   ] (3.35,2.2) -- (1.2,0.7);
+    \draw (A') -- (B') node[pos=0.5, sloped] (mid){};
+    \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (mid.north)--(mid.south);
+    %\draw [blue,  ->   ] (3.35,2.2) -- (1.2,0.7);
     \end{tikzpicture}
     \caption{Illustration of outgoing arrow in dependency graph}
-    \label{Figure 9}
+    \label{Fig9}
     \end{figure}
 
     \begin{lemma*}
@@ -445,11 +448,19 @@
     \tkzDrawSegment[thick, color=red](X', Y')
     \tkzDrawSegment[thick, color=red](M', N')
 
-    \draw [->, blue] (4, 1.6) to [out=50,in=2] (6, 1.6);
-    \draw [->, blue] (6, 1.4) to [out=-20,in=-2] (4, 1.4);
+    \node (b) at (6, 1.6){};
+    \node (a) at (4, 1.6){}
+       edge [<-, blue, bend right=30] (b)
+       ;
+    \node (b) at (6, 1.6){}
+       edge [<-, blue, bend right=30] (a)
+       ;
+
+    %\draw [->, blue] (4, 1.6) to [out=50,in=2] (6, 1.6);
+    %\draw [->, blue] (6, 1.4) to [out=-20,in=-2] (4, 1.4);
     \end{tikzpicture}
     \caption{Compatibly divisible triangles: case a(left); case b(right)}
-    \label{Figure 10}
+    \label{Fig10}
     \end{figure}
     Triangles of case b in Figure 9 are called mates as they share same refinement edge in 2-cycle.
 
@@ -481,10 +492,18 @@
     \tkzDefPoint(4.8,-0.2){N'}
     \tkzDrawSegment[thick, color=red](M', N')
 
+    \node (b) at (2.6, 0.5){};
+    \node (a) at (2.9, -1.5){}
+       edge [<-, blue, bend right=30] (b)
+       ;
+    \node (b) at (2.6, 0.5){}
+       edge [<-, blue, bend right=30] (a)
+       ;
+
     \draw [blue,  ->   ] (6,1.5) -- (4.5,1.7);
     \draw [blue,  ->   ] (4,1.7) -- (3,1);
-    \draw [->, blue] (2.6, 0.5) to [out=50,in=2] (2.9, -1.5);
-    \draw [->, blue] (2.8, -1.5) to [in=2,out=20] (2.5, 0.5);
+    %\draw [->, blue] (2.6, 0.5) to [out=50,in=2] (2.9, -1.5);
+    %\draw [->, blue] (2.8, -1.5) to [in=2,out=20] (2.5, 0.5);
 
 
     \tkzDefPoint(10,2.5){A}
@@ -520,15 +539,18 @@
     \tkzDrawSegment[thick, color=red](K', L')
 
     \draw [blue,  ->   ] (14,1.5) -- (12.5,1.7);
-    \draw [blue,  ->   ] (12.2,1.4) to [out=50,in=2] (11,0.7);
-    \draw [blue,  ->   ] (10.9,0.9) to [out=-2,in=-50] (12,1.7);
-    %\draw [blue,  ->   ] (10.9,0.9) to [out=50,in=2] (12,1.7);
-    %\draw [->, blue] (10.6, 0.5) to [out=50,in=2] (10.9, -1.5);
-    %\draw [->, blue] (10.8, -1.5) to [in=2,out=20] (10.5, 0.5);
+    \node (b) at (12,2){};
+    \node (a) at (11,0.3){}
+       edge [<-, blue, bend right=30] (b)
+       ;
+    \node (b) at (12,2){}
+       edge [<-, blue, bend right=30] (a)
+       ;
     \end{tikzpicture}
     \caption{Compatible divisibility in Dependency Graph}
+    \label{Fig11}
     \end{figure}
-    In Figure 11, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the right most triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on boundary or a cycle of size 2, we can then bisect back in an order like stack. In the example displayed in Figure 11, a base case is reached by bisecting the left most two triangles. However, a base case is not always promised. In other word, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in Figure 12, and this failed in applying the newest vertex bisection, because smaller triangles are dependent on each other. That is, its dependency graph is a cycle instead of a forest, i.e. collection of trees.
+    In \ref{Fig11}, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the right most triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on boundary or a cycle of size 2, we can then bisect back in an order like stack. In the example displayed in \ref{Fig11}, a base case is reached by bisecting the left most two triangles. However, a base case is not always promised. In other word, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in \ref{Fig12}, and this failed in applying the newest vertex bisection, because smaller triangles are dependent on each other. That is, its dependency graph is a cycle instead of a forest, i.e. collection of trees.
 
     \begin{figure}[h!]
     \centering
@@ -570,6 +592,7 @@ parallel segment/.style={
     \tkzDefEquilateral(C,G)\tkzGetPoint{H};
     \tkzDrawPolygon(C,G,H);
 
+    %refinement edge
     \draw[red] (A) to[parallel segment] (C);
     \draw[red] (D) to[parallel segment] (C);
     \draw[red] (E) to[parallel segment] (C);
@@ -577,14 +600,34 @@ parallel segment/.style={
     \draw[red] (G) to[parallel segment] (C);
     \draw[red] (B) to[parallel segment] (C);
 
-    \tkzDefLine[orthogonal=through L](B,C) \tkzGetPoint{bc}
-    \tkzDefLine[orthogonal=through L](A,C) \tkzGetPoint{ac}
-    \tkzDefLine[orthogonal=through L](D,C) \tkzGetPoint{dc}
-    \tkzDefLine[orthogonal=through L](E,C) \tkzGetPoint{ec}
-    \tkzDefLine[orthogonal=through L](F,C) \tkzGetPoint{fc}
-    \tkzDefLine[orthogonal=through L](G,C) \tkzGetPoint{gc}
+    %\tkzDefLine[orthogonal=through L](B,C) \tkzGetPoint{bc}
+    %\tkzDefLine[orthogonal=through L](A,C) \tkzGetPoint{ac}
+    %\tkzDefLine[orthogonal=through L](D,C) \tkzGetPoint{dc}
+    %\tkzDefLine[orthogonal=through L](E,C) \tkzGetPoint{ec}
+    %\tkzDefLine[orthogonal=through L](F,C) \tkzGetPoint{fc}
+    %\tkzDefLine[orthogonal=through L](G,C) \tkzGetPoint{gc}
+
+    %midpt
+    \draw (A) -- (C) node[pos=0.5, sloped] (ac){};
+    \draw (B) -- (C) node[pos=0.5, sloped] (bc){};
+    \draw (D) -- (C) node[pos=0.5, sloped] (dc){};
+    \draw (E) -- (C) node[pos=0.5, sloped] (ec){};
+    \draw (F) -- (C) node[pos=0.5, sloped] (fc){};
+    \draw (G) -- (C) node[pos=0.5, sloped] (gc){};
+
+    %lines passing midpt
+    %\draw (bc) -- (180:1);
+    \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (bc.south)--(bc.north);
+    \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (ac.north)--(ac.south);
+    \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (dc.north)--(dc.south);
+    \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (ec.north)--(ec.south);
+    \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (fc.south)--(fc.north);
+    \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (gc.south)--(gc.north);
+    %\draw[thick] (C)--(B) node[pos=0.5] (x){};
+    %\draw[->, blue,thick,transform canvas={rotate around={90:(x)}}] (C) -- (B) ;
     \end{tikzpicture}
     \caption{Failure of applying newest vertex bisection}
+    \label{Fig12}
     \end{figure}
 
 
@@ -597,10 +640,11 @@ parallel segment/.style={
     then the refinement is stable and the triangulations will be consistent.
     \end{lemma*}
     \begin{proof}
-    We already proved stability in general in 2 dimension, and this applies here as well under a more strict condition. The consistency is obvious in compatibility divisible triangles.
+    We already proved stability in general in two dimension, and this applies here as well under a more strict condition. The consistency is obvious in compatibility divisible triangles. More specifically, if all triangles $T$ of the initial simplicial complex $\mathcal T$ are compatibly divisible, then the number of recursion is bounded. That is, we never have a cyclic dependency graph like Figure\ref{Fig12}. A detailed proof can be found in \cite{mitchell1988unified, mitchell1991adaptive}.
     \end{proof}
 
-    \paragraph{Finding the Initial Refinement Edge}\mbox{}\\
-    As described in Newest Vertex bisection algorithm, the start point is to pick the first peak which decides the first refinement edge. However, a determining question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. ...
+    \paragraph{Initial Refinement Edge}\mbox{}\\
+    As described in newest vertex bisection algorithm, the start point is to pick the first peak which decides the first refinement edge. However, a determining question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. More specifically, since we know the newest vertex bisection preserves stability generally and consistency if its dependency graph is a forest instead of cycles, the question is how to determine the initial refinement edge to promise a forest-like dependency graph. 
 
+    By lemma above, a good answer to this question is to choose an initial mesh whose triangles are all compatibly divisible. One approach to have a such choice is to choose the longest edge of each triangle in the initial simplicial complex $\mathcal T$ as the refinement edge. A consistency is proved using this approach in Kossaczky's paper \cite{kossaczky1994recursive}. Basically, he proved that the dependency graph of $\mathcal T$ is acyclic with longest edge of triangles $T\in\mathcal T$ as refinement edge.
 

@@ -35,8 +35,8 @@
     \begin{figure}
     \centering
     \begin{tikzpicture}
-    \draw (0,0) -- (3,2) -- (5,0)-- (0,0);
-    \draw (7,0) -- (10,1) -- (12,0)-- (7,0);
+    \draw[thick] (0,0) -- (3,2) -- (5,0)-- cycle;
+    \draw[thick] (7,0) -- (10,1) -- (12,0)-- cycle;
     %\path (1,1) coordinate (A) (2.5, 2.5) coordinate (B) (3, 1) coordinate (C)
     %\draw (A) -- (B) -- (C) -- cycle
     \end{tikzpicture}
@@ -68,17 +68,19 @@
     \diam(T')^k &= \max_{0\leqslant i\leqslant j\leqslant k} \|(x_i + v) - (x_j + v)\|\\ 
                &= \max_{0\leqslant i\leqslant j\leqslant k}\|x_i - x_j\| = \diam(T)^k \\
     \vol^k(T') &= \frac{1}{k!}\cdot|\det((x_1+v) - (x_0+v), (x_2+v)-(x_0+v),\cdots,(x_k+v)-(x_0+v))|\\
-              &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)| = \vol^k(T)
+              &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)| = \vol^k(T)\\
     \end{align*}
+    so that again  
     \begin{align*}
     \mu(T') &= \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
     \end{align*}
 
     Consider rotating and mirroring $T$ by an orthogonal matrix $Q$ to obtain $T'$. Since $Q$ is an orthogonal matrix, $Q^T = Q^{-1}$. Therefore, we have
     \begin{align*}
-    \diam(T')^k &= \max_{0\leqslant i\leqslant j\leqslant k} \|Qx_i - Qx_j\|\\
-               &= \max_{0\leqslant i\leqslant j\leqslant k} \|x_i - x_j\| = \diam(T)^k
+    \diam(T') &= \max_{0\leqslant i\leqslant j\leqslant k} \|Qx_i - Qx_j\|
+               = \max_{0\leqslant i\leqslant j\leqslant k} \|x_i - x_j\| = \diam(T)
     \end{align*}
+    and 
     \begin{align*}
     \vol^k(T') = \vol^k(Q\cdot T) &= \frac{1}{k!}\cdot |\det(Q(x_1-x_0), Q(x_2-x_0),\cdots, Q(x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|\det(Q)|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
