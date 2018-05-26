@@ -646,5 +646,11 @@ parallel segment/.style={
     \paragraph{Initial Refinement Edge}\mbox{}\\
     As described in newest vertex bisection algorithm, the start point is to pick the first peak which decides the first refinement edge. However, a determining question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. More specifically, since we know the newest vertex bisection preserves stability generally and consistency if its dependency graph is a forest instead of cycles, the question is how to determine the initial refinement edge to promise a forest-like dependency graph. 
 
-    By lemma above, a good answer to this question is to choose an initial mesh whose triangles are all compatibly divisible. One approach to have a such choice is to choose the longest edge of each triangle in the initial simplicial complex $\mathcal T$ as the refinement edge. A consistency is proved using this approach in Kossaczky's paper \cite{kossaczky1994recursive}. Basically, he proved that the dependency graph of $\mathcal T$ is acyclic with longest edge of triangles $T\in\mathcal T$ as refinement edge.
+    One possibility is the following.
+    We number the edges in any arbitrary manner. For each triangle, we always pick the edge with highest number as refinement edge. Then the dependency graph will be a forest, because with this choice of refinement edge, there can not be a cycle of length greater than two in this dependency graph.
+    One approach to have a such choice is to number the edges from shortest to longest.
+    Then the longest edge of each triangle in the initial simplicial complex $\mathcal T$ as the refinement edge. A consistency is proved using this approach in Kossaczky's paper \cite{kossaczky1994recursive}. Basically, he proved that the dependency graph of $\mathcal T$ is acyclic with longest edge of triangles $T\in\mathcal T$ as refinement edge.
 
+    We may also ask whether it is even possible to choose initial refinement edges such that all triangles in the initial triangulation are compatibly divisible. In this case, the compatibility chain in the initial triangulation will have length zero (More disconnected the dependency graph is, the better strategy is).
+    Finding such initial choice of refinement edges is possible. The problem can be reduced to finding a perfect matching in a graph. A detailed work and proofs can be found in \cite{mitchell1988unified,mitchell1991adaptive,mitchell201630}.
+    
