@@ -1,4 +1,4 @@
-Suppose that a domain is divided into simplices. Mesh Refinement is a procedure of mesh modification in which we divide these simplices into smaller simplices. This process can be applied recursively. Let us first introduce triangulation to help understand refinement on a simplex. Generally speaking, we can think triangulation as a subdivision of a plane into triangles. Definition below is a more formal way to take when extending to higher dimension.
+Suppose that a domain is divided into simplices. Mesh refinement is a procedure of mesh modification in which we divide these simplices into smaller simplices. This process can be applied recursively. Let us first introduce triangulation to help understand refinement on a simplex. Generally speaking, we can think triangulation as a subdivision of a plane into triangles. Definition below is a more formal way to take when extending to higher dimension.
     \begin{definition*}
     A triangulation of $\mathbb R^n$ is subdivision into n-dimensional simplices such that intersection of any two simplices is either empty or sharing a common face, and any face of a simplex is in the triangulation.
     \end{definition*}
@@ -21,10 +21,11 @@ Suppose that a domain is divided into simplices. Mesh Refinement is a procedure 
     \end{definition*}
 
     \subsection{Consistency of Refinement}
-    We also want the triangulation after applying with a refinement to be consistent. This feature is proved in section 2.4 that if either 1) any face of a simplex from this triangulation $\mathcal{T}$ is also in $\mathcal{T}$, or 2) the intersection of any two simplices in a face of both simplices.
+    We want the triangulation after applying with a refinement to be consistent. This feature is proved in section 2.4 that if either 1) any face of a simplex from this triangulation $\mathcal{T}$ is also in $\mathcal{T}$, or 2) the intersection of any two simplices in a face of both simplices.
 
     \subsection{Stability of Refinement}
-    Introductory sentence...
+    Besides consistency, we also want all simplices in a triangulation resulted from a refinement strategy non-degenerating so that we can apply the refinement strategy recursively to have nice shaped triangulation in the end.
+    
     \begin{definition*}
     We say a refinement strategy is $\textbf{stable}$ if there exists a constant $C >$ 0 such that $\mu(T)< C$ for all simplices $T$.
     \end{definition*}

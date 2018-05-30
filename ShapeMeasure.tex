@@ -7,7 +7,7 @@
     %\operator???
     \operatorname{diam}(T) = \max_{0\leqslant i\leqslant j\leqslant k} \| x_i - x_j \|
     \end{equation*}
-    In other words, $\diam(T)$ is the longest distance between two vertices of $T$, which is equivalent to the length of the longest edge of $T$. If $T$ is a single vertex, then $\diam(T) = 0$.\\
+    In other words, $\diam(T)$ is the longest distance between two vertices of $T$, which is the length of the longest edge of $T$. If $T$ is a single vertex, then $\diam(T) = 0$.\\
 
     \noindent
     Let $\vol^k$(${T}$) denote k-dimensional volume of ${T}$. We have
@@ -25,12 +25,11 @@
     \end{equation*}
     If $\vol^k(T)$ = 0, then we define $\mu(T) = \infty$.\\
     
-    To understand this definition, we can interpret $\mu(T)$ as a measurement of how different the two variables $\diam(T)^k$ and $\vol^k(T)$ are. For example, for a 2-dimensional simplex, i.e. a triangle, shape measure helps measure how narrow the triangle is. In other words, it measures how small the smallest angle of the triangle is.
+    To understand this definition, we can interpret $\mu(T)$ as a measurement of how different the two variables $\diam(T)^k$ and $\vol^k(T)$ are. For example, for a 2-dimensional simplex, i.e. a triangle, shape measure helps measure how narrow the triangle is. In other words, it measures how small the smallest angle of the triangle is. A triangle with a fixed diameter whose smallest angle gets smaller and smaller will look more and more like a one-dimensional line, and its shape measure will diverse to infinity.
 
-    \paragraph{Stability of a Simplex}\mbox{}\\
-    The reason why we need shape measure is to help understanding whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if and only if $\mu(T) = \infty$, i.e. $\vol^k(T) = 0$. 
-
+    %\paragraph{Stability of a Simplex}\mbox{}\\
     
+
     %???
     \begin{figure}
     \centering
@@ -44,11 +43,8 @@
     \label{Fig1}
     \end{figure}
 
-    Observing two triangles in Figure 1, we actually want the interior angles of the simplex $T$, i.e. triangles in this example, to be uniformly bounded from zero.
-    While cutting a simplex into smaller pieces, we want to keep teh shape measures of the simplices uniformly bounded and avoid degenerate simplices. \\
-
     \begin{lemma*}
-    If $T, T'$ are congruent simplices, then $\mu(T) = \mu(T')$.
+    If $T$ and $T'$ are congruent simplices, then $\mu(T) = \mu(T')$.
     \end{lemma*}
     \begin{proof}\mbox{}\\
     Since $T$ is congruent to $T'$, by definition, we have $T' = v + cQT$, where $c\in\mathbb{R}^{+}$ is scaling factor, $v\in\mathbb{R}^n$ is a translation vector and $Q\in O(n)$ is an orthogonal matrix. In fact, we will show that scalings, translations, orthogonal transformation do not influence the shape measure of a simplex. 
@@ -67,6 +63,7 @@
     \begin{align*}
     \diam(T')^k &= \max_{0\leqslant i\leqslant j\leqslant k} \|(x_i + v) - (x_j + v)\|\\ 
                &= \max_{0\leqslant i\leqslant j\leqslant k}\|x_i - x_j\| = \diam(T)^k \\
+    \text{and}\\
     \vol^k(T') &= \frac{1}{k!}\cdot|\det((x_1+v) - (x_0+v), (x_2+v)-(x_0+v),\cdots,(x_k+v)-(x_0+v))|\\
               &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)| = \vol^k(T)\\
     \end{align*}
@@ -75,21 +72,28 @@
     \mu(T') &= \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
     \end{align*}
 
-    Consider rotating and mirroring $T$ by an orthogonal matrix $Q$ to obtain $T'$. Since $Q$ is an orthogonal matrix, $Q^T = Q^{-1}$. Therefore, we have
+    Consider rotating and mirroring $T$ by an orthogonal matrix $Q$ to obtain $T'$. Since multiplying a vector with $Q$ does not change its length, we have
+    %Since $Q$ is an orthogonal matrix, $Q^T = Q^{-1}$. Therefore, we have
     \begin{align*}
     \diam(T') &= \max_{0\leqslant i\leqslant j\leqslant k} \|Qx_i - Qx_j\|
                = \max_{0\leqslant i\leqslant j\leqslant k} \|x_i - x_j\| = \diam(T)
     \end{align*}
-    and 
+    and since $|\det Q| = 1$, we have
     \begin{align*}
     \vol^k(T') = \vol^k(Q\cdot T) &= \frac{1}{k!}\cdot |\det(Q(x_1-x_0), Q(x_2-x_0),\cdots, Q(x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|\det(Q)|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
-                                &= \frac{1}{k!}\cdot|-1|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
+                                %&= \frac{1}{k!}\cdot|-1|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)| = \vol^k(T)
     \end{align*}
-    Therefore, we obtain the following.
+    Therefore, we obtain
     \begin{gather*}
     \mu(T') = \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
     \end{gather*}
     Now we see that the shape measure is independent of scaling, translation, rotation or mirroring. Thus a simplex $T'$ which is obtained by these motions shares a same shape measure with $T$.
     \end{proof}
+
+    %MOVE HERE
+    The reason why we need shape measure is to help understanding whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if $\mu(T) = \infty$, i.e. $\vol^k(T) = 0$. 
+
+    Observing two triangles in \ref{Fig1}, we actually want the interior angles of the simplex $T$, i.e. triangles in this example, to be uniformly bounded from zero.
+    While cutting a simplex into smaller pieces, we want to keep the shape measures of the simplices uniformly bounded and avoid degenerate simplices.

@@ -7,11 +7,12 @@
     \centering
       \begin{tikzpicture}[scale=0.7]
       \tkzDefPoint(-6.5,0){A''}
-      \tkzDefPoint(-5,2){peak}
+      \tkzDefPoint(-5,2){B''}
       \tkzDefPoint(-3,0){C''}
-      \tkzDrawSegments(A'',peak peak,C'' A'',C'')
-    %\tkzDrawSegments(A'',B'' B'',C'' A'',C'')
-      \tkzLabelPoints[above,yshift=0pt](peak)
+      %\tkzDrawSegments(A'',peak peak,C'' A'',C'')
+      \tkzDrawSegments(A'',B'' B'',C'' A'',C'')
+      %\tkzLabelPoints[above,yshift=0pt](peak)
+      \fill[black!20, draw=black, thick] (B'') circle (1pt) node[black, above right] {$p$};
     %\tkzDefMidPoint(A'',C'') \tkzGetPoint{new vertex}
     %\tkzLabelPoints[below,yshift=0pt](new vertex)
     %\tkzDefLine[orthogonal=through ac](A,C)
@@ -20,10 +21,12 @@
     \tkzDefPoint(-0.5,2){B}
     \tkzDefPoint(1.5,0){C}
     \tkzDrawSegments(A,B B,C A,C)
-    \tkzDefMidPoint(A,B) \tkzGetPoint{peak}
-    \tkzLabelPoints[left](peak)
-    \tkzDefMidPoint(B,C) \tkzGetPoint{peak}
-    \tkzLabelPoints[right](peak)
+    \tkzDefMidPoint(A,B) \tkzGetPoint{peak1}
+    %\tkzLabelPoints[left](peak)
+    \fill[black!20, draw=black, thick] (peak1) circle (1pt) node[black, above right] {$p$};
+    \tkzDefMidPoint(B,C) \tkzGetPoint{peak2}
+    %\tkzLabelPoints[right](peak)
+    \fill[black!20, draw=black, thick] (peak2) circle (1pt) node[black, above right] {$p$};
     \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
     \tkzDefLine[orthogonal=through ac](A,C)
     \tkzDrawSegment(B,ac)
@@ -42,12 +45,15 @@
     \tkzDrawSegment(B',ac')
     \tkzDrawSegment(ac',ab')
     \tkzDrawSegment(ac',bc')
-    \tkzDefMidPoint(B',ac') \tkzGetPoint{peak}
-    \tkzLabelPoints[above,yshift=0pt](peak)
-    \tkzDefMidPoint(A',ac') \tkzGetPoint{peak}
-    \tkzLabelPoints[below](peak)
-    \tkzDefMidPoint(C',ac') \tkzGetPoint{peak}    
-    \tkzLabelPoints[below](peak)
+    \tkzDefMidPoint(B',ac') \tkzGetPoint{peaka}
+    %\tkzLabelPoints[above,yshift=0pt](peak)
+    \fill[black!20, draw=black, thick] (peaka) circle (1pt) node[black, above right] {$p$};
+    \tkzDefMidPoint(A',ac') \tkzGetPoint{peakb}
+    %\tkzLabelPoints[below](peak)
+    \fill[black!20, draw=black, thick] (peakb) circle (1pt) node[black, above right] {$p$};
+    \tkzDefMidPoint(C',ac') \tkzGetPoint{peakc}    
+    %\tkzLabelPoints[below](peak)
+    \fill[black!20, draw=black, thick] (peakc) circle (1pt) node[black, above right] {$p$};
 
 
     \tkzDefPoint(7,0){A'''}
@@ -109,11 +115,11 @@
       \node (t') at (-1, 0.5) {{2}};
       \node (t'') at (0.5, 0.5) {{3}};
       \end{tikzpicture}
-    \caption{Stage 1: Original triangle(left); Stage 2: Applied the newest vertex bisection once(right)}
+    \caption{Stage 1: Original triangle(left) in congruence class 1; Stage 2: Applied the newest vertex bisection once(right) in congruence class 2 and 3}
     \label{fig6: sub1}
     \end{figure}
 
-    Observing Figure 5, we have a triangle at the beginning, say it's in congruency class 1. After applying the newest vertex bisection refinement once, we obtain two smaller pieces of triangles as in the second picture in Figure 5. Say one of them is in congruency class 2, and another one is in congruency class 3. Further applying the newest vertex bisection refinement, we have the figures below.
+    Observing \ref{fig6: sub1}, we have a triangle at the beginning, say it's in congruency class 1. After applying the newest vertex bisection refinement once, see \ref{fig6: sub1}, we obtain two smaller pieces of triangles as in the second picture in Figure 5. Say one of them is in congruency class 2, and another one is in congruency class 3. Further applying the newest vertex bisection refinement, we have the triangulation in \ref{fig6: sub2}.
 
     \begin{figure}[h!]
     \centering
@@ -168,7 +174,7 @@
       \node (t') at (9.3, 0.3) {{2}};
       \node (t'') at (9.8, 0.3) {{3}};
       \end{tikzpicture}
-    \caption{Stage 3: Applied the newest vertex bisection twice(left); Stage 4: Applied the newest vertex bisection three times(right)}
+    \caption{Stage 3: Applied the newest vertex bisection twice(left) in congruence class 1 and 4; Stage 4: Applied the newest vertex bisection three times(right) in congruence class 2 and 3}
     \label{fig6: sub2}
     \end{figure}
 
@@ -379,7 +385,7 @@
       A &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}
       \end{align*}
     \end{definition*}
-    Note that $G$ is a simple directed graph, so it does not contain any loops. That is, for all $(v_1, v_2)\in A$, we have $v_1\neq v_2$. Moreover, all nodes of one dependency graph have at most one outgoing arrow, because every triangle $T$ has at most exactly one refinement edge(See Figure 9). If the refinement edge of $T$ borders no other triangles, then there is no arrow going from $T$ to any other triangles in the dependency graph. If oppositely, it borders another triangle $T'$ along its refinement edge, then there is an arrow in G going from $T$ to $T'$.  %[Multiple V's, graph? need proof???]
+    Note that $G$ is a simple directed graph, so it does not contain any loops. That is, for all $(v_1, v_2)\in A$, we have $v_1\neq v_2$. Moreover, all nodes of one dependency graph have at most one outgoing arrow, because every triangle $T$ has at most exactly one refinement edge(See \ref{Fig9}). If the refinement edge of $T$ borders no other triangles, then there is no arrow going from $T$ to any other triangles in the dependency graph. If oppositely, it borders another triangle $T'$ along its refinement edge, then there is an arrow in G going from $T$ to $T'$.  %[Multiple V's, graph? need proof???]
     \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.8]
@@ -431,8 +437,8 @@
     %\tkzDrawSegments(A,F)
     %\tkzDefPoint(-1.5,0){G}
     %\tkzDrawSegments(C,G)
-    \tkzDefPoint(-4.1,-0.1){X}
-    \tkzDefPoint(-1.9,-0.1){Y}
+    \tkzDefPoint(-3.9,0.1){X}
+    \tkzDefPoint(-2.1,0.1){Y}
     \tkzDrawSegment[thick, color=red](X, Y)
 
     \tkzDefPoint(3,1.5){A'}
@@ -462,7 +468,7 @@
     \caption{Compatibly divisible triangles: case a(left); case b(right)}
     \label{Fig10}
     \end{figure}
-    Triangles of case b in Figure 9 are called mates as they share same refinement edge in 2-cycle.
+    Triangles of case b in \ref{Fig10} are called mates as they share same refinement edge in 2-cycle.
 
     \paragraph{Compatible divisibility in Dependency Graph}\mbox{}\\
     \begin{figure}[h!]

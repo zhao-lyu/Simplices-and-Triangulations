@@ -1,7 +1,7 @@
 \documentclass[english]{article}
 %\documentclass[12pt,chapterheads]{ucsd}
 
-\usepackage[nodayofweek]{datetime}
+%\usepackage[nodayofweek]{datetime}
 
 %\usepackage[left=1.5in,right=1.5in,top=1.5in,bottom=1.5in]{geometry}
 \usepackage[paper=letterpaper]{geometry}
@@ -22,7 +22,7 @@
 \usepackage{setspace}
 \usepackage{url}
 \setlist[enumerate]{itemsep=0mm}
-\graphicspath{{/home/user/Project199/Figures}}
+%\graphicspath{{/home/user/Project199/Figures}}
 
 \usepackage{amsthm}
 \newtheorem*{definition*}{Definition}
@@ -47,7 +47,8 @@
   %\newpage
 
   \section{Basic Definition}
-    We first recall definitions of linear transformation and translation, and further introduce affine transformations, which we will use to prove stability of uniform mesh refinement and bisection in later sections. Then we introduce basic notions which we will use to present mesh refinement.
+    In this section, we introduce basic notions which we will use to present mesh refinement, and prove stability of uniform mesh refinement and bisection in later sections.
+    We first recall definition of linear transformation and translation, and further introduce affine transformation.
 
     \input{TranslationLTandAT}
     \input{Simplices}
@@ -55,10 +56,11 @@
     \input{SimplicialComplex}
 
 
-  \section{Refinement Strategy in General}
+  \section{Refinement Strategies in General}
     \input{GeneralRefinement}
 
   \section{Uniform Refinement}
+  Intro para...
     \input{UniformRefinement}
 
   \section{Newest Vertex Bisection}
