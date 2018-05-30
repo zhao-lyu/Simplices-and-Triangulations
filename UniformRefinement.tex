@@ -138,7 +138,6 @@
     Therefore, $\triangle{BXY} \cong \triangle{XAZ}$. Similarily, we can prove the four triangles are congruent to each other, i.e., $\triangle{BXY}\cong\triangle{XAZ}\cong\triangle{YZC} \cong\triangle{ZYX}$, so they are in a same congruent class, which is same as the one of the original triangle $\triangle{BAC}$.
     \end{proof}
     By the lemma above, we know that red refinement applied on a non degenerate simplex in 2 dimension gives one congruent class. Moreover, by Theorem in 3.1, we see that red refinement strategy is stable.
-    [This lemma leads to stability]
 
     \begin{lemma*}
     Red refinement preserves consistency in the 2-dimensional case.
@@ -178,14 +177,14 @@
     \end{align*}
     \end{lemma}
     \begin{proof}
-    After applying the uniform refinement one more time, that is m+1 times in total, then we can think like in each smaller triangle in $T_m$, we again have double number of edges by bisecting edges, and obtain number of $T_m$ edges from connecting each midpoints. Therefore, we have $E_{m+1} = 2\cdot E_m + 3\cdot T_m$.\\
+    After applying the uniform refinement one more time, that is $m+1$ times in total, then we can think like in each smaller triangle in $T_m$, we again have double number of edges by bisecting edges, and obtain number of $T_m$ edges from connecting each midpoints. Therefore, we have $E_{m+1} = 2\cdot E_m + 3\cdot T_m$.\\
     The proof of the second equation can also be done by induction. The base case is obvious by \ref{Fig3}, that is
     \begin{align*}
     E_1 &= 9 \\
     &= 2^1\cdot 3 + 3\cdot 2^0 \cdot (2^1 - 1)\cdot1\\
     &= 2^1\cdot E_0 + 3\cdot2^{1-1}\cdot(2^1 - 1)\cdot T_0
     \end{align*}
-    Suppose that this holds after applying red refinement m times, i.e., 
+    Suppose that this holds after applying red refinement $m$ times, i.e., 
     \begin{align*}
     E_{m} = 2^{m} E_0 + 3 \cdot2^{m-1}\cdot(2^{m} -1)\cdot T_0 
     \end{align*}, 
