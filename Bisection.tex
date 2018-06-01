@@ -5,82 +5,112 @@
 
     \begin{figure}[h!]
     \centering
+    \captionsetup{justification=centering}
       \begin{tikzpicture}[scale=0.7]
+
+      %use to draw parallel line
+      \tikzset{
+      ncbar/.style={
+        to path=%
+        ($(\tikztostart)!#1!90:(\tikztotarget)$)
+        -- ($(\tikztotarget)!($(\tikztostart)!#1!90:(\tikztotarget)$)!90:(\tikztostart)$)
+      },
+      ncbar/.default=0.2,
+      }
+
+      %triangle#1
       \tkzDefPoint(-6.5,0){A''}
       \tkzDefPoint(-5,2){B''}
       \tkzDefPoint(-3,0){C''}
-      %\tkzDrawSegments(A'',peak peak,C'' A'',C'')
       \tkzDrawSegments(A'',B'' B'',C'' A'',C'')
-      %\tkzLabelPoints[above,yshift=0pt](peak)
-      \fill[black!20, draw=black, thick] (B'') circle (1pt) node[black, above right] {$p$};
-    %\tkzDefMidPoint(A'',C'') \tkzGetPoint{new vertex}
-    %\tkzLabelPoints[below,yshift=0pt](new vertex)
-    %\tkzDefLine[orthogonal=through ac](A,C)
-    
-    \tkzDefPoint(-2,0){A}
-    \tkzDefPoint(-0.5,2){B}
-    \tkzDefPoint(1.5,0){C}
-    \tkzDrawSegments(A,B B,C A,C)
-    \tkzDefMidPoint(A,B) \tkzGetPoint{peak1}
-    %\tkzLabelPoints[left](peak)
-    \fill[black!20, draw=black, thick] (peak1) circle (1pt) node[black, above right] {$p$};
-    \tkzDefMidPoint(B,C) \tkzGetPoint{peak2}
-    %\tkzLabelPoints[right](peak)
-    \fill[black!20, draw=black, thick] (peak2) circle (1pt) node[black, above right] {$p$};
-    \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
-    \tkzDefLine[orthogonal=through ac](A,C)
-    \tkzDrawSegment(B,ac)
+      %peak
+      \fill[red!20, draw=red, thick] (B'') circle (1pt) node[black, above] {$P$};
+      %refinement edge
+      \draw[red] (A'') to[ncbar=0.02] (C'');
+
+      %triangle#2
+      \tkzDefPoint(-2,0){A}
+      \tkzDefPoint(-0.5,2){B}
+      \tkzDefPoint(1.5,0){C}
+      \tkzDrawSegments(A,B B,C A,C)
+
+      \tkzDefMidPoint(A,C) \tkzGetPoint{ac}
+      \tkzDefLine[orthogonal=through ac](A,C)
+      \tkzDrawSegment(B,ac)
+      %peak
+      \fill[red!20, draw=red, thick] (ac) circle (1pt) node[black, below] {$P$};
+      %refinement edge1
+      \draw[red] (A) to[ncbar=-0.02] (B);
+      %refinement edge2
+      \draw[red] (B) to[ncbar=-0.02] (C);
+
+      %triangle#3
+      \tkzDefPoint(2.5,0){A'}
+      \tkzDefPoint(4,2){B'}
+      \tkzDefPoint(6,0){C'}
+      \tkzDrawSegments(A',B' B',C' A',C')
+      \tkzDefMidPoint(A',B') \tkzGetPoint{ab'}
+      \tkzDefLine[orthogonal=through ab'](A',B')
+      \tkzDefMidPoint(A',C') \tkzGetPoint{ac'}
+      \tkzDefLine[orthogonal=through ac'](A',C')
+      \tkzDefMidPoint(B',C') \tkzGetPoint{bc'}
+      \tkzDefLine[orthogonal=through bc'](B',C')
+      \tkzDrawSegment(B',ac')
+      \tkzDrawSegment(ac',ab')
+      \tkzDrawSegment(ac',bc')
+
+      %peak1
+      \fill[red!20, draw=red, thick] (ab') circle (1pt) node[black, above left] {$P$};
+      %peak2
+      \fill[red!20, draw=red, thick] (bc') circle (1pt) node[black, above right] {$P$};
+      %refinement edges
+      \draw[red] (A') to[ncbar=0.02] (ac');
+      \draw[red] (C') to[ncbar=-0.02] (ac');
+      \draw[red] (B') to[ncbar=0.02] (ac');
+      \draw[red] (B') to[ncbar=-0.02] (ac');
 
 
-    \tkzDefPoint(2.5,0){A'}
-    \tkzDefPoint(4,2){B'}
-    \tkzDefPoint(6,0){C'}
-    \tkzDrawSegments(A',B' B',C' A',C')
-    \tkzDefMidPoint(A',B') \tkzGetPoint{ab'}
-    \tkzDefLine[orthogonal=through ab'](A',B')
-    \tkzDefMidPoint(A',C') \tkzGetPoint{ac'}
-    \tkzDefLine[orthogonal=through ac'](A',C')
-    \tkzDefMidPoint(B',C') \tkzGetPoint{bc'}
-    \tkzDefLine[orthogonal=through bc'](B',C')
-    \tkzDrawSegment(B',ac')
-    \tkzDrawSegment(ac',ab')
-    \tkzDrawSegment(ac',bc')
-    \tkzDefMidPoint(B',ac') \tkzGetPoint{peaka}
-    %\tkzLabelPoints[above,yshift=0pt](peak)
-    \fill[black!20, draw=black, thick] (peaka) circle (1pt) node[black, above right] {$p$};
-    \tkzDefMidPoint(A',ac') \tkzGetPoint{peakb}
-    %\tkzLabelPoints[below](peak)
-    \fill[black!20, draw=black, thick] (peakb) circle (1pt) node[black, above right] {$p$};
-    \tkzDefMidPoint(C',ac') \tkzGetPoint{peakc}    
-    %\tkzLabelPoints[below](peak)
-    \fill[black!20, draw=black, thick] (peakc) circle (1pt) node[black, above right] {$p$};
+      %triangle#4
+      \tkzDefPoint(7,0){A'''}
+      \tkzDefPoint(8.5,2){B'''}
+      \tkzDefPoint(10.5,0){C'''}
+      \tkzDrawSegments(A''',B''' B''',C''' A''',C''')
+      \tkzDefMidPoint(A''',B''') \tkzGetPoint{ab''}
+      \tkzDefLine[orthogonal=through ab''](A''',B''')
+      \tkzDefMidPoint(A''',C''') \tkzGetPoint{ac''}
+      \tkzDefLine[orthogonal=through ac''](A''',C''')
+      \tkzDefMidPoint(B''',C''') \tkzGetPoint{bc''}
+      \tkzDefLine[orthogonal=through bc''](B''',C''')
+      \tkzDrawSegment(B''',ac'')
+      \tkzDrawSegment(ac'',ab'')
+      \tkzDrawSegment(ac'',bc'')
+      \tkzDefMidPoint(B''',ac'') \tkzGetPoint{x}
+      \tkzDefLine[orthogonal=through x](B''',ac'')
+      \tkzDefMidPoint(A''',ac'') \tkzGetPoint{y}
+      \tkzDefLine[orthogonal=through y](A''',ac'')
+      \tkzDefMidPoint(C''',ac'') \tkzGetPoint{z}
+      \tkzDefLine[orthogonal=through z](C''',ac'')
+      \tkzDrawSegment(ab'',x)
+      \tkzDrawSegment(bc'',x)
+      \tkzDrawSegment(ab'',y)
+      \tkzDrawSegment(bc'',z)
 
+      %peaks
+      \fill[red!20, draw=red, thick] (x) circle (1pt) node[black, above] {$P$};
+      \fill[red!20, draw=red, thick] (y) circle (1pt) node[black, below] {$P$};
+      \fill[red!20, draw=red, thick] (z) circle (1pt) node[black, below] {$P$};
 
-    \tkzDefPoint(7,0){A'''}
-    \tkzDefPoint(8.5,2){B'''}
-    \tkzDefPoint(10.5,0){C'''}
-    \tkzDrawSegments(A''',B''' B''',C''' A''',C''')
-    \tkzDefMidPoint(A''',B''') \tkzGetPoint{ab''}
-    \tkzDefLine[orthogonal=through ab''](A''',B''')
-    \tkzDefMidPoint(A''',C''') \tkzGetPoint{ac''}
-    \tkzDefLine[orthogonal=through ac''](A''',C''')
-    \tkzDefMidPoint(B''',C''') \tkzGetPoint{bc''}
-    \tkzDefLine[orthogonal=through bc''](B''',C''')
-    \tkzDrawSegment(B''',ac'')
-    \tkzDrawSegment(ac'',ab'')
-    \tkzDrawSegment(ac'',bc'')
-    \tkzDefMidPoint(B''',ac'') \tkzGetPoint{x}
-    \tkzDefLine[orthogonal=through x](B''',ac'')
-    \tkzDefMidPoint(A''',ac'') \tkzGetPoint{y}
-    \tkzDefLine[orthogonal=through y](A''',ac'')
-    \tkzDefMidPoint(C''',ac'') \tkzGetPoint{z}
-    \tkzDefLine[orthogonal=through z](C''',ac'')
-    \tkzDrawSegment(ab'',x)
-    \tkzDrawSegment(bc'',x)
-    \tkzDrawSegment(ab'',y)
-    \tkzDrawSegment(bc'',z)
+      %refinement edges
+      \draw[red] (A''') to[ncbar=-0.02] (ab'');
+      \draw[red] (ab'') to[ncbar=-0.02] (ac'');
+      \draw[red] (bc'') to[ncbar=-0.02] (C''');
+      \draw[red] (bc'') to[ncbar=0.02] (ac'');
+      \draw[red] (B''') to[ncbar=0.02] (ab'');
+      \draw[red] (ab'') to[ncbar=0.02] (ac'');
+      \draw[red] (bc'') to[ncbar=-0.02] (ac'');
+      \draw[red] (B''') to[ncbar=-0.02] (bc'');
     \end{tikzpicture}
-    \caption{Illustration of bisection refinement, starting with a single triangle}
+    \caption{Illustration of bisection refinement, starting with a single triangle\\P represents a peak, and red line denotes a refinement edge}
     \label{Fig5}
     \end{figure}
 
@@ -98,13 +128,30 @@
     \begin{proof}
     \begin{figure}[h!]
     \centering
+    \captionsetup{justification=centering}
       \begin{tikzpicture}[scale=0.8]
+      %use to draw parallel line
+      \tikzset{
+      ncbar/.style={
+        to path=%
+        ($(\tikztostart)!#1!90:(\tikztotarget)$)
+        -- ($(\tikztotarget)!($(\tikztostart)!#1!90:(\tikztotarget)$)!90:(\tikztostart)$)
+      },
+      ncbar/.default=0.2,
+      }
+
+      %Stage 1 - Triangle
       \tkzDefPoint(-9,0){A''}
       \tkzDefPoint(-7.5,2){B''}
       \tkzDefPoint(-5.5,0){C''}
       \tkzDrawSegments(A'',B'' B'',C'' A'',C'')
       \node (t) at (-7.5, 1) {{1}};
+      %peaks
+      \fill[red!20, draw=red, thick] (B'') circle (1pt) node[black, above] {$P$};
+      %refinement edge
+      \draw[red] (A'') to[ncbar=0.02] (C'');
 
+      %Stage 2 - Triangle
       \tkzDefPoint(-2,0){A}
       \tkzDefPoint(-0.5,2){B}
       \tkzDefPoint(1.5,0){C}
@@ -114,8 +161,13 @@
       \tkzDrawSegment(B,ac)
       \node (t') at (-1, 0.5) {{2}};
       \node (t'') at (0.5, 0.5) {{3}};
+      %peaks
+      \fill[red!20, draw=red, thick] (ac) circle (1pt) node[black, below] {$P$};
+      %refinement edge
+      \draw[red] (A) to[ncbar=-0.02] (B);
+      \draw[red] (B) to[ncbar=-0.02] (C);
       \end{tikzpicture}
-    \caption{Stage 1: Original triangle(left) in congruence class 1; Stage 2: Applied the newest vertex bisection once(right) in congruence class 2 and 3}
+    \caption{Stage 1: Original triangle(left) in congruence class 1\\Stage 2: Applied the newest vertex bisection once(right) in congruence class 2 and 3}
     \label{fig6: sub1}
     \end{figure}
 
@@ -123,7 +175,19 @@
 
     \begin{figure}[h!]
     \centering
+    \captionsetup{justification=centering}
       \begin{tikzpicture}[scale=0.8] 
+      %use to draw parallel line
+      \tikzset{
+      ncbar/.style={
+        to path=%
+        ($(\tikztostart)!#1!90:(\tikztotarget)$)
+        -- ($(\tikztotarget)!($(\tikztostart)!#1!90:(\tikztotarget)$)!90:(\tikztostart)$)
+      },
+      ncbar/.default=0.2,
+      }
+
+      %Stage 3 - Triangle
       \tkzDefPoint(0,0){A'}
       \tkzDefPoint(1.5,2){B'}
       \tkzDefPoint(3.5,0){C'}
@@ -141,7 +205,18 @@
       \node (t''') at (2, 1) {{4}};
       \node (t) at (0.8, 0.5) {{1}};
       \node (t) at (2.5, 0.5) {{1}};
+      %peaks
+      \fill[red!20, draw=red, thick] (ab') circle (1pt) node[black, above left] {$P$};
+      %refinement edge
+      \draw[red] (A') to[ncbar=0.01] (ac');
+      \draw[red] (B') to[ncbar=-0.01] (ac');
+      %peaks
+      \fill[red!20, draw=red, thick] (bc') circle (1pt) node[black, above right] {$P$};
+      %refinement edge
+      \draw[red] (C') to[ncbar=0.01] (ac');
+      \draw[red] (B') to[ncbar=0.01] (ac');
 
+      %Stage 4 - Triangle
       \tkzDefPoint(7,0){A'''}
       \tkzDefPoint(8.5,2){B'''}
       \tkzDefPoint(10.5,0){C'''}
@@ -173,8 +248,14 @@
       \node (t') at (8.9, 0.7) {{2}};
       \node (t') at (9.3, 0.3) {{2}};
       \node (t'') at (9.8, 0.3) {{3}};
+      %peaks
+      \fill[red!20, draw=red, thick] (x) circle (1pt) node[black, above] {$P$};
+      \fill[red!20, draw=red, thick] (y) circle (1pt) node[black, below] {$P$};
+      \fill[red!20, draw=red, thick] (z) circle (1pt) node[black, below] {$P$};
+      %refinement edge need???
+      
       \end{tikzpicture}
-    \caption{Stage 3: Applied the newest vertex bisection twice(left) in congruence class 1 and 4; Stage 4: Applied the newest vertex bisection three times(right) in congruence class 2 and 3}
+    \caption{Stage 3: Applied the newest vertex bisection twice(left) in congruence class 1 and 4\\Stage 4: Applied the newest vertex bisection three times(right) in congruence class 2 and 3}
     \label{fig6: sub2}
     \end{figure}
 
@@ -310,6 +391,7 @@
     %figure for claims proof
     \begin{figure}[h!]
     \centering
+    \captionsetup{justification=centering}
     \begin{tikzpicture}[scale=0.8]
     \tkzDefPoint(-4.5,0){A}
     \tkzDefPoint(-3,2){B}
