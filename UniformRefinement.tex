@@ -1,7 +1,7 @@
- Based on how we preserve stability and consistency, one strategy is $\emph{red/green refinement algorithm}$, and it has been discussed by Randolph E Bank and other mathematicians\cite{bank1983some,Bey1995,zhang1995successive}. Basically, the red refinement here is regular refinement which divides a triangle into four congruent smaller triangles, and green refinement is necessary to preserve the consistency of the triangulation. $\emph{Uniform refinement}$ generally inherits its idea, but differently it does not demand a green refinement specifically to help preserve the stability since the refinement is done simultaneously.
+ Based on how we preserve stability and consistency, one strategy is $\emph{red/green refinement algorithm}$, and it has been discussed by Randolph E Bank and other mathematicians\cite{bank1983some,Bey1995,zhang1995successive}. Basically, the red refinement here is regular refinement which divides a triangle into four congruent smaller triangles, and green refinement is necessary to preserve the consistency of the triangulation. $\emph{Uniform refinement}$ generally inherits its idea, but differently, it does not demand a green refinement specifically to help preserve the stability since the refinement is done simultaneously.
     
     \subsection{Uniform Refinement Algorithm in 2-dimension}
-    One popular global refinement strategy is $\emph{uniform refinement}$. The main idea of uniform refinement strategy is to subdivide the triangle into four smaller triangles by connecting midpoints on each edges.
+    One popular global refinement strategy is $\emph{uniform refinement}$. The main idea of uniform refinement strategy is to subdivide the triangle into four smaller triangles by connecting midpoints on each edge.
 
     \begin{figure}[h!]
     \centering
@@ -140,7 +140,7 @@
     \end{align*}
     Therefore, $\triangle{BXY} \cong \triangle{XAZ}$. Similarily, we can prove the four triangles are congruent to each other, i.e., $\triangle{BXY}\cong\triangle{XAZ}\cong\triangle{YZC} \cong\triangle{ZYX}$, so they are in a same congruent class, which is same as the one of the original triangle $\triangle{BAC}$.
     \end{proof}
-    By the lemma above, we know that uniform refinement applied on a non degenerate simplex in 2 dimension gives one congruent class. Moreover, by Theorem in 3.1, we see that uniform refinement strategy is stable.
+    By the lemma above, we know that uniform refinement applied on a non-degenerate simplex in 2 dimensions gives one congruent class. Moreover, by Theorem in 3.1, we see that uniform refinement strategy is stable.
 
     \begin{lemma*}
     Uniform refinement preserves consistency in the 2-dimensional case.
@@ -155,7 +155,7 @@
 
     %\paragraph{Vertices and Edges by Red Refinement in 2D}\mbox{}\\
     \subsection{Counting Vertices and Edges by Uniform Refinement in 2-dimension}
-    In Figure\ref{Fig4}, we see that we obtain four congruent triangles similar to the original large triangle. Lemma 1 below presents relationship between number of triangles and number of times that uniform refinement is applied.
+    In Figure\ref{Fig4}, we see that we obtain four congruent triangles similar to the original large triangle. Lemma 1 below presents relationship between the number of triangles and number of times that uniform refinement is applied.
 
     \begin{lemma}
     Let $T_{m}$ be the number of triangles after applying uniform refinement m times. Then,
@@ -164,7 +164,7 @@
     \end{align*}
     \end{lemma}
     \begin{proof}
-    Based on Figure\ref{Fig3}, we see that we always obtain 4 similar triangles that is same as the original one. In other words, we have $T_{m+1} = 4 \cdot T_{m}$.\\
+    Based on Figure\ref{Fig3}, we see that we always obtain 4 similar triangles that are same as the original one. In other words, we have $T_{m+1} = 4 \cdot T_{m}$.\\
     To prove $T_{m} = 4^m \cdot T_0$ by induction, we have the base case that $T_1 = 4^1 \cdot T_0$ in Figure\ref{Fig3}. Suppose that this is true for $T_{m} = 4^m \cdot T_0$, we need to prove this holds true for $T_{m+1}$.\\
     Since we have $T_{m+1} = 4 \cdot T_{m}$, and by inductive hypothesis, we have
     \begin{align*}
@@ -180,7 +180,7 @@
     \end{align*}
     \end{lemma}
     \begin{proof}
-    After applying the uniform refinement one more time, that is $m+1$ times in total, then we can think like in each smaller triangle in $T_m$, we again have double number of edges by bisecting edges, and obtain number of $T_m$ edges from connecting each midpoints. Therefore, we have $E_{m+1} = 2\cdot E_m + 3\cdot T_m$.\\
+    After applying the uniform refinement one more time, that is $m+1$ times in total, then we can think like in each smaller triangle in $T_m$, we again have a double number of edges by bisecting edges, and obtain the number of $T_m$ edges from connecting each midpoint. Therefore, we have $E_{m+1} = 2\cdot E_m + 3\cdot T_m$.\\
     The proof of the second equation can also be done by induction. The base case is obvious by Figure\ref{Fig3}, that is
     \begin{align*}
     E_1 &= 9 \\

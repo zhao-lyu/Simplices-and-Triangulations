@@ -1,8 +1,8 @@
 %\subsection{Discussion}
-Changing focus from two dimension to three or arbitrary higher dimension for mesh refinement, we confront with more challenges to preserve stability and consistency. In this section, we take a brief look at difficulties in applications of uniform refinement strategy and newest vertex bisection in three dimension.
+Changing focus from two dimensions to three or arbitrary higher dimension for mesh refinement, we confront with more challenges to preserve stability and consistency. In this section, we take a brief look at difficulties in applications of uniform refinement strategy and newest vertex bisection in three dimensions.
 
 \subsection{Uniform Refinement in 3D}
-While an application of uniform refinement on simplicial complex in two dimensions is obviously stable and consistent, its application in three dimensions becomes more complicated. One observation is that the number of consistency classes in simplicial complex, resulted from the application, is greater than one.
+While an application of uniform refinement on a simplicial complex in two dimensions is obviously stable and consistent, its application in three dimensions becomes more complicated. One observation is that the number of consistency classes in simplicial complex, resulted from the application, is greater than one.
 
 \begin{figure}[h!]
 \centering
@@ -71,14 +71,14 @@ T_1 \cong T_2 \cong T_5 \cong T_8 \\
 T_3 \cong T_4 \cong T_6 \cong T_7
 \end{align*}
 
-In summary, we can still easily to obtain consistency in this global refinement, but checking stability becomes more complex. By theorem, we know that if the number of congruence classes is finite, then the refinement strategy is stable. This implies that one difficulty of applications of uniform refinement in arbitrary higher dimension is counting and checking congruency classes.
+In summary, we can still easily obtain consistency in this global refinement, but checking stability becomes more complex. By the theorem in section 3.2, we know that if the number of congruence classes is finite, then the refinement strategy is stable. This implies that one difficulty of applications of uniform refinement in arbitrary higher dimension is counting and checking congruency classes.
 
 \subsection{Newest Vertex Bisection in 3D}
 How to choose the first peak and initial refinement edge for newest vertex bisection becomes more complicated in its application in three dimension. One method is discussed in an article by Arnold, Mukherjee and Pouly \cite{arnold2000locally}. 
 Basically, a tetrahedron $\mathcal T$ is classified into four types: planar, adjacent, opposite and mixed, based on their refined edges and faces. There are two steps in his algorithm. The first step is to bisect every tetrahedron with a refinement edge depend on their classification; and second is to preserve consistency to ensure all tetrahedra are consistent without hanging nodes.
 
 \subsection{Longest Edge Bisection}
-Besides newest vertex bisection strategy, there exist other bisection methods for mesh refinement. One method is the longest edge bisection proposed by Rivara \cite{rivara1984mesh}. While the refinement edge in the newest vertex bisection is chosen by the location of a peak, it is now determined by the length of each edges in longest edge bisection: always bisecting the longest edge in each triangle. See Figure\ref{Fig14}.
+Besides newest vertex bisection strategy, there exist other bisection methods for mesh refinement. One method is the longest edge bisection proposed by Rivara \cite{rivara1984mesh}. While the refinement edge in the newest vertex bisection is chosen by the location of a peak, it is now determined by the length of each edge in longest edge bisection: always bisecting the longest edge in each triangle. See Figure\ref{Fig14}.
 
 \begin{figure}[h!]
 \centering
@@ -106,6 +106,6 @@ Besides newest vertex bisection strategy, there exist other bisection methods fo
 \label{Fig14}
 \end{figure}
 
-In Martin Stynes' papers, he proved that the longest edge bisection is stable \cite{stynes1979faster,stynes1980faster,stynes1979n} in two dimensions. Basically, he showed that a finite number of congruency classes is generated in infinite application of longest edge bisection on a simplex. Notice that, consistency is questionable in this method. Specifically, $x$ in Fig14 \ref{Fig14} is a hanging node, because this node $x$ is not shared. Thus it is not consistent. This consistency, however, can be achieved by a modified version of longest edge bisection \cite{kˇriˇzek1997generate}.
+In Martin Stynes' papers, he proved that the longest edge bisection is stable \cite{stynes1979faster,stynes1980faster,stynes1979n} in two dimensions. Basically, he showed that a finite number of congruency classes is generated in an infinite application of longest edge bisection on a simplex. Notice that, consistency is questionable in this method. Specifically, $x$ in Fig14 \ref{Fig14} is a hanging node, because this node $x$ is not shared. Thus it is not consistent. This consistency, however, can be achieved by a modified version of longest edge bisection \cite{kˇriˇzek1997generate}.
 
 
