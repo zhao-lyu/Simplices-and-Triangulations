@@ -19,7 +19,7 @@
 
     
     \paragraph{Shape Measure}\mbox{}\\
-    Simplex diameter and volume are important to introduce shape measures. Here we define the {geometric shape measure} $\mu(T)$ of a simplex $T$ by
+    Simplex diameter and volume are important to introduce shape measures. Here we define the {geometric shape measure} $\mu(T)$ of a $k$-simplex $T$ by
     \begin{equation*}
     \mu(T) = \frac{\operatorname{diam}(T)^k}{\operatorname{vol^k}(T)}, \quad\operatorname{vol^k(T) \neq 0}
     \end{equation*}
@@ -44,10 +44,11 @@
     \label{Fig1}
     \end{figure}
 
-    \begin{lemma*}
+    \begin{lemma}
     If $T$ and $T'$ are congruent simplices, then $\mu(T) = \mu(T')$.
-    \end{lemma*}
-    \begin{proof}\mbox{}\\
+    \label{lma0}
+    \end{lemma}
+    \begin{proof}
     Since $T$ is congruent to $T'$, by definition, we have $T' = v + cQT$, where $c\in\mathbb{R}^{+}$ is scaling factor, $v\in\mathbb{R}^n$ is a translation vector and $Q\in O(n)$ is an orthogonal matrix. In fact, we will show that scalings, translations, orthogonal transformation do not influence the shape measure of a simplex. 
     
     To be specific, when scaling a simplex $T$ by a non zero factor $c\in\mathbb{R}^{+}$ to obtain $T'$, we have 
@@ -59,7 +60,7 @@
     \begin{align*}
     \mu(T') = \frac{\diam(T')^k}{\vol^k(T')} = \frac{c^k\cdot \diam(T)^k}{c^k\cdot \vol^k(T)} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
     \end{align*}
-
+    \noindent
     Moreover, translation of a simplex $T$ by a nonsingular vector $v$ to obtain $T'$ will not influence the shape measure as well. In detail, we have
     \begin{align*}
     \diam(T')^k &= \max_{0\leqslant i\leqslant j\leqslant k} \|(x_i + v) - (x_j + v)\|\\ 
@@ -94,7 +95,7 @@
     \end{proof}
 
     %MOVE HERE
-    The reason why we need shape measure is to help to understand whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if $\mu(T) = \infty$, i.e. $\vol^k(T) = 0$. 
+    The reason why we need the notion of shape measure is to help to understand whether a simplex $T$ is non-degenerate, and to quantify how degenerate or non-degenerate. Let $T$ be a k-dimensional simplex in $\mathbb{R}^n$. We say that a simplex $T$ is degenerate if $\mu(T) = \infty$, i.e. $\vol^k(T) = 0$. 
 
     Observing two triangles in \ref{Fig1}, we actually want the interior angles of the simplex $T$, i.e. triangles in this example, to be uniformly bounded from zero.
     While cutting a simplex into smaller pieces, we want to keep the shape measures of the simplices uniformly bounded and avoid degenerate simplices.

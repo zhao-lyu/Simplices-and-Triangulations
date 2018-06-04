@@ -2,34 +2,34 @@
       
       We define several classes of transformations that we frequently use.
       
-      \begin{definition*}
+      \begin{definition}
         %$\textbf{Translation}$\\
-         Let $\textbf{v}\in\mathbb{R}^n$. A $\emph{translation}$ ${T}_v$ is a mapping of the form ${T}_v (x) = x + v$, for any vector $x$ in the figure which we translate.
-      \end{definition*}
+         Let $v\in\mathbb{R}^n$. A $\emph{translation}$ ${T}_v$ is a mapping of the form ${T}_v (x) = x + v$, for any vector $x$ in the figure which we translate.
+      \end{definition}
       A $\textit{translation}$ moves every point of a figure or space by the same distance in the same direction. A translation ${T}$ can be represented by an addition of a constant vector to every point.
 
 
-      \begin{definition*}
+      \begin{definition}
       %\paragraph{Linear transformation}
       %Let ${V}$ and ${W}$ be vector spaces over the same field $\textbf{K}$. 
       We say a function $\mathit{f}: \mathbb R^n \rightarrow\mathbb R^n$ is a $\emph{linear transformation}$ if the following is satisfied:
       \begin{align*}
-      \mathit{f}(\textbf{u} + \textbf{v}) &= \mathit{f}(\textbf{u}) + \mathit{f}(\textbf{v}) \qquad \forall \textbf{u}, \textbf{v} \in\mathbb{R}^n,\\
-      \mathit{f}(c\textbf{u}) &= c\mathit{f}(\textbf{u}), \qquad \forall \textbf{u} \in\mathbb R^n, ~c\in\mathbb R.
+      \mathit{f}(u + v) &= \mathit{f}(u) + \mathit{f}(v) \qquad \forall u, v \in\mathbb{R}^n,\\
+      \mathit{f}(cu) &= c\mathit{f}(u), \qquad \forall u \in\mathbb R^n, ~c\in\mathbb R.
       \end{align*}
-      \end{definition*}
+      \end{definition}
       In other words, a linear transformation is a mapping which preserves the operations of vector addition and scalar multiplication. We can represent the linear transformation ${f}$ by a matrix ${M}$. For example, if ${M}$ is an ${m} \times {n}$ matrix, then ${f}$ is a linear transformation from $\mathbb{R}^n$ to $\mathbb{R}^m$. 
 
 
-      \begin{definition*}
+      \begin{definition}
       %\paragraph{Affine Transformation}
       An $\emph{affine transformation}$ from $\mathbb{R}^n$ to $\mathbb{R}^n$ is of the form
       \begin{equation*}
       {F}(x) = {Ax} + {v}, \qquad {x}\in\mathbb{R}^n,
       \end{equation*}
       where ${A}\in\mathbb{R}^{n\times n}$ is a matrix, and  ${v}\in\mathbb{R}^n$ is a vector.
-      \end{definition*}
-      The inverse mapping of an affine transformation $F(x) = Ax + v$ is only defined if $A^{-1}$ exists, and the inverse mapping $F^{-1} = {x} \mapsto {A}^{-1}({x} - {v})$ is also an affine transformation.
+      \end{definition}
+      The inverse mapping of an affine transformation $F(x) = Ax + v$ is only defined if $A^{-1}$ exists, and the inverse mapping $F^{-1}(x) = {x} \mapsto {A}^{-1}({x} - {v})$ is also an affine transformation.
       Affine transformation preserves points, lines and planes, but need not preserve the origin in a linear space in contrast to the linear transformation. So we see that translations and linear transformations are affine, but the opposite is not true. Affine transformation helps carry results from one simplex to another simplex in our discussion, and more details are covered after introducing $simplices$ and $triangulations$ in the next section.
 
 

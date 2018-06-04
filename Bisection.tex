@@ -122,9 +122,10 @@
 
 %----------------------------------------------------------------------------------
     %\subsection{Stability of Newest Vertex Bisection}
-    \begin{lemma*}
+    \begin{lemma}
     Bisection refinement gives four congruence classes given one triangle.
-    \end{lemma*}
+    \label{lma6}
+    \end{lemma}
     \begin{proof}
     \begin{figure}[h!]
     \centering
@@ -171,7 +172,7 @@
     \label{fig6: sub1}
     \end{figure}
 
-    Observing \ref{fig6: sub1}, we have a triangle at the beginning, say it's in congruency class 1. After applying the newest vertex bisection refinement once, see \ref{fig6: sub1}, we obtain two smaller pieces of triangles as in the second picture in Figure 5. Say one of them is in the congruency class 2, and another one is in the congruency class 3. Further applying the newest vertex bisection refinement, we have the triangulation in \ref{fig6: sub2}.
+    Observing Figure \ref{fig6: sub1}, we have a triangle at the beginning, say in congruency class 1. After applying the newest vertex bisection refinement once, see Figure \ref{fig6: sub1}, we obtain two smaller triangles as in the second picture in Figure 5. Say one of them is in the congruency class 2, and another one is in the congruency class 3. Further applying the newest vertex bisection refinement, we have the triangulation in Figure \ref{fig6: sub2}.
 
     \begin{figure}[h!]
     \centering
@@ -460,13 +461,13 @@
     As we explain in section 3, a good refinement strategy should preserve both stability and consistency. Before we take a look at consistency, let's first introduce dependency graph.
 
     \subsection{Compatible Divisibility and Consistency}
-    \begin{definition*}
+    \begin{definition}
       Let G = (N, A) be a simple directed graph, where N(nodes) represents triangles, and $(n_1, n_2)\in A (arrows)$ if the refinement edge of $n_1$ neighbors at $n_2$, and then we call G a dependency graph.
       \begin{align*}
       N &= \{T\in\mathcal{T}~\mid~\diam{T} = 2\}\\
       A &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}
       \end{align*}
-    \end{definition*}
+    \end{definition}
     Note that $G$ is a simple directed graph, so it does not contain any loops. That is, for all $(v_1, v_2)\in A$, we have $v_1\neq v_2$. Moreover, all nodes of one dependency graph have at most one outgoing arrow, because every triangle $T$ has at most exactly one refinement edge(See \ref{Fig9}). If the refinement edge of $T$ borders no other triangles, then there is no arrow going from $T$ to any other triangles in the dependency graph. If oppositely, it borders another triangle $T'$ along its refinement edge, then there is an arrow in G going from $T$ to $T'$.  %[Multiple V's, graph? need proof???]
     \begin{figure}[h!]
     \centering
@@ -492,18 +493,19 @@
     \label{Fig9}
     \end{figure}
 
-    \begin{lemma*}
+    \begin{lemma}
     A node n in the dependency graph has no outgoing arrow if and only if the corresponding triangle of n has a refinement edge at the boundary.
-    \end{lemma*}
+    \label{lma7}
+    \end{lemma}
     The proof for this is trivial based on the explanation for G as a simple graph.
 
-    \begin{definition*}
+    \begin{definition}
       A triangle is called compatibly divisible if either
       \begin{itemize}
         \item[a. ] it has no outgoing edge in G
         \item[b. ] it is part of a cycle in G whose size is 2.
       \end{itemize}
-    \end{definition*}
+    \end{definition}
     \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.8]
@@ -550,7 +552,7 @@
     \caption{Compatibly divisible triangles: case a(left); case b(right)}
     \label{Fig10}
     \end{figure}
-    Triangles of case b in \ref{Fig10} are called mates as they share same refinement edge in 2-cycle.
+    Triangles of case b in Figure \ref{Fig10} are called mates as they share same refinement edge in 2-cycle.
 
     \paragraph{Compatible divisibility in Dependency Graph}\mbox{}\\
     \begin{figure}[h!]
@@ -638,7 +640,7 @@
     \caption{Compatible divisibility in Dependency Graph}
     \label{Fig11}
     \end{figure}
-    In \ref{Fig11}, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the rightmost triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on the boundary or a cycle of size 2, we can then bisect back in an order like the stack. In the example displayed in \ref{Fig11}, a base case is reached by bisecting the leftmost two triangles. However, a base case is not always promised. In other words, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in \ref{Fig12}, and this failed in applying the newest vertex bisection, because smaller triangles are dependent on each other. That is, its dependency graph is a cycle instead of a forest, i.e. collection of trees.
+    In Figure \ref{Fig11}, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the rightmost triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on the boundary or a cycle of size 2, we can then bisect back in an order like the stack. In the example displayed in Figure \ref{Fig11}, a base case is reached by bisecting the leftmost two triangles. However, a base case is not always promised. In other words, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in Figure \ref{Fig12}, and this failed in applying the newest vertex bisection, because smaller triangles are dependent on each other. That is, its dependency graph is a cycle instead of a forest, i.e. collection of trees.
 
     \begin{figure}[h!]
     \centering
@@ -719,20 +721,21 @@ parallel segment/.style={
     \end{figure}
 
 
-    \begin{lemma*}
+    \begin{lemma}
     If the newest vertex bisection is only performed on 
     \begin{itemize}
         \item[a. ] triangles isolated in the dependency graph
         \item[b. ] pairs of mates
       \end{itemize}
     then the refinement is stable and the triangulations will be consistent.
-    \end{lemma*}
+    \label{lma8}
+    \end{lemma}
     \begin{proof}
-    We already proved stability in general in two dimensions, and this applies here as well under a more strict condition. The consistency is obvious in compatibly divisible triangles. More specifically, if all triangles $T$ of the initial simplicial complex $\mathcal T$ are compatibly divisible, then the number of recursions is bounded. That is, we never have a cyclic dependency graph like Figure\ref{Fig12}. A detailed proof can be found in \cite{mitchell1988unified, mitchell1991adaptive}.
+    We already proved stability in general in two dimensions, and this applies here as well under a more strict condition. The consistency is obvious in compatibly divisible triangles. More specifically, if all triangles $T$ of the initial simplicial complex $\mathcal T$ are compatibly divisible, then the number of recursions is bounded. That is, we never have a cyclic dependency graph like Figure \ref{Fig12}. A detailed proof can be found in \cite{mitchell1988unified, mitchell1991adaptive}.
     \end{proof}
 
     \paragraph{Initial Refinement Edge}\mbox{}\\
-    As described in the newest vertex bisection algorithm, the start point is to pick the first peak which decides the first refinement edge. However, a determining question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. More specifically, since we know the newest vertex bisection preserves stability generally and consistency if its dependency graph is a forest instead of cycles, the question is how to determine the initial refinement edge to promise a forest-like dependency graph. 
+    As described in the newest vertex bisection algorithm, the starting point is to pick the first peak which decides the first refinement edge. However, a decisive question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. More specifically, since we know the newest vertex bisection preserves stability generally and consistency if its dependency graph is a forest instead of cycles, the question is how to determine the initial refinement edge to promise a forest-like dependency graph. 
 
     One possibility is the following.
     We number the edges in any arbitrary manner. For each triangle, we always pick the edge with the highest number as refinement edge. Then the dependency graph will be a forest, because with this choice of refinement edge, there can not be a cycle of length greater than two in this dependency graph.

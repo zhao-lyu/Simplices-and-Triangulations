@@ -86,7 +86,7 @@
     \label{Fig3}%change all after!!!
     \end{figure}
 
-    Let $T = [x^0, x^1, x^2]$ be the triangle to be refined, and denote $x^{ij}$ by the midpoint of the edge between $x^i$ and $x^j$.\\
+    Let $T = [x^0, x^1, x^2]$ be the triangle to be refined, and denote $x^{ij}$ by the midpoint of the edge between $x^i$ and $x^j$ for $0\leq i < j\leq 2$.\\
     \textbf{Algorithm} Uniform refinement in 2D
     \begin{align*}
     T_1 &:= [x^0, x^{01}, x^{02}]; & \qquad T_2 &:= [x^{01}, x^{1}, x^{12}];\\
@@ -96,9 +96,11 @@
 
 
 
-    \begin{lemma*}
-    Uniform refinement gives same congruence class in 2-dimension case.
-    \end{lemma*}
+    \begin{lemma}
+    The triangle $T_1, T_2, T_3$ and $T_4$ produced by the uniform refinement have the same congruence class as $T$.
+    %Uniform refinement gives same congruence class in 2-dimension case.
+    \label{lma1}
+    \end{lemma}
     \begin{proof}
     \begin{figure}
     \centering
@@ -124,11 +126,11 @@
     \tkzLabelPoints[above,xshift=2mm](Y)
     \tkzLabelPoints[below](Z)
     \end{tikzpicture}
-    \caption{Illustration of Uniform Refinement for the Lemma}
+    \caption{Illustration of Uniform Refinement as in the proof of \cref{lma1}}
     \label{Fig4}
     \end{figure}
 
-    Let A, B, C be the vertices of the triangle $T$ and let X, Y, Z be the midpoints of the edge AB, BC and AC. An application of uniform refinement produces the triangle $T_1 = [A, X, Z]$, $T_2 = [X, B, Y]$, $T_3 = [Z, Y, C]$ and $T_4 = [Y, Z, X]$. See Figure \ref{Fig4}
+    Let A, B, C be the vertices of the triangle $T$ and let X, Y, Z be the midpoints of the edge AB, BC and AC. An application of uniform refinement produces the triangles $T_1 = [A, X, Z]$, $T_2 = [X, B, Y]$, $T_3 = [Z, Y, C]$ and $T_4 = [Y, Z, X]$. See Figure \ref{Fig4}
 
     We have line XY parallel to line AC, i.e., $XY \parallel AC$, so $\angle{BXY} = \angle{XAZ}$. Similarily, since $XZ\parallel BC$, we have $\angle{XBY} = \angle{AXZ}$. Since X is the midpoint of line AB, then $|AX| = |BX|$. In short, we have 
     \begin{align*}
@@ -140,11 +142,12 @@
     \end{align*}
     Therefore, $\triangle{BXY} \cong \triangle{XAZ}$. Similarily, we can prove the four triangles are congruent to each other, i.e., $\triangle{BXY}\cong\triangle{XAZ}\cong\triangle{YZC} \cong\triangle{ZYX}$, so they are in a same congruent class, which is same as the one of the original triangle $\triangle{BAC}$.
     \end{proof}
-    By the lemma above, we know that uniform refinement applied on a non-degenerate simplex in 2 dimensions gives one congruent class. Moreover, by Theorem in 3.1, we see that uniform refinement strategy is stable.
+    By the \cref{lma1}, we know that uniform refinement applied on a non-degenerate simplex in 2 dimensions gives one congruence class. Moreover, by Theorem in 3.1, we see that the uniform refinement strategy is stable.
 
-    \begin{lemma*}
+    \begin{lemma}
     Uniform refinement preserves consistency in the 2-dimensional case.
-    \end{lemma*}
+    \label{lma2}
+    \end{lemma}
     %\begin{proof}\mbox{}\\
     %This is obvious as how simplicial complex is defined.
     %\end{proof}
@@ -155,17 +158,18 @@
 
     %\paragraph{Vertices and Edges by Red Refinement in 2D}\mbox{}\\
     \subsection{Counting Vertices and Edges by Uniform Refinement in 2-dimension}
-    In Figure\ref{Fig4}, we see that we obtain four congruent triangles similar to the original large triangle. Lemma 1 below presents relationship between the number of triangles and number of times that uniform refinement is applied.
+    In Figure \ref{Fig4}, we see that we obtain four congruent triangles similar to the original large triangle. The \cref{lma3} below presents relationship between the number of triangles and number of times that uniform refinement is applied.
 
     \begin{lemma}
     Let $T_{m}$ be the number of triangles after applying uniform refinement m times. Then,
     \begin{align*}
     T_{m+1} = 4 \cdot T_{m}, \quad T_{m} = 4^m \cdot T_0
     \end{align*}
+    \label{lma3}
     \end{lemma}
     \begin{proof}
-    Based on Figure\ref{Fig3}, we see that we always obtain 4 similar triangles that are same as the original one. In other words, we have $T_{m+1} = 4 \cdot T_{m}$.\\
-    To prove $T_{m} = 4^m \cdot T_0$ by induction, we have the base case that $T_1 = 4^1 \cdot T_0$ in Figure\ref{Fig3}. Suppose that this is true for $T_{m} = 4^m \cdot T_0$, we need to prove this holds true for $T_{m+1}$.\\
+    Based on Figure \ref{Fig3}, we see that we always obtain 4 similar triangles that are same as the original one. In other words, we have $T_{m+1} = 4 \cdot T_{m}$.\\
+    To prove $T_{m} = 4^m \cdot T_0$ by induction, we have the base case that $T_1 = 4^1 \cdot T_0$ in Figure \ref{Fig3}. Suppose that this is true for $T_{m} = 4^m \cdot T_0$, we need to prove this holds true for $T_{m+1}$.\\
     Since we have $T_{m+1} = 4 \cdot T_{m}$, and by inductive hypothesis, we have
     \begin{align*}
     T_{m+1} = 4 \cdot T_{m} = 4 \cdot (4^m\cdot T_0) = 4^{m+1}\cdot T_0
@@ -178,10 +182,11 @@
     \begin{align*}
     E_{m+1} = 2 \cdot E_m + 3 \cdot T_m, \quad E_{m} = 2^{m}\cdot E_0 + 3 \cdot2^{m-1}\cdot(2^{m} -1)\cdot T_0
     \end{align*}
+    \label{lma4}
     \end{lemma}
     \begin{proof}
     After applying the uniform refinement one more time, that is $m+1$ times in total, then we can think like in each smaller triangle in $T_m$, we again have a double number of edges by bisecting edges, and obtain the number of $T_m$ edges from connecting each midpoint. Therefore, we have $E_{m+1} = 2\cdot E_m + 3\cdot T_m$.\\
-    The proof of the second equation can also be done by induction. The base case is obvious by Figure\ref{Fig3}, that is
+    The proof of the second equation can also be done by induction. The base case is obvious by Figure \ref{Fig3}, that is
     \begin{align*}
     E_1 &= 9 \\
     &= 2^1\cdot 3 + 3\cdot 2^0 \cdot (2^1 - 1)\cdot1\\
@@ -191,7 +196,7 @@
     \begin{align*}
     E_{m} = 2^{m} E_0 + 3 \cdot2^{m-1}\cdot(2^{m} -1)\cdot T_0 
     \end{align*}, 
-    Since $E_{m+1} = 2 \cdot E_m + 3 \cdot T_m$, and by the inductive hypothesis and Lemma 1, we have
+    Since $E_{m+1} = 2 \cdot E_m + 3 \cdot T_m$, and by the inductive hypothesis and \cref{lma3}, we have
     \begin{align*}
     E_{m+1} &= 2 \cdot E_m + 3 \cdot T_m \\
     &= 2(2^{m}\cdot E_0 + 3 \cdot2^{m-1}\cdot(2^{m} -1)\cdot T_0) + 3\cdot 4^m\cdot T_0\\
@@ -208,13 +213,14 @@
     V_{m+1} = V_{m} + E_{m}, \quad V_m = V_0 + (2^m -1)\cdot E_0 + (2^{m-1}\cdot(2^m+3)-2)\cdot T_0
     \end{align*}
     \end{lemma}
+    \label{lma5}
     \begin{proof}
     Whenever uniform refinement is applied, we set a midpoint on each edge as a new vertex. That is, the number of new vertices is the number of edges of the simplicial complex before applying the uniform refinement. After applying the uniform refinement one more time, the number of new vertices is same as the number of edges of $T_m$, i.e., $E_m$. Then adding together, we have $V_{m+1} = V_m + E_m$.\\
     Suppose that 
     \begin{align*}
     V_m = V_0 + (2^m -1)\cdot E_0 + (2^{m-1} -1)(2^m -1)\cdot T_0
     \end{align*} 
-    Then by Lemma 2, we have
+    Then by \cref{lma4}, we have
     \begin{align*}
     V_{m+1} &= V_m + E_m\\
     &= V_m + 2^m\cdot E_0 + 3\cdot 2^{m-1}\cdot(2^m-1)\cdot T_0\\
