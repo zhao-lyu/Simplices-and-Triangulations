@@ -1,5 +1,5 @@
-    \subsection{Newest Vertex Bisection Refinement in 2-dimension and its stability}
-    Another popular refinement strategy is bisection. Basically, we cut a triangle by connecting one vertex, which we choose as the peak, with its opposite edge, which we call refinement edge. Generally, if we apply random bisection with no plan on a triangle, it is likely that we fail to preserve stability and consistency.
+    %\subsection{Newest Vertex Bisection Refinement in 2-dimension and its stability}
+    Another popular refinement strategy is bisection. Basically, we cut a triangle by connecting one vertex, which we call the peak, with its opposite edge, which we call refinement edge. Generally, if we apply random bisection with no plan on a triangulation, it is likely that we fail to preserve stability and consistency.
 
     Hence, one important part we need to consider is how to choose the peak for a triangle to preserve the stability and consistency, and one famous method was introduced as the $\emph{newest vertex bisection}$. In newest vertex bisection, we create the newest vertex at the middle of the refinement edge after applying the bisection refinement once, and then we regard the newest vertex as the peak for bisection over the resulting two smaller triangles.
 
@@ -110,7 +110,7 @@
       \draw[red] (bc'') to[ncbar=-0.02] (ac'');
       \draw[red] (B''') to[ncbar=-0.02] (bc'');
     \end{tikzpicture}
-    \caption{Illustration of bisection refinement, starting with a single triangle\\P represents a peak, and red line denotes a refinement edge}
+    \caption{Illustration of bisection refinement, starting with a single triangle\\$P$ represents a peak, and red line denotes a refinement edge.}
     \label{Fig5}
     \end{figure}
 
@@ -168,7 +168,7 @@
       \draw[red] (A) to[ncbar=-0.02] (B);
       \draw[red] (B) to[ncbar=-0.02] (C);
       \end{tikzpicture}
-    \caption{Stage 1: Original triangle(left) in congruence class 1\\Stage 2: Applied the newest vertex bisection once(right) in congruence class 2 and 3}
+    \caption{Stage 1: Original triangle(left) in congruence class 1\\Stage 2: Applied the newest vertex bisection once(right) in congruence class 2 and 3.}
     \label{fig6: sub1}
     \end{figure}
 
@@ -256,7 +256,7 @@
       %refinement edge need???
       
       \end{tikzpicture}
-    \caption{Stage 3: Applied the newest vertex bisection twice(left) in congruence class 1 and 4\\Stage 4: Applied the newest vertex bisection three times(right) in congruence class 2 and 3}
+    \caption{Stage 3: Applied the newest vertex bisection twice(left) in congruence class 1 and 4\\Stage 4: Applied the newest vertex bisection three times(right) in congruence class 2 and 3.}
     \label{fig6: sub2}
     \end{figure}
 
@@ -295,7 +295,7 @@
     \quad
     |XY| = |ZC|.
     \end{align*}
-    Therefore, we have $\triangle{AXY} \cong \triangle{YZC}$. It's clear that $\triangle{AXY}$ and $\triangle{YZC}$ are similar to $\triangle{ABC}$ as all their angles are the same. Thus, we finished the proof of claim 1.
+    Therefore, we have $\triangle{AXY} \cong \triangle{YZC}$. It's clear that $\triangle{AXY}$ and $\triangle{YZC}$ are similar to $\triangle{ABC}$ as all their angles are the same. Thus, we finished the proof of Claim 1.
 
     %\end{proof}%end proof of claim 1
 
@@ -361,7 +361,7 @@
     Moreover, since the ratio of $\|AX\|, \|BX\|$, and $\|ZY\|$ is 1, and the ratio of $\|ZC\|, \|BZ\|$, and $\|XY\|$ is 1, we have
     \begin{align*}
     \triangle{AXM}\cong\triangle{XBP}\cong\triangle{YZN},\\
-    \triangle{CZN}\cong\triangle{YXM}\sim\triangle{ZBP}.
+    \triangle{CZN}\cong\triangle{YXM}\cong\triangle{ZBP}.
     \end{align*}
     Therefore, we showed that $\triangle{AXM}, \triangle{XBP}$ and $\triangle{YZN}$ are in congruency class 2, and $\triangle{CZN}, \triangle{YXM}$ and $\triangle{ZBP}$ are in congruency class 3.
     Moreover, since 
@@ -448,7 +448,7 @@
     \tkzLabelPoints[below, xshift=2mm](N)
     \tkzLabelPoints[above,yshift=0pt](P)
     \end{tikzpicture}
-    \caption{Illustration of newest vertex bisection for Claim 1(left); Claim 2(right)}
+    \caption{Illustration of newest vertex bisection for Claim 1(left); Claim 2(right).}
     \label{Fig8}
     \end{figure}
 
@@ -464,8 +464,8 @@
     \begin{definition}
       Let G = (N, A) be a simple directed graph, where N(nodes) represents triangles, and $(n_1, n_2)\in A (arrows)$ if the refinement edge of $n_1$ neighbors at $n_2$, and then we call G a dependency graph.
       \begin{align*}
-      N &= \{T\in\mathcal{T}~\mid~\diam{T} = 2\}\\
-      A &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}
+      N &= \{T\in\mathcal{T}~\mid~\diam{T} = 2\},\\
+      A &= \{(V_1, V_2)\in V\times V | \text{The refinement edge of $V_1$ neighbors $V_2$}\}.
       \end{align*}
     \end{definition}
     Note that $G$ is a simple directed graph, so it does not contain any loops. That is, for all $(v_1, v_2)\in A$, we have $v_1\neq v_2$. Moreover, all nodes of one dependency graph have at most one outgoing arrow, because every triangle $T$ has at most exactly one refinement edge(See \ref{Fig9}). If the refinement edge of $T$ borders no other triangles, then there is no arrow going from $T$ to any other triangles in the dependency graph. If oppositely, it borders another triangle $T'$ along its refinement edge, then there is an arrow in G going from $T$ to $T'$.  %[Multiple V's, graph? need proof???]
@@ -489,7 +489,7 @@
     \draw[->,shorten >=-0.5cm, shorten <=-0.5cm, blue] (mid.north)--(mid.south);
     %\draw [blue,  ->   ] (3.35,2.2) -- (1.2,0.7);
     \end{tikzpicture}
-    \caption{Illustration of outgoing arrow in dependency graph}
+    \caption{Illustration of outgoing arrow in dependency graph.}
     \label{Fig9}
     \end{figure}
 
@@ -554,7 +554,7 @@
     \end{figure}
     Triangles of case b in Figure \ref{Fig10} are called mates as they share same refinement edge in 2-cycle.
 
-    \paragraph{Compatible divisibility in Dependency Graph}\mbox{}\\
+    
     \begin{figure}[h!]
     \centering
     \begin{tikzpicture}[scale=0.5]
@@ -637,9 +637,10 @@
        edge [<-, blue, bend right=30] (a)
        ;
     \end{tikzpicture}
-    \caption{Compatible divisibility in Dependency Graph}
+    \caption{Compatible divisibility in dependency graph.}
     \label{Fig11}
     \end{figure}
+    \paragraph{Compatible divisibility in Dependency Graph}\mbox{}\\
     In Figure \ref{Fig11}, we see a compatibility chain in a triangulation. When performing the newest vertex bisection on the rightmost triangle, we need to bisect its left neighboring triangle first. We obtain a recursion here since we need to bisect the triangle which our current target triangle depends on. If we successfully reached the base case, either on the boundary or a cycle of size 2, we can then bisect back in an order like the stack. In the example displayed in Figure \ref{Fig11}, a base case is reached by bisecting the leftmost two triangles. However, a base case is not always promised. In other words, it is not guaranteed that we can always achieve either bisection on the boundary or a cycle of size 2. One example is displayed in Figure \ref{Fig12}, and this failed in applying the newest vertex bisection, because smaller triangles are dependent on each other. That is, its dependency graph is a cycle instead of a forest, i.e. collection of trees.
 
     \begin{figure}[h!]
@@ -735,13 +736,13 @@ parallel segment/.style={
     \end{proof}
 
     \paragraph{Initial Refinement Edge}\mbox{}\\
-    As described in the newest vertex bisection algorithm, the starting point is to pick the first peak which decides the first refinement edge. However, a decisive question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. More specifically, since we know the newest vertex bisection preserves stability generally and consistency if its dependency graph is a forest instead of cycles, the question is how to determine the initial refinement edge to promise a forest-like dependency graph. 
+    As described in the newest vertex bisection algorithm, the starting point is to pick the first peak which decides the first refinement edge. However, a decisive question in this process is how we choose the first peak and initial refinement edge to produce stable and consistent triangulation after each recursion. More specifically, since we know the newest vertex bisection preserves stability generally and consistency if its dependency graph has no cycles of length larger than two, the question is how to determine the initial refinement edge to promise a forest-like dependency graph. 
 
     One possibility is the following.
-    We number the edges in any arbitrary manner. For each triangle, we always pick the edge with the highest number as refinement edge. Then the dependency graph will be a forest, because with this choice of refinement edge, there can not be a cycle of length greater than two in this dependency graph.
+    We number the edges in any arbitrary manner. For each triangle, we always pick the edge with the highest number as refinement edge. Then there can not be a cycle of length greater than two in this dependency graph.
     One approach to have such a choice is to number the edges from shortest to longest.
-    Then the longest edge of each triangle in the initial simplicial complex $\mathcal T$ as the refinement edge. A consistency is proved using this approach in Kossaczky's paper \cite{kossaczky1994recursive}. Basically, he proved that the dependency graph of $\mathcal T$ is acyclic with longest edge of triangles $T\in\mathcal T$ as refinement edge.
+    Then the longest edge of each triangle in the initial simplicial complex $\mathcal T$ as the refinement edge. The consistency is proved using this approach in Kossaczky's paper \cite{kossaczky1994recursive}. Basically, he proved that the dependency graph of $\mathcal T$ is acyclic with longest edge of triangles $T\in\mathcal T$ as refinement edge.
 
-    We may also ask whether it is even possible to choose initial refinement edges such that all triangles in the initial triangulation are compatibly divisible. In this case, the compatibility chain in the initial triangulation will have length zero (More disconnected the dependency graph is, the better strategy is).
+    We may also ask whether it is even possible to choose initial refinement edges such that all triangles in the initial triangulation are compatibly divisible. In this case, the compatibility chain in the initial triangulation will have length zero (The more disconnected the dependency graph is, the better strategy is).
     Finding such initial choice of refinement edges is possible. The problem can be reduced to finding a perfect matching in a graph. A detailed work and proofs can be found in \cite{mitchell1988unified,mitchell1991adaptive,mitchell201630}.
     

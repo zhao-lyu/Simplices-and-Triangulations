@@ -1,13 +1,13 @@
     \subsection{Simplices}
-    In this section, we will introduce simplices and talk about its geometrical properties, such as diameter and volume. These information and notation are mainly from \cite{ciarlet2002finite}\cite{bey2000simplicial}
+    In this section, we will introduce simplices and talk about its geometrical properties, such as diameter and volume. These information and notation are mainly from \cite{ciarlet2002finite}\cite{bey2000simplicial}.
     \noindent
     \begin{definition}
     A $k$-simplex $T \subseteq\mathbb{R}^n$ is a convex hull of $k+1$ vertices ${x}_0, \ldots, {x}_k \in \mathbb{R}^n$, which are affinely independent. We write 
     \begin{equation*}
     \begin{split}
-    {T} & = [{x}_0, \cdots, {x}_k ]\\
-    & := \left\{{x} = \sum\limits_{i=0}^k \lambda_i {x}_i \big| \sum\limits_{i=0}^k \lambda_i = 1 \text{ and } 0 \leqslant \lambda_i \leqslant 1, 0 \leqslant i \leqslant k \right\}\\
-    & := \left\{\lambda_0{x}_0 + \cdots + \lambda_k{x}_k \big| \sum\limits_{i=0}^k \lambda_i = 1 \text{ and } 0 \leqslant \lambda_i \leqslant 1, 0 \leqslant i \leqslant k \right\}.
+    {T} & := [{x}_0, \cdots, {x}_k ]\\
+    & := \left\{{x} = \sum\limits_{i=0}^k \lambda_i {x}_i \;\middle|\; \sum\limits_{i=0}^k \lambda_i = 1 \text{ and } 0 \leqslant \lambda_i \leqslant 1, 0 \leqslant i \leqslant k \right\}\\
+    & := \left\{\lambda_0{x}_0 + \cdots + \lambda_k{x}_k \;\middle|\; \sum\limits_{i=0}^k \lambda_i = 1 \text{ and } 0 \leqslant \lambda_i \leqslant 1, 0 \leqslant i \leqslant k \right\}.
     \end{split}
     \end{equation*}
     \end{definition}
@@ -15,13 +15,13 @@
 
     \begin{definition}
     %\paragraph{Subsimplices}
-    An  $l$-simplex ${S} = [{y}_0, \cdots, {y}_l]$ is called an \emph{$l$-subsimplex} of a $k$-simplex ${T} = [{x}_0, \cdots, {x}_k]$, if there exist indices $0 \leqslant {i}_0 \leqslant \cdots\leqslant{i}_l \leqslant k$ with ${y}_{i_{j}} = {x}_i$, for all $0 \leqslant j \leqslant l$.
+    An  $l$-simplex ${S} = [{y}_0, \cdots, {y}_l]$ is called an \emph{$l$-subsimplex} of a $k$-simplex ${T} = [{x}_0, \cdots, {x}_k]$, if there exist indices $0 \leqslant {i}_0 < \ldots< {i}_l \leqslant k$ with ${y}_{i_{j}} = {x}_i$, for all $0 \leqslant j \leqslant l$.
     \end{definition}
     Since there are $k+1$ vertices in a $k$-simplex $T$, and $l+1$ vertices in $l$-subsimplices $S$, the number of $l$-subsimplices of $k$-simplices is $\binom{k+1}{l+1}$.
 
 
     %\paragraph{Simplices Equality}
-    Consider simplices $T = [{x}_0, \cdots, {x}_k]$ and $T' = [{y}_0, \cdots, {y}_k]$. We say these two simplices $T$ and $T'$ are equal, i.e. $T = T'$, if ${x}_i = {y}_i$ for $0 \leqslant i \leqslant k$. Note that the vertex ordering of simplex is fixed, so if two simplices $T$ and $T'$ denote the same set but with different vertex ordering, they are not equal; instead, we say that ${T}$ coincides with $T'$, i.e. $T \cong T'$.
+    %Consider simplices $T = [{x}_0, \cdots, {x}_k]$ and $T' = [{y}_0, \cdots, {y}_k]$. We say these two simplices $T$ and $T'$ are equal, i.e. $T = T'$, if ${x}_i = {y}_i$ for $0 \leqslant i \leqslant k$. Note that the vertex ordering of simplex is fixed, so if two simplices $T$ and $T'$ denote the same set but with different vertex ordering, they are not equal; instead, we say that ${T}$ coincides with $T'$, i.e. $T \cong T'$.
 
     \paragraph{Simplices under Affine Transformation}\mbox{}\\
     Let $F$ be an affine transformation. 
@@ -29,10 +29,10 @@
     \begin{equation*}
     S\textprime= \left\{{F}(x) ~|~ x\in S \right\}.
     \end{equation*}
-    Similarly, if we regard a k-dimensional simplex ${T} = [{x_0, \cdots, x_k}]$ as a subset of $\mathbb{R}^n$ then the image of ${T}$ under affine transformation is defined as
+    Similarly, if we regard a k-dimensional simplex ${T} = [{x_0, \cdots, x_k}]$ as a subset of $\mathbb{R}^n$ then the image of ${T}$ under affine transformation is 
     \begin{equation*}
     \begin{split}
-    {F}({T}) = \big[{F}(x_0), \cdots , {F}(x_k)\big]
+    {F}({T}) = \big[{F}(x_0), \cdots , {F}(x_k)\big].
     \end{split}
     \end{equation*}
     We can see that $F(T)$ is still a $k$-dimensional simplex. Let us write $T' = F(T)$. We might be curious about the relationship between simplices $T$ and $T'$. 
@@ -42,10 +42,11 @@
     \begin{definition}
     Two simplices $T$, $T'$ are defined to be congruent if they can be obtained from each other by rotation, mirroring, scaling, and translation, i.e. if there exists a scaling factor c $\in\mathbb{R}^{+}$, a translation vector $v\in\mathbb{R}^n$, and an orthogonal matrix $Q\in\mathbb{R}^{n\times n}$ such that
     \begin{equation*}
-    T' = v + cQT
+    T' = v + cQT.
     \end{equation*}
     \end{definition}
     \noindent
     %When the two simplices $T$ and $T'$ have same vertices but with different vertex ordering, we can translate it as $T' = F(T)$. Based on how we define the affine transformation, it is not hard to see that ${T} \cong {T}\textprime$. 
-    Then we say that ${T}$ and ${T}\textprime$ are in a same congruence class. Formally, a congruent class is an equivalent class of simplices under the congruence relation.
+    Then we say that ${T}$ and ${T}\textprime$ are in a same congruence class. Formally, a congruent class is an equivalence class of simplices under the congruence relation.
+    We write $T\cong T'$ if $T$ and $T'$ are simplices in the same congruence class. When $T$ and $T'$ share same shape but not necessarily same size, we say $T$ is similar to $T'$, and write $T\sim T'$.
     

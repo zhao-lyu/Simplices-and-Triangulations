@@ -1,5 +1,5 @@
 % !TEX root = Prokect199.tex
-\subsection{Simplicial Complex}
+\subsection{Simplicial Complexes}
     \begin{definition}
     A $\emph{simplicial complex} ~~\mathcal T$ in $\mathbb{R}^n$ is a finite set of simplices in $\mathbb{R}^n$ that satisfies the following conditions:
     \begin{enumerate}[label =\arabic*.]
@@ -44,27 +44,21 @@
 
     \end{tikzpicture}
     %\includegraphics[width=60mm]{SimplicialComplex}
-    \caption{Simplicial complex(left); Not simplicial complex(right)\\Two simplices in Figure\ref{Fig2} on the right are not simplicial complex because their intersection $x$ and $y$ are not shared. We call such nodes like $x$ and $y$ hanging node}%cite???
+    \caption{Simplicial complex(left); Not simplicial complex(right)\\The two arrangements of simplices on the right are not simplicial complexes because their intersection $x$ and $y$ are not shared. We call such nodes like $x$ and $y$ hanging node.}%cite???
     \label{Fig2}
     \end{figure}
     \end{definition}
     In other words, the first condition asks $\mathcal{T}$ to be closed under taking subsimplices, and the second condition asks that the intersection of any two simplices is either a common subsimplex or empty because the empty set is a face of every simplex. Examples in 2D are shown in Figure \ref{Fig2}. 
     %Notice that two simplices in Figure\ref{Fig2} on the right are not simplicial complex because their intersection $x$ and $y$ are not shared. We call such nodes like $x$ and $y$ hanging node.
 
-    Any subset ${T\textprime}\in{T}$ that is itself a simplicial complex is called a $\emph{subcomplex}$ of ${T}$. We say that a $\emph{simplicial $k$-complex}$ $\mathcal T$ is a simplicial complex where the largest dimension of any simplex in $\mathcal T$ is ${k}$. So a simplicial 2-complex must not contain tetrahedra or higher dimension simplices. The 0-complex of ${T}$ is called a $\textit{vertex set}$ of ${T}$. We can also think of a simplicial complex as a space with a triangulation, which is the division of a surface or a plane polygon into a set of 2-simplices. 
+    Any subset ${T\textprime}\in{T}$ that is itself a simplicial complex is called a $\emph{subcomplex}$ of ${T}$. We say that a $\emph{simplicial $k$-complex}$ $\mathcal T$ is a simplicial complex where the largest dimension of any simplex in $\mathcal T$ is ${k}$. So a simplicial 2-complex must not contain tetrahedra or higher dimension simplices. The 0-complex of ${T}$ is called a $\emph{vertex set}$ of ${T}$. We can also think of a simplicial complex as a space with a triangulation, which is the division of a surface or a plane polygon into a set of 2-simplices. 
 
-    \paragraph{Simplicial Complex under Affine Transformation---\textbf{DELETE???????}}\mbox{}\\
-    Extending further from simplex under affine transformation, now we know that simplicial complex is just a finite set of simplices. Therefore, we can define the Transformed Simplicial Complex $F(\mathcal{T})$ as follows
-    \begin{equation*}
-    F(\mathcal{T}) := \{ \; F(T) \;\vert\; T \in \mathcal{T} \; \}
-    \end{equation*}
-    If $\mathcal{T}$ is consistent, then $F(\mathcal{T})$ is also consistent by inheriting this property from $\mathcal{T}$.
 
     \paragraph{Shape Measure of Simplicial Complex}\mbox{}\\
     Recall the definition of the shape measure of a simplex.
     Now consider a simplicial complex $\mathcal{T}$, we define the geometric shape measure $\mu(\mathcal{T})$ as follows,
     \begin{equation*}
-    \mu(\mathcal{T}) = \max_{T \in \mathcal{T}} \mu(T)
+    \mu(\mathcal{T}) := \max_{T \in \mathcal{T}} \mu(T).
     \end{equation*}
     By definition, we see that the shape measure of a simplicial complex $\mathcal{T}$ is the supremum of the set of shape measures of all simplices $T\in\mathcal{T}$. If the largest shape measure of a simplex in this simplicial complex is bounded, then none of the simplices in $\mathcal{T}$ are degenerate. %In other words, if simplex $T_0 \in\mathcal{T}$ is non-degenerate, then the simplicial complex $\mathcal{T}$ non-degenerate.
     %[Correct?? Pf needed???]

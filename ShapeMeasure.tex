@@ -1,27 +1,27 @@
 \subsection{Shape Regularity Measure}%\mbox{}\\
-    $\textit{Shape measure}$ offers an objective mathematical measure on the overall quality of a simplex, and this is helpful to explore the simplex regularity and to improve the quality of shapes of the elements. Different definitions are used for shape measure to present the quality of simplex, and we simply introduce the $\textit{geometric shape measure} ~\mu({T})$ of simplex ${T}$,  the one we use in this paper.
+    $\emph{Shape measure}$ offers an objective mathematical measure on the overall quality of a simplex, and this is helpful to explore the simplex regularity and to improve the quality of shapes of the elements. Different definitions are used for shape measure to present the quality of simplex, and we simply introduce the $\emph{geometric shape measure} ~\mu({T})$ of simplex ${T}$,  the one we use in this paper.
 
     \paragraph{Simplex Diameter and Volume}\mbox{}\\
     Let $T \in\mathbb{R}^n$ be a $k$-simplex where $k \leqslant n$, with vertices ${x}_0, \cdots, {x}_k \in\mathbb{R}^n$. We let $\diam(T)$ denote the diameter of $T$, and we see
     \begin{equation*}
     %\operator???
-    \operatorname{diam}(T) = \max_{0\leqslant i\leqslant j\leqslant k} \| x_i - x_j \|
+    \operatorname{diam}(T) = \max_{0\leqslant i\leqslant j\leqslant k} \| x_i - x_j \|.
     \end{equation*}
     In other words, $\diam(T)$ is the longest distance between two vertices of $T$, which is the length of the longest edge of $T$. If $T$ is a single vertex, then $\diam(T) = 0$.\\
 
     \noindent
     Let $\vol^k$(${T}$) denote the k-dimensional volume of ${T}$. We have
     \begin{equation*}
-    \operatorname{vol^k} (T) = \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)|
+    \operatorname{vol^k} (T) = \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)|.
     \end{equation*}
     \noindent
     If k = 0, then $T$ is a 0-dimensional simplex, i.e., a vertex. By convention we have $\vol^0 ({T})$ = 1, which means that the volume of a single vertex is one.
 
     
     \paragraph{Shape Measure}\mbox{}\\
-    Simplex diameter and volume are important to introduce shape measures. Here we define the {geometric shape measure} $\mu(T)$ of a $k$-simplex $T$ by
+    Simplex diameter and volume are important to introduce shape measures. Here we define the $\emph{shape measure}$ $\mu(T)$ of a $k$-simplex $T$ by
     \begin{equation*}
-    \mu(T) = \frac{\operatorname{diam}(T)^k}{\operatorname{vol^k}(T)}, \quad\operatorname{vol^k(T) \neq 0}
+    \mu(T) = \frac{\operatorname{diam}(T)^k}{\operatorname{vol^k}(T)}, \quad\operatorname{vol^k(T) \neq 0}.
     \end{equation*}
     If $\vol^k(T)$ = 0, then we define $\mu(T) = \infty$.\\
     
@@ -40,7 +40,7 @@
     %\path (1,1) coordinate (A) (2.5, 2.5) coordinate (B) (3, 1) coordinate (C)
     %\draw (A) -- (B) -- (C) -- cycle
     \end{tikzpicture}
-    \caption{Good triangle(left) with smaller shape measure vs. \\Bad triangle(right) with larger shape measure}
+    \caption{Good triangle(left) with smaller shape measure vs. \\Bad triangle(right) with larger shape measure.}
     \label{Fig1}
     \end{figure}
 
@@ -58,20 +58,22 @@
     \end{align*}
     Since it scales over all vertices, $\diam(T')^k = c^k\cdot \diam(T)^k$. Therefore, we see
     \begin{align*}
-    \mu(T') = \frac{\diam(T')^k}{\vol^k(T')} = \frac{c^k\cdot \diam(T)^k}{c^k\cdot \vol^k(T)} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
+    \mu(T') = \frac{\diam(T')^k}{\vol^k(T')} = \frac{c^k\cdot \diam(T)^k}{c^k\cdot \vol^k(T)} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T).
     \end{align*}
     \noindent
     Moreover, translation of a simplex $T$ by a nonsingular vector $v$ to obtain $T'$ will not influence the shape measure as well. In detail, we have
     \begin{align*}
     \diam(T')^k &= \max_{0\leqslant i\leqslant j\leqslant k} \|(x_i + v) - (x_j + v)\|\\ 
                &= \max_{0\leqslant i\leqslant j\leqslant k}\|x_i - x_j\| = \diam(T)^k \\
-    \text{and}\\
+    \intertext{and }
+    %\end{align*}
+    %\begin{align*}
     \vol^k(T') &= \frac{1}{k!}\cdot|\det((x_1+v) - (x_0+v), (x_2+v)-(x_0+v),\cdots,(x_k+v)-(x_0+v))|\\
-              &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)| = \vol^k(T)\\
+              &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0,\cdots, x_k-x_0)| = \vol^k(T),\\
     \end{align*}
     so that again  
     \begin{align*}
-    \mu(T') &= \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
+    \mu(T') &= \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T).
     \end{align*}
 
     Consider rotating and mirroring $T$ by an orthogonal matrix $Q$ to obtain $T'$. Since multiplying a vector with $Q$ does not change its length, we have
@@ -85,11 +87,11 @@
     \vol^k(T') = \vol^k(Q\cdot T) &= \frac{1}{k!}\cdot |\det(Q(x_1-x_0), Q(x_2-x_0),\cdots, Q(x_k-x_0)|\\
                                 &= \frac{1}{k!}\cdot|\det(Q)|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
                                 %&= \frac{1}{k!}\cdot|-1|\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)|\\
-                                &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)| = \vol^k(T)
+                                &= \frac{1}{k!}\cdot|\det(x_1-x_0, x_2-x_0, \cdots, x_k-x_0)| = \vol^k(T).
     \end{align*}
     Therefore, we obtain
     \begin{gather*}
-    \mu(T') = \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T)
+    \mu(T') = \frac{\diam(T')^k}{\vol^k(T')} = \frac{\diam(T)^k}{\vol^k(T)} = \mu(T).
     \end{gather*}
     Now we see that the shape measure is independent of scaling, translation, rotation or mirroring. Thus a simplex $T'$ which is obtained by these motions shares a same shape measure with $T$.
     \end{proof}

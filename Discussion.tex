@@ -55,27 +55,26 @@ While an application of uniform refinement on a simplicial complex in two dimens
 \label{Fig13}
 \end{figure}
 
-Let $T = [x^0, x^1, x^2, x^3]$ be the tetrahedron to be refined, and denote $x^{ij}$ by the midpoint of the edge between $x^i$ and $x^j$, for $0\neq i < j\neq 3$.\\
-\textbf{Algorithm} Uniform refinement of $T$ produces eight different tetrahedron, which are given by \{
+Let $T = [x^0, x^1, x^2, x^3]$ be the tetrahedron to be refined, and denote $x^{ij}$ by the midpoint of the edge between $x^i$ and $x^j$, for $0\neq i < j\neq 3$.
+Uniform refinement of $T$ produces eight different tetrahedron, which are given by 
 \begin{align*}
-T_1 &:= [x^0, x^{01}, x^{02}, x^{03}]; & T_2 &:= [x^{01}, x^{1}, x^{12}, x^{13}];\\
-T_3 &:= [x^{01}, x^{02}, x^{03}, x^{13}]; & T_4 &:= [x^{01}, x^{02}, x^{12}, x^{13}];\\
-T_5 &:= [x^{02}, x^{12}, x^2, x^{23}]; & T_6 &:= [x^{02}, x^{12}, x^{13}, x^{23}];\\
-T_7 &:= [x^{02}, x^{03}, x^{13}, x^{23}]; & T_8 &:= [x^{03}, x^{13}, x^{23}, x^3];
+T_1 &:= [x^0, x^{01}, x^{02}, x^{03}], & T_2 &:= [x^{01}, x^{1}, x^{12}, x^{13}],\\
+T_3 &:= [x^{01}, x^{02}, x^{03}, x^{13}], & T_4 &:= [x^{01}, x^{02}, x^{12}, x^{13}],\\
+T_5 &:= [x^{02}, x^{12}, x^2, x^{23}], & T_6 &:= [x^{02}, x^{12}, x^{13}, x^{23}],\\
+T_7 &:= [x^{02}, x^{03}, x^{13}, x^{23}], & T_8 &:= [x^{03}, x^{13}, x^{23}, x^3].
 \end{align*}
-\}
 
 With similar proofs, we can see that these eight tetrahedron belong to at most two congruence classes. We have
 \begin{align*}
-T_1 \cong T_2 \cong T_5 \cong T_8 \\
-T_3 \cong T_4 \cong T_6 \cong T_7
+T_1 \cong T_2 \cong T_5 \cong T_8, \\
+T_3 \cong T_4 \cong T_6 \cong T_7.
 \end{align*}
 
 In summary, we can still easily obtain consistency in this global refinement, but checking stability becomes more complex. By the theorem in section 3.2, we know that if the number of congruence classes is finite, then the refinement strategy is stable. This implies that one difficulty of understanding the uniform refinement in arbitrary higher dimension is counting and checking congruency classes.
 
 \subsection{Newest Vertex Bisection in 3D}
 The newest vertex bisection becomes more complicated in its application in three dimension. One method is discussed in an article by Arnold, Mukherjee and Pouly \cite{arnold2000locally}. 
-Basically, a tetrahedron $\mathcal T$ is classified into four types: planar, adjacent, opposite and mixed, based on their refined edges and faces. There are two steps in his algorithm. The first step is to bisect every tetrahedron marked for refinement on their classification; and second is to preserve consistency with additional bisection to ensure all tetrahedra are consistent without hanging nodes.
+Basically, a tetrahedron $T$ is classified into four types: planar, adjacent, opposite and mixed, based on their refined edges and faces. There are two steps in his algorithm. The first step is to bisect every tetrahedron marked for refinement on their classification; and second is to preserve consistency with additional bisection to ensure all tetrahedra are consistent without hanging nodes.
 
 \subsection{Longest Edge Bisection}
 Besides newest vertex bisection strategy, there exist other bisection methods for mesh refinement. One method is the longest edge bisection proposed by Rivara \cite{rivara1984mesh}. While the refinement edge in the newest vertex bisection is chosen opposite to the newest vertex, it is now determined by the length of each edge in longest edge bisection: always bisecting the longest edge in each triangle. See Figure \ref{Fig14}.
@@ -108,6 +107,7 @@ Besides newest vertex bisection strategy, there exist other bisection methods fo
 
 %In Martin Stynes' papers, he proved that the longest edge bisection is stable \cite{stynes1979faster,stynes1980faster,stynes1979n} in two dimensions. Basically, he showed that a finite number of congruency classes is generated in an infinite application of longest edge bisection on a simplex. Notice that, consistency is questionable in this method. Specifically, $x$ in Fig14 \ref{Fig14} is a hanging node, because this node $x$ is not shared. Thus it is not consistent. This consistency, however, can be achieved by a modified version of longest edge bisection \cite{kˇriˇzek1997generate}. [ASK PROF????]
 
-In two dimensions, the longest edge bisection is stable. As proven by Stynes, there appear only a finite number of congruency classes \cite{stynes1979n,stynes1979faster,stynes1980faster}. We notice that unfortunately, the consistency is not guaranteed with this method. For example, $x$ in Figure \ref{Fig14} is a hanging node. However, Kossaczky showed that, consistency can be achieved by a modified version of the longest edge bisection \cite{kˇriˇzek1997generate}.
+In two dimensions, the longest edge bisection is stable. As proven by Stynes, there appear only a finite number of congruency classes \cite{stynes1979n,stynes1979faster,stynes1980faster}. We notice that unfortunately, the consistency requires additional bisections to be made, similar to newest vertex bisection. For example, $x$ in Figure \ref{Fig14} is a hanging node.
+
 
 
